@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FinanzasDB" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=WINDOWS\SQLEXPRESS;Initial Catalog=FinanzasDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="Proyecto_Financiero.Properties.Settings" SettingsPropertyName="FinanzasDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.vw_datagrid1" Member="vw_datagrid1">
+    <Type Name="vw_datagrid1">
+      <Column Name="Fecha_Operacion" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Concepto" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="Categoria" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Importe" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Saldo" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Transacciones" Member="Transacciones">
+    <Type Name="Transacciones">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Fecha_Operacion" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Fecha_Valor" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Concepto" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="Categoria" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Importe" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Saldo" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Divisa" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_gastos_del_mes" Member="vw_gastos_del_mes">
+    <Type Name="vw_gastos_del_mes">
+      <Column Name="gastos" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_ingresos_del_mes" Member="vw_ingresos_del_mes">
+    <Type Name="vw_ingresos_del_mes">
+      <Column Name="importe" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
