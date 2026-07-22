@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Backend Finanzas/BackendFinanzas.pyproj" Type="888888a0-9f3d-457c-b088-3a5042f75d52" Id="c54dc061-9926-4e65-a94c-38b5eac5c132">
+    <Build Project="false" />
+  </Project>
+  <Project Path="Proyecto Financiero/FrontendFinanzas.csproj" Id="2e98f6c7-ea0d-48b0-8ad9-b93db771f8e3" />
+</Solution>
