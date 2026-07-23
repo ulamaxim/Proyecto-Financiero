@@ -32,9 +32,11 @@
             this.btnPlanificacion = new System.Windows.Forms.Button();
             this.tblLayoutPanelKpis = new System.Windows.Forms.TableLayoutPanel();
             this.cardIngresos = new System.Windows.Forms.Panel();
+            this.lblIngresosTitulo = new System.Windows.Forms.Label();
             this.lblIngresosValor = new System.Windows.Forms.Label();
             this.lblIngresosTitulo = new System.Windows.Forms.Label();
             this.cardGastos = new System.Windows.Forms.Panel();
+            this.lblGastosTitulo = new System.Windows.Forms.Label();
             this.lblGastosValor = new System.Windows.Forms.Label();
             this.lblGastosTitulo = new System.Windows.Forms.Label();
             this.cardSaldo = new System.Windows.Forms.Panel();
@@ -240,6 +242,24 @@
             this.tblLayoutPanelKpis.Size = new System.Drawing.Size(968, 109);
             this.tblLayoutPanelKpis.TabIndex = 5;
             // 
+            this.lblSaldoTitulo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblSaldoTitulo.Location = new System.Drawing.Point(11, 12);
+            this.lblSaldoTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSaldoTitulo.Name = "lblSaldoTitulo";
+            this.lblSaldoTitulo.Size = new System.Drawing.Size(150, 16);
+            this.lblSaldoTitulo.TabIndex = 0;
+            this.lblSaldoTitulo.Text = "SALDO ACTUAL";
+            // 
+            // lblSaldoValor
+            // 
+            this.lblSaldoValor.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.lblSaldoValor.Location = new System.Drawing.Point(11, 37);
+            this.lblSaldoValor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSaldoValor.Name = "lblSaldoValor";
+            this.lblSaldoValor.Size = new System.Drawing.Size(188, 41);
+            this.lblSaldoValor.TabIndex = 1;
+            this.lblSaldoValor.Text = "1.319,31 €";
+            // 
             // cardIngresos
             // 
             this.cardIngresos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(235)))), ((int)(((byte)(202)))));
@@ -272,6 +292,16 @@
             this.lblIngresosTitulo.TabIndex = 0;
             this.lblIngresosTitulo.Text = "INGRESOS DEL MES";
             // 
+            // lblIngresosValor
+            // 
+            this.lblIngresosValor.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.lblIngresosValor.Location = new System.Drawing.Point(11, 37);
+            this.lblIngresosValor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblIngresosValor.Name = "lblIngresosValor";
+            this.lblIngresosValor.Size = new System.Drawing.Size(188, 41);
+            this.lblIngresosValor.TabIndex = 1;
+            this.lblIngresosValor.Text = "2.450,00 €";
+            // 
             // cardGastos
             // 
             this.cardGastos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(196)))), ((int)(((byte)(196)))));
@@ -283,6 +313,16 @@
             this.cardGastos.Name = "cardGastos";
             this.cardGastos.Size = new System.Drawing.Size(314, 105);
             this.cardGastos.TabIndex = 2;
+            // 
+            // lblGastosTitulo
+            // 
+            this.lblGastosTitulo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblGastosTitulo.Location = new System.Drawing.Point(11, 12);
+            this.lblGastosTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblGastosTitulo.Name = "lblGastosTitulo";
+            this.lblGastosTitulo.Size = new System.Drawing.Size(150, 16);
+            this.lblGastosTitulo.TabIndex = 0;
+            this.lblGastosTitulo.Text = "GASTOS DEL MES";
             // 
             // lblGastosValor
             // 
