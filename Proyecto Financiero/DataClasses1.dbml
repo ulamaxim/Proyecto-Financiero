@@ -31,4 +31,9 @@
       <Column Name="importe" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.vw_filtro_meses" Member="vw_filtro_meses">
+    <Type Name="vw_filtro_meses">
+      <Column Name="Fecha" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>
