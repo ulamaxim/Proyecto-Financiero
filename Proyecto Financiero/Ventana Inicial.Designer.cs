@@ -19,41 +19,213 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panelContenidoGrid = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.lblSubtituloGrid = new System.Windows.Forms.Label();
             this.panelHeader = new System.Windows.Forms.Panel();
-            this.lblTituloHeader = new System.Windows.Forms.Label();
+            this.lbEdicion = new System.Windows.Forms.Label();
+            this.lbPlanificacion = new System.Windows.Forms.Label();
+            this.lbAnalitica = new System.Windows.Forms.Label();
+            this.lbDashboard = new System.Windows.Forms.Label();
             this.panelSidebar = new System.Windows.Forms.Panel();
-            this.btnMenuAnalitica = new System.Windows.Forms.Button();
-            this.btnMenuDashboard = new System.Windows.Forms.Button();
+            this.btnMenuPlanificacion = new System.Windows.Forms.Button();
+            this.btnMenuEdicion = new System.Windows.Forms.Button();
             this.lblLogo = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnPlanificacion = new System.Windows.Forms.Button();
+            this.btnMenuDashboard = new System.Windows.Forms.Button();
+            this.btnMenuAnalitica = new System.Windows.Forms.Button();
+            this.panelEdicion = new System.Windows.Forms.Panel();
+            this.panelPlanificacion = new System.Windows.Forms.Panel();
+            this.panelContenidoGrid = new System.Windows.Forms.Panel();
+            this.lblSubtituloGrid = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tblLayoutPanelKpis = new System.Windows.Forms.TableLayoutPanel();
-            this.cardIngresos = new System.Windows.Forms.Panel();
-            this.lblIngresosTitulo = new System.Windows.Forms.Label();
-            this.lblIngresosValor = new System.Windows.Forms.Label();
-            this.lblIngresosTitulo = new System.Windows.Forms.Label();
+            this.cardSaldo = new System.Windows.Forms.Panel();
+            this.lblSaldoTitulo = new System.Windows.Forms.Label();
+            this.lblSaldoValor = new System.Windows.Forms.Label();
             this.cardGastos = new System.Windows.Forms.Panel();
             this.lblGastosTitulo = new System.Windows.Forms.Label();
             this.lblGastosValor = new System.Windows.Forms.Label();
-            this.lblGastosTitulo = new System.Windows.Forms.Label();
-            this.cardSaldo = new System.Windows.Forms.Panel();
-            this.lblSaldoValor = new System.Windows.Forms.Label();
-            this.lblSaldoTitulo = new System.Windows.Forms.Label();
+            this.cardIngresos = new System.Windows.Forms.Panel();
+            this.lblIngresosTitulo = new System.Windows.Forms.Label();
+            this.lblIngresosValor = new System.Windows.Forms.Label();
             this.panelDashboard = new System.Windows.Forms.Panel();
             this.panelAnalitica = new System.Windows.Forms.Panel();
-            this.panelContenidoGrid.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblFiltroMes = new System.Windows.Forms.Label();
+            this.comb = new System.Windows.Forms.ComboBox();
+            this.lblFiltroAño = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             this.panelSidebar.SuspendLayout();
+            this.panelContenidoGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tblLayoutPanelKpis.SuspendLayout();
-            this.cardIngresos.SuspendLayout();
-            this.cardGastos.SuspendLayout();
             this.cardSaldo.SuspendLayout();
+            this.cardGastos.SuspendLayout();
+            this.cardIngresos.SuspendLayout();
             this.panelDashboard.SuspendLayout();
+            this.panelAnalitica.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // panelHeader
+            // 
+            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.panelHeader.Controls.Add(this.lbEdicion);
+            this.panelHeader.Controls.Add(this.lbPlanificacion);
+            this.panelHeader.Controls.Add(this.lbAnalitica);
+            this.panelHeader.Controls.Add(this.lbDashboard);
+            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(2);
+            this.panelHeader.Name = "panelHeader";
+            this.panelHeader.Size = new System.Drawing.Size(1118, 57);
+            this.panelHeader.TabIndex = 3;
+            // 
+            // lbEdicion
+            // 
+            this.lbEdicion.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lbEdicion.Location = new System.Drawing.Point(15, 12);
+            this.lbEdicion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbEdicion.Name = "lbEdicion";
+            this.lbEdicion.Size = new System.Drawing.Size(300, 32);
+            this.lbEdicion.TabIndex = 3;
+            this.lbEdicion.Text = "Edicion";
+            this.lbEdicion.Visible = false;
+            // 
+            // lbPlanificacion
+            // 
+            this.lbPlanificacion.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lbPlanificacion.Location = new System.Drawing.Point(15, 12);
+            this.lbPlanificacion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbPlanificacion.Name = "lbPlanificacion";
+            this.lbPlanificacion.Size = new System.Drawing.Size(300, 32);
+            this.lbPlanificacion.TabIndex = 2;
+            this.lbPlanificacion.Text = "Planificacion";
+            this.lbPlanificacion.Visible = false;
+            // 
+            // lbAnalitica
+            // 
+            this.lbAnalitica.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lbAnalitica.Location = new System.Drawing.Point(23, 12);
+            this.lbAnalitica.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbAnalitica.Name = "lbAnalitica";
+            this.lbAnalitica.Size = new System.Drawing.Size(300, 32);
+            this.lbAnalitica.TabIndex = 1;
+            this.lbAnalitica.Text = "Analitica";
+            this.lbAnalitica.Visible = false;
+            // 
+            // lbDashboard
+            // 
+            this.lbDashboard.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lbDashboard.Location = new System.Drawing.Point(15, 12);
+            this.lbDashboard.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbDashboard.Name = "lbDashboard";
+            this.lbDashboard.Size = new System.Drawing.Size(300, 32);
+            this.lbDashboard.TabIndex = 0;
+            this.lbDashboard.Text = "Dashboard";
+            // 
+            // panelSidebar
+            // 
+            this.panelSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.panelSidebar.Controls.Add(this.btnMenuPlanificacion);
+            this.panelSidebar.Controls.Add(this.btnMenuEdicion);
+            this.panelSidebar.Controls.Add(this.lblLogo);
+            this.panelSidebar.Controls.Add(this.btnMenuDashboard);
+            this.panelSidebar.Controls.Add(this.btnMenuAnalitica);
+            this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelSidebar.Location = new System.Drawing.Point(0, 57);
+            this.panelSidebar.Margin = new System.Windows.Forms.Padding(2);
+            this.panelSidebar.Name = "panelSidebar";
+            this.panelSidebar.Size = new System.Drawing.Size(150, 465);
+            this.panelSidebar.TabIndex = 4;
+            // 
+            // btnMenuPlanificacion
+            // 
+            this.btnMenuPlanificacion.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMenuPlanificacion.FlatAppearance.BorderSize = 0;
+            this.btnMenuPlanificacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenuPlanificacion.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnMenuPlanificacion.Location = new System.Drawing.Point(9, 159);
+            this.btnMenuPlanificacion.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMenuPlanificacion.Name = "btnMenuPlanificacion";
+            this.btnMenuPlanificacion.Size = new System.Drawing.Size(132, 32);
+            this.btnMenuPlanificacion.TabIndex = 4;
+            this.btnMenuPlanificacion.Text = "📈 Planificacion";
+            this.btnMenuPlanificacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMenuPlanificacion.UseVisualStyleBackColor = false;
+            this.btnMenuPlanificacion.Click += new System.EventHandler(this.btnMenuPlanificacion_Click);
+            // 
+            // btnMenuEdicion
+            // 
+            this.btnMenuEdicion.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMenuEdicion.FlatAppearance.BorderSize = 0;
+            this.btnMenuEdicion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenuEdicion.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnMenuEdicion.Location = new System.Drawing.Point(9, 213);
+            this.btnMenuEdicion.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMenuEdicion.Name = "btnMenuEdicion";
+            this.btnMenuEdicion.Size = new System.Drawing.Size(132, 32);
+            this.btnMenuEdicion.TabIndex = 3;
+            this.btnMenuEdicion.Text = "📝 Edicion";
+            this.btnMenuEdicion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMenuEdicion.UseVisualStyleBackColor = false;
+            this.btnMenuEdicion.Click += new System.EventHandler(this.btnMenuEdicion_Click);
+            // 
+            // lblLogo
+            // 
+            this.lblLogo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblLogo.Location = new System.Drawing.Point(9, 16);
+            this.lblLogo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLogo.Name = "lblLogo";
+            this.lblLogo.Size = new System.Drawing.Size(132, 33);
+            this.lblLogo.TabIndex = 0;
+            this.lblLogo.Text = "Navegador";
+            this.lblLogo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnMenuDashboard
+            // 
+            this.btnMenuDashboard.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMenuDashboard.FlatAppearance.BorderSize = 0;
+            this.btnMenuDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenuDashboard.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnMenuDashboard.Location = new System.Drawing.Point(9, 51);
+            this.btnMenuDashboard.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMenuDashboard.Name = "btnMenuDashboard";
+            this.btnMenuDashboard.Size = new System.Drawing.Size(132, 32);
+            this.btnMenuDashboard.TabIndex = 1;
+            this.btnMenuDashboard.Text = "🔲 Dashboard";
+            this.btnMenuDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMenuDashboard.UseVisualStyleBackColor = false;
+            this.btnMenuDashboard.Click += new System.EventHandler(this.btnMenuDashboard_Click);
+            // 
+            // btnMenuAnalitica
+            // 
+            this.btnMenuAnalitica.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMenuAnalitica.FlatAppearance.BorderSize = 0;
+            this.btnMenuAnalitica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenuAnalitica.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnMenuAnalitica.Location = new System.Drawing.Point(9, 105);
+            this.btnMenuAnalitica.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMenuAnalitica.Name = "btnMenuAnalitica";
+            this.btnMenuAnalitica.Size = new System.Drawing.Size(132, 32);
+            this.btnMenuAnalitica.TabIndex = 2;
+            this.btnMenuAnalitica.Text = "📊 Analitica";
+            this.btnMenuAnalitica.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMenuAnalitica.UseVisualStyleBackColor = false;
+            this.btnMenuAnalitica.Click += new System.EventHandler(this.btnMenuAnalitica_Click);
+            // 
+            // panelEdicion
+            // 
+            this.panelEdicion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEdicion.Location = new System.Drawing.Point(150, 57);
+            this.panelEdicion.Name = "panelEdicion";
+            this.panelEdicion.Size = new System.Drawing.Size(968, 465);
+            this.panelEdicion.TabIndex = 6;
+            // 
+            // panelPlanificacion
+            // 
+            this.panelPlanificacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPlanificacion.Location = new System.Drawing.Point(150, 57);
+            this.panelPlanificacion.Name = "panelPlanificacion";
+            this.panelPlanificacion.Size = new System.Drawing.Size(968, 465);
+            this.panelPlanificacion.TabIndex = 6;
             // 
             // panelContenidoGrid
             // 
@@ -67,8 +239,18 @@
             this.panelContenidoGrid.Location = new System.Drawing.Point(12, 123);
             this.panelContenidoGrid.Margin = new System.Windows.Forms.Padding(2);
             this.panelContenidoGrid.Name = "panelContenidoGrid";
-            this.panelContenidoGrid.Size = new System.Drawing.Size(944, 331);
+            this.panelContenidoGrid.Size = new System.Drawing.Size(1094, 388);
             this.panelContenidoGrid.TabIndex = 1;
+            // 
+            // lblSubtituloGrid
+            // 
+            this.lblSubtituloGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblSubtituloGrid.Location = new System.Drawing.Point(11, 12);
+            this.lblSubtituloGrid.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSubtituloGrid.Name = "lblSubtituloGrid";
+            this.lblSubtituloGrid.Size = new System.Drawing.Size(225, 20);
+            this.lblSubtituloGrid.TabIndex = 0;
+            this.lblSubtituloGrid.Text = "ÚLTIMOS MOVIMIENTOS";
             // 
             // dataGridView1
             // 
@@ -104,124 +286,8 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(918, 277);
+            this.dataGridView1.Size = new System.Drawing.Size(1068, 334);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // lblSubtituloGrid
-            // 
-            this.lblSubtituloGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblSubtituloGrid.Location = new System.Drawing.Point(11, 12);
-            this.lblSubtituloGrid.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSubtituloGrid.Name = "lblSubtituloGrid";
-            this.lblSubtituloGrid.Size = new System.Drawing.Size(225, 20);
-            this.lblSubtituloGrid.TabIndex = 0;
-            this.lblSubtituloGrid.Text = "ÚLTIMOS MOVIMIENTOS";
-            // 
-            // panelHeader
-            // 
-            this.panelHeader.Controls.Add(this.lblTituloHeader);
-            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Margin = new System.Windows.Forms.Padding(2);
-            this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1118, 57);
-            this.panelHeader.TabIndex = 3;
-            // 
-            // lblTituloHeader
-            // 
-            this.lblTituloHeader.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lblTituloHeader.Location = new System.Drawing.Point(15, 12);
-            this.lblTituloHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblTituloHeader.Name = "lblTituloHeader";
-            this.lblTituloHeader.Size = new System.Drawing.Size(300, 32);
-            this.lblTituloHeader.TabIndex = 0;
-            this.lblTituloHeader.Text = "Dashboard Finanzas";
-            // 
-            // panelSidebar
-            // 
-            this.panelSidebar.BackColor = System.Drawing.Color.White;
-            this.panelSidebar.Controls.Add(this.btnPlanificacion);
-            this.panelSidebar.Controls.Add(this.button1);
-            this.panelSidebar.Controls.Add(this.lblLogo);
-            this.panelSidebar.Controls.Add(this.btnMenuDashboard);
-            this.panelSidebar.Controls.Add(this.btnMenuAnalitica);
-            this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelSidebar.Location = new System.Drawing.Point(0, 57);
-            this.panelSidebar.Margin = new System.Windows.Forms.Padding(2);
-            this.panelSidebar.Name = "panelSidebar";
-            this.panelSidebar.Size = new System.Drawing.Size(150, 465);
-            this.panelSidebar.TabIndex = 4;
-            // 
-            // btnMenuAnalitica
-            // 
-            this.btnMenuAnalitica.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMenuAnalitica.FlatAppearance.BorderSize = 0;
-            this.btnMenuAnalitica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMenuAnalitica.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnMenuAnalitica.Location = new System.Drawing.Point(9, 105);
-            this.btnMenuAnalitica.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMenuAnalitica.Name = "btnMenuAnalitica";
-            this.btnMenuAnalitica.Size = new System.Drawing.Size(132, 32);
-            this.btnMenuAnalitica.TabIndex = 2;
-            this.btnMenuAnalitica.Text = "📊 Analitica";
-            this.btnMenuAnalitica.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuAnalitica.UseVisualStyleBackColor = false;
-            // 
-            // btnMenuDashboard
-            // 
-            this.btnMenuDashboard.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMenuDashboard.FlatAppearance.BorderSize = 0;
-            this.btnMenuDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMenuDashboard.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnMenuDashboard.Location = new System.Drawing.Point(9, 51);
-            this.btnMenuDashboard.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMenuDashboard.Name = "btnMenuDashboard";
-            this.btnMenuDashboard.Size = new System.Drawing.Size(132, 32);
-            this.btnMenuDashboard.TabIndex = 1;
-            this.btnMenuDashboard.Text = "🔲 Dashboard";
-            this.btnMenuDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuDashboard.UseVisualStyleBackColor = false;
-            // 
-            // lblLogo
-            // 
-            this.lblLogo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblLogo.Location = new System.Drawing.Point(9, 16);
-            this.lblLogo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblLogo.Name = "lblLogo";
-            this.lblLogo.Size = new System.Drawing.Size(132, 33);
-            this.lblLogo.TabIndex = 0;
-            this.lblLogo.Text = "Navegador";
-            this.lblLogo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.button1.Location = new System.Drawing.Point(9, 213);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 32);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "📝 Edicion";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // btnPlanificacion
-            // 
-            this.btnPlanificacion.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPlanificacion.FlatAppearance.BorderSize = 0;
-            this.btnPlanificacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPlanificacion.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnPlanificacion.Location = new System.Drawing.Point(9, 159);
-            this.btnPlanificacion.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPlanificacion.Name = "btnPlanificacion";
-            this.btnPlanificacion.Size = new System.Drawing.Size(132, 32);
-            this.btnPlanificacion.TabIndex = 4;
-            this.btnPlanificacion.Text = "📈 Planificacion";
-            this.btnPlanificacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPlanificacion.UseVisualStyleBackColor = false;
             // 
             // tblLayoutPanelKpis
             // 
@@ -238,9 +304,23 @@
             this.tblLayoutPanelKpis.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.tblLayoutPanelKpis.RowCount = 1;
             this.tblLayoutPanelKpis.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLayoutPanelKpis.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayoutPanelKpis.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 109F));
             this.tblLayoutPanelKpis.Size = new System.Drawing.Size(968, 109);
             this.tblLayoutPanelKpis.TabIndex = 5;
+            // 
+            // cardSaldo
+            // 
+            this.cardSaldo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(210)))), ((int)(((byte)(247)))));
+            this.cardSaldo.Controls.Add(this.lblSaldoTitulo);
+            this.cardSaldo.Controls.Add(this.lblSaldoValor);
+            this.cardSaldo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cardSaldo.Location = new System.Drawing.Point(12, 2);
+            this.cardSaldo.Margin = new System.Windows.Forms.Padding(2);
+            this.cardSaldo.Name = "cardSaldo";
+            this.cardSaldo.Size = new System.Drawing.Size(312, 105);
+            this.cardSaldo.TabIndex = 0;
+            // 
+            // lblSaldoTitulo
             // 
             this.lblSaldoTitulo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblSaldoTitulo.Location = new System.Drawing.Point(11, 12);
@@ -258,49 +338,7 @@
             this.lblSaldoValor.Name = "lblSaldoValor";
             this.lblSaldoValor.Size = new System.Drawing.Size(188, 41);
             this.lblSaldoValor.TabIndex = 1;
-            this.lblSaldoValor.Text = "1.319,31 €";
-            // 
-            // cardIngresos
-            // 
-            this.cardIngresos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(235)))), ((int)(((byte)(202)))));
-            this.cardIngresos.Controls.Add(this.lblIngresosTitulo);
-            this.cardIngresos.Controls.Add(this.lblIngresosValor);
-            this.cardIngresos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cardIngresos.Location = new System.Drawing.Point(327, 2);
-            this.cardIngresos.Margin = new System.Windows.Forms.Padding(2);
-            this.cardIngresos.Name = "cardIngresos";
-            this.cardIngresos.Size = new System.Drawing.Size(311, 105);
-            this.cardIngresos.TabIndex = 1;
-            // 
-            // lblIngresosValor
-            // 
-            this.lblIngresosValor.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.lblIngresosValor.Location = new System.Drawing.Point(11, 37);
-            this.lblIngresosValor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblIngresosValor.Name = "lblIngresosValor";
-            this.lblIngresosValor.Size = new System.Drawing.Size(188, 41);
-            this.lblIngresosValor.TabIndex = 1;
-            this.lblIngresosValor.Text = "€";
-            // 
-            // lblIngresosTitulo
-            // 
-            this.lblIngresosTitulo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblIngresosTitulo.Location = new System.Drawing.Point(11, 12);
-            this.lblIngresosTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblIngresosTitulo.Name = "lblIngresosTitulo";
-            this.lblIngresosTitulo.Size = new System.Drawing.Size(150, 16);
-            this.lblIngresosTitulo.TabIndex = 0;
-            this.lblIngresosTitulo.Text = "INGRESOS DEL MES";
-            // 
-            // lblIngresosValor
-            // 
-            this.lblIngresosValor.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.lblIngresosValor.Location = new System.Drawing.Point(11, 37);
-            this.lblIngresosValor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblIngresosValor.Name = "lblIngresosValor";
-            this.lblIngresosValor.Size = new System.Drawing.Size(188, 41);
-            this.lblIngresosValor.TabIndex = 1;
-            this.lblIngresosValor.Text = "2.450,00 €";
+            this.lblSaldoValor.Text = " €";
             // 
             // cardGastos
             // 
@@ -308,10 +346,10 @@
             this.cardGastos.Controls.Add(this.lblGastosTitulo);
             this.cardGastos.Controls.Add(this.lblGastosValor);
             this.cardGastos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cardGastos.Location = new System.Drawing.Point(642, 2);
+            this.cardGastos.Location = new System.Drawing.Point(644, 2);
             this.cardGastos.Margin = new System.Windows.Forms.Padding(2);
             this.cardGastos.Name = "cardGastos";
-            this.cardGastos.Size = new System.Drawing.Size(314, 105);
+            this.cardGastos.Size = new System.Drawing.Size(312, 105);
             this.cardGastos.TabIndex = 2;
             // 
             // lblGastosTitulo
@@ -334,47 +372,37 @@
             this.lblGastosValor.TabIndex = 1;
             this.lblGastosValor.Text = "€";
             // 
-            // lblGastosTitulo
+            // cardIngresos
             // 
-            this.lblGastosTitulo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblGastosTitulo.Location = new System.Drawing.Point(11, 12);
-            this.lblGastosTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblGastosTitulo.Name = "lblGastosTitulo";
-            this.lblGastosTitulo.Size = new System.Drawing.Size(150, 16);
-            this.lblGastosTitulo.TabIndex = 0;
-            this.lblGastosTitulo.Text = "GASTOS DEL MES";
+            this.cardIngresos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(235)))), ((int)(((byte)(202)))));
+            this.cardIngresos.Controls.Add(this.lblIngresosTitulo);
+            this.cardIngresos.Controls.Add(this.lblIngresosValor);
+            this.cardIngresos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cardIngresos.Location = new System.Drawing.Point(328, 2);
+            this.cardIngresos.Margin = new System.Windows.Forms.Padding(2);
+            this.cardIngresos.Name = "cardIngresos";
+            this.cardIngresos.Size = new System.Drawing.Size(312, 105);
+            this.cardIngresos.TabIndex = 1;
             // 
-            // cardSaldo
+            // lblIngresosTitulo
             // 
-            this.cardSaldo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(210)))), ((int)(((byte)(247)))));
-            this.cardSaldo.Controls.Add(this.lblSaldoTitulo);
-            this.cardSaldo.Controls.Add(this.lblSaldoValor);
-            this.cardSaldo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cardSaldo.Location = new System.Drawing.Point(12, 2);
-            this.cardSaldo.Margin = new System.Windows.Forms.Padding(2);
-            this.cardSaldo.Name = "cardSaldo";
-            this.cardSaldo.Size = new System.Drawing.Size(311, 105);
-            this.cardSaldo.TabIndex = 0;
+            this.lblIngresosTitulo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblIngresosTitulo.Location = new System.Drawing.Point(11, 12);
+            this.lblIngresosTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblIngresosTitulo.Name = "lblIngresosTitulo";
+            this.lblIngresosTitulo.Size = new System.Drawing.Size(150, 16);
+            this.lblIngresosTitulo.TabIndex = 0;
+            this.lblIngresosTitulo.Text = "INGRESOS DEL MES";
             // 
-            // lblSaldoValor
+            // lblIngresosValor
             // 
-            this.lblSaldoValor.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.lblSaldoValor.Location = new System.Drawing.Point(11, 37);
-            this.lblSaldoValor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSaldoValor.Name = "lblSaldoValor";
-            this.lblSaldoValor.Size = new System.Drawing.Size(188, 41);
-            this.lblSaldoValor.TabIndex = 1;
-            this.lblSaldoValor.Text = " €";
-            // 
-            // lblSaldoTitulo
-            // 
-            this.lblSaldoTitulo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSaldoTitulo.Location = new System.Drawing.Point(11, 12);
-            this.lblSaldoTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSaldoTitulo.Name = "lblSaldoTitulo";
-            this.lblSaldoTitulo.Size = new System.Drawing.Size(150, 16);
-            this.lblSaldoTitulo.TabIndex = 0;
-            this.lblSaldoTitulo.Text = "SALDO ACTUAL";
+            this.lblIngresosValor.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.lblIngresosValor.Location = new System.Drawing.Point(11, 37);
+            this.lblIngresosValor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblIngresosValor.Name = "lblIngresosValor";
+            this.lblIngresosValor.Size = new System.Drawing.Size(188, 41);
+            this.lblIngresosValor.TabIndex = 1;
+            this.lblIngresosValor.Text = "€";
             // 
             // panelDashboard
             // 
@@ -388,11 +416,67 @@
             // 
             // panelAnalitica
             // 
+            this.panelAnalitica.Controls.Add(this.panel2);
             this.panelAnalitica.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelAnalitica.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.panelAnalitica.Location = new System.Drawing.Point(150, 57);
             this.panelAnalitica.Name = "panelAnalitica";
             this.panelAnalitica.Size = new System.Drawing.Size(968, 465);
             this.panelAnalitica.TabIndex = 5;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.lblFiltroAño);
+            this.panel2.Controls.Add(this.comb);
+            this.panel2.Controls.Add(this.lblFiltroMes);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(968, 56);
+            this.panel2.TabIndex = 0;
+            // 
+            // lblFiltroMes
+            // 
+            this.lblFiltroMes.AutoSize = true;
+            this.lblFiltroMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFiltroMes.Location = new System.Drawing.Point(3, 4);
+            this.lblFiltroMes.Name = "lblFiltroMes";
+            this.lblFiltroMes.Size = new System.Drawing.Size(47, 20);
+            this.lblFiltroMes.TabIndex = 0;
+            this.lblFiltroMes.Text = "Mes:";
+            // 
+            // comb
+            // 
+            this.comb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comb.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.comb.Items.AddRange(new object[] {
+            "Deciembre",
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre"});
+            this.comb.Location = new System.Drawing.Point(7, 27);
+            this.comb.Name = "comb";
+            this.comb.Size = new System.Drawing.Size(95, 24);
+            this.comb.TabIndex = 1;
+            // 
+            // lblFiltroAño
+            // 
+            this.lblFiltroAño.AutoSize = true;
+            this.lblFiltroAño.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFiltroAño.Location = new System.Drawing.Point(127, 4);
+            this.lblFiltroAño.Name = "lblFiltroAño";
+            this.lblFiltroAño.Size = new System.Drawing.Size(46, 20);
+            this.lblFiltroAño.TabIndex = 2;
+            this.lblFiltroAño.Text = "Año:";
             // 
             // Ventana_Inicial
             // 
@@ -402,39 +486,49 @@
             this.ClientSize = new System.Drawing.Size(1118, 522);
             this.Controls.Add(this.panelAnalitica);
             this.Controls.Add(this.panelDashboard);
+            this.Controls.Add(this.panelPlanificacion);
+            this.Controls.Add(this.panelEdicion);
             this.Controls.Add(this.panelSidebar);
             this.Controls.Add(this.panelHeader);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Ventana_Inicial";
             this.Text = "Personal Finance Manager";
             this.Load += new System.EventHandler(this.Ventana_Inicial_Load);
-            this.panelContenidoGrid.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panelHeader.ResumeLayout(false);
             this.panelSidebar.ResumeLayout(false);
+            this.panelContenidoGrid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tblLayoutPanelKpis.ResumeLayout(false);
-            this.cardIngresos.ResumeLayout(false);
-            this.cardGastos.ResumeLayout(false);
             this.cardSaldo.ResumeLayout(false);
+            this.cardGastos.ResumeLayout(false);
+            this.cardIngresos.ResumeLayout(false);
             this.panelDashboard.ResumeLayout(false);
             this.panelDashboard.PerformLayout();
+            this.panelAnalitica.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Drawing.Printing.PrintDocument printDocument1;
-        private System.Windows.Forms.Panel panelContenidoGrid;
-        private System.Windows.Forms.Label lblSubtituloGrid;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panelHeader;
-        private System.Windows.Forms.Label lblTituloHeader;
+        private System.Windows.Forms.Label lbDashboard;
         private System.Windows.Forms.Panel panelSidebar;
-        private System.Windows.Forms.Button btnPlanificacion;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnMenuPlanificacion;
+        private System.Windows.Forms.Button btnMenuEdicion;
         private System.Windows.Forms.Label lblLogo;
         private System.Windows.Forms.Button btnMenuDashboard;
         private System.Windows.Forms.Button btnMenuAnalitica;
+        private System.Windows.Forms.Panel panelEdicion;
+        private System.Windows.Forms.Label lbAnalitica;
+        private System.Windows.Forms.Label lbEdicion;
+        private System.Windows.Forms.Label lbPlanificacion;
+        private System.Windows.Forms.Panel panelPlanificacion;
+        private System.Windows.Forms.Panel panelContenidoGrid;
+        private System.Windows.Forms.Label lblSubtituloGrid;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TableLayoutPanel tblLayoutPanelKpis;
         private System.Windows.Forms.Panel cardSaldo;
         private System.Windows.Forms.Label lblSaldoTitulo;
@@ -447,5 +541,9 @@
         private System.Windows.Forms.Label lblIngresosValor;
         private System.Windows.Forms.Panel panelDashboard;
         private System.Windows.Forms.Panel panelAnalitica;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblFiltroMes;
+        private System.Windows.Forms.ComboBox comb;
+        private System.Windows.Forms.Label lblFiltroAño;
     }
 }

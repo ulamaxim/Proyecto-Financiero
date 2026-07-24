@@ -96,6 +96,14 @@ namespace Proyecto_Financiero
 				return this.GetTable<vw_ingresos_del_mes>();
 			}
 		}
+		
+		public System.Data.Linq.Table<vw_filtro_meses> vw_filtro_meses
+		{
+			get
+			{
+				return this.GetTable<vw_filtro_meses>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vw_datagrid1")]
@@ -476,6 +484,33 @@ namespace Proyecto_Financiero
 				if ((this._importe != value))
 				{
 					this._importe = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vw_filtro_meses")]
+	public partial class vw_filtro_meses
+	{
+		
+		private string _Fecha;
+		
+		public vw_filtro_meses()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fecha", DbType="NVarChar(4000)")]
+		public string Fecha
+		{
+			get
+			{
+				return this._Fecha;
+			}
+			set
+			{
+				if ((this._Fecha != value))
+				{
+					this._Fecha = value;
 				}
 			}
 		}

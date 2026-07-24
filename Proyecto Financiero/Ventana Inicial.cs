@@ -11,6 +11,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LiveCharts;
+using LiveCharts.Wpf;
+using LiveCharts.WinForms;
 
 namespace Proyecto_Financiero
 {
@@ -28,6 +31,23 @@ namespace Proyecto_Financiero
 
             // 2. Cargamos los datos actualizados en tu DataGridView
             CargarTransacciones();
+
+            //3. Visualizamos el panel de Dashboard
+            panelDashboard.Visible = true;
+            panelDashboard.Enabled = true;
+            lbDashboard.Visible = true;
+
+            panelAnalitica.Visible = false;
+            panelAnalitica.Enabled = false;
+            lbAnalitica.Visible = false;
+
+            panelPlanificacion.Visible = false;
+            panelPlanificacion.Enabled = false;
+            lbPlanificacion.Visible = false;
+
+            panelEdicion.Visible = false;
+            panelEdicion.Enabled = false;
+            lbEdicion.Visible = false;
         }
 
         //===================================================
@@ -84,7 +104,6 @@ namespace Proyecto_Financiero
             }
         }
 
-
         //===================================================
         //         CARGA DE DATOS A DATAGRIDVIEW
         //===================================================
@@ -104,6 +123,7 @@ namespace Proyecto_Financiero
         //================================================
         private void FormatearDiseñoTabla()
         {
+
             CultureInfo euro = new CultureInfo("es-ES");
 
             // Ajustamos las columnas para que llenen el espacio del dataGridView
@@ -175,6 +195,89 @@ namespace Proyecto_Financiero
             // Pasamos los valores a los labels
             lblIngresosValor.Text = ingresos.ToString("C2", euro);
             lblGastosValor.Text = gastos.ToString("C2", euro);
+        }
+
+        //======================================================
+        //      BOTONES DE CONTROL DE PANELES PRINCIPALES
+        //======================================================
+        private void btnMenuDashboard_Click(object sender, EventArgs e)
+        {
+            // Cambiamos de visibilidad de paneles de contenido
+            panelDashboard.Visible = true;
+            panelDashboard.Enabled = true;
+            lbDashboard.Visible = true;
+
+            panelAnalitica.Visible = false;
+            panelAnalitica.Enabled = false;
+            lbAnalitica.Visible = false;
+
+            panelPlanificacion.Visible = false;
+            panelPlanificacion.Enabled = false;
+            lbPlanificacion.Visible = false;
+
+            panelEdicion.Visible = false;
+            panelEdicion.Enabled = false;
+            lbEdicion.Visible = false;
+        }
+
+        private void btnMenuAnalitica_Click(object sender, EventArgs e)
+        {
+            // Cambiamos de visibilidad de paneles de contenido
+            panelDashboard.Visible = false;
+            panelDashboard.Enabled = false;
+            lbDashboard.Visible = false;
+
+            panelAnalitica.Visible = true;
+            panelAnalitica.Enabled = true;
+            lbAnalitica.Visible = true;
+
+            panelPlanificacion.Visible = false;
+            panelPlanificacion.Enabled = false;
+            lbPlanificacion.Visible = false;
+
+            panelEdicion.Visible = false;
+            panelEdicion.Enabled = false;
+            lbEdicion.Visible = false;
+        }
+
+        private void btnMenuPlanificacion_Click(object sender, EventArgs e)
+        {
+            // Cambiamos de visibilidad de paneles de contenido
+            panelDashboard.Visible = false;
+            panelDashboard.Enabled = false;
+            lbDashboard.Visible = false;
+
+            panelAnalitica.Visible = false;
+            panelAnalitica.Enabled = false;
+            lbAnalitica.Visible = false;
+
+            panelPlanificacion.Visible = true;
+            panelPlanificacion.Enabled = true;
+            lbPlanificacion.Visible = true;
+
+            panelEdicion.Visible = false;
+            panelEdicion.Enabled = false;
+            lbEdicion.Visible = false;
+        }
+
+        private void btnMenuEdicion_Click(object sender, EventArgs e)
+        {
+            // Cambiamos de visibilidad de paneles de contenido
+            panelDashboard.Visible = false;
+            panelDashboard.Enabled = false;
+            lbDashboard.Visible = false;
+
+            panelAnalitica.Visible = false;
+            panelAnalitica.Enabled = false;
+            lbAnalitica.Visible = false;
+
+            panelPlanificacion.Visible = false;
+            panelPlanificacion.Enabled = false;
+            lbPlanificacion.Visible = false;
+
+            panelEdicion.Visible = true;
+            panelEdicion.Enabled = true;
+            lbEdicion.Visible = true;
         }
     }
 }
