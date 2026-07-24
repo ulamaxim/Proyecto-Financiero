@@ -19,6 +19,9 @@ namespace Proyecto_Financiero
 
         private void Ventana_Inicial_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'finanzasDBDataSet.vw_Filtro_Años' Puede moverla o quitarla según sea necesario.
+            this.vw_Filtro_AñosTableAdapter.Fill(this.finanzasDBDataSet.vw_Filtro_Años);
+
             // 1. Ejecutamos el script de Python para actualizar la base de datos
             EjecutarScriptPython();
 

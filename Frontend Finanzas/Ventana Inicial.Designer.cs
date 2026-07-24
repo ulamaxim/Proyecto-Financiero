@@ -17,8 +17,9 @@
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.lbEdicion = new System.Windows.Forms.Label();
             this.lbPlanificacion = new System.Windows.Forms.Label();
@@ -47,11 +48,17 @@
             this.lblIngresosValor = new System.Windows.Forms.Label();
             this.panelDashboard = new System.Windows.Forms.Panel();
             this.panelAnalitica = new System.Windows.Forms.Panel();
+            this.tabLayoutAnalitica = new System.Windows.Forms.TableLayoutPanel();
             this.panelFiltros = new System.Windows.Forms.Panel();
             this.combFiltroAño = new System.Windows.Forms.ComboBox();
+            this.vwFiltroAñosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.finanzasDBDataSet = new Proyecto_Financiero.FinanzasDBDataSet();
             this.lblFiltroAño = new System.Windows.Forms.Label();
-            this.comb = new System.Windows.Forms.ComboBox();
+            this.combFiltroMes = new System.Windows.Forms.ComboBox();
             this.lblFiltroMes = new System.Windows.Forms.Label();
+            this.vw_Filtro_AñosTableAdapter = new Proyecto_Financiero.FinanzasDBDataSetTableAdapters.vw_Filtro_AñosTableAdapter();
+            this.pieChart1 = new LiveCharts.WinForms.PieChart();
+            this.certGastosIngresos = new LiveCharts.WinForms.CartesianChart();
             this.panelHeader.SuspendLayout();
             this.panelSidebar.SuspendLayout();
             this.panelContenidoGrid.SuspendLayout();
@@ -62,7 +69,10 @@
             this.cardIngresos.SuspendLayout();
             this.panelDashboard.SuspendLayout();
             this.panelAnalitica.SuspendLayout();
+            this.tabLayoutAnalitica.SuspendLayout();
             this.panelFiltros.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vwFiltroAñosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.finanzasDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -237,10 +247,10 @@
             this.panelContenidoGrid.BackColor = System.Drawing.Color.White;
             this.panelContenidoGrid.Controls.Add(this.lblSubtituloGrid);
             this.panelContenidoGrid.Controls.Add(this.dataGridView1);
-            this.panelContenidoGrid.Location = new System.Drawing.Point(12, 123);
+            this.panelContenidoGrid.Location = new System.Drawing.Point(7, 114);
             this.panelContenidoGrid.Margin = new System.Windows.Forms.Padding(2);
             this.panelContenidoGrid.Name = "panelContenidoGrid";
-            this.panelContenidoGrid.Size = new System.Drawing.Size(1094, 388);
+            this.panelContenidoGrid.Size = new System.Drawing.Size(961, 349);
             this.panelContenidoGrid.TabIndex = 1;
             // 
             // lblSubtituloGrid
@@ -264,30 +274,30 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 12;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(11, 41);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1068, 334);
+            this.dataGridView1.Size = new System.Drawing.Size(940, 295);
             this.dataGridView1.TabIndex = 1;
             // 
             // tblLayoutPanelKpis
@@ -417,6 +427,7 @@
             // 
             // panelAnalitica
             // 
+            this.panelAnalitica.Controls.Add(this.tabLayoutAnalitica);
             this.panelAnalitica.Controls.Add(this.panelFiltros);
             this.panelAnalitica.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAnalitica.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -425,12 +436,30 @@
             this.panelAnalitica.Size = new System.Drawing.Size(968, 465);
             this.panelAnalitica.TabIndex = 5;
             // 
+            // tabLayoutAnalitica
+            // 
+            this.tabLayoutAnalitica.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabLayoutAnalitica.ColumnCount = 2;
+            this.tabLayoutAnalitica.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tabLayoutAnalitica.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tabLayoutAnalitica.Controls.Add(this.pieChart1, 0, 0);
+            this.tabLayoutAnalitica.Controls.Add(this.certGastosIngresos, 1, 0);
+            this.tabLayoutAnalitica.Location = new System.Drawing.Point(2, 57);
+            this.tabLayoutAnalitica.Name = "tabLayoutAnalitica";
+            this.tabLayoutAnalitica.RowCount = 2;
+            this.tabLayoutAnalitica.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tabLayoutAnalitica.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tabLayoutAnalitica.Size = new System.Drawing.Size(963, 406);
+            this.tabLayoutAnalitica.TabIndex = 1;
+            // 
             // panelFiltros
             // 
             this.panelFiltros.BackColor = System.Drawing.Color.White;
             this.panelFiltros.Controls.Add(this.combFiltroAño);
             this.panelFiltros.Controls.Add(this.lblFiltroAño);
-            this.panelFiltros.Controls.Add(this.comb);
+            this.panelFiltros.Controls.Add(this.combFiltroMes);
             this.panelFiltros.Controls.Add(this.lblFiltroMes);
             this.panelFiltros.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelFiltros.Location = new System.Drawing.Point(0, 0);
@@ -440,25 +469,25 @@
             // 
             // combFiltroAño
             // 
+            this.combFiltroAño.DataSource = this.vwFiltroAñosBindingSource;
+            this.combFiltroAño.DisplayMember = "Año";
             this.combFiltroAño.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combFiltroAño.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.combFiltroAño.Items.AddRange(new object[] {
-            "Deciembre",
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre"});
             this.combFiltroAño.Location = new System.Drawing.Point(131, 27);
             this.combFiltroAño.Name = "combFiltroAño";
             this.combFiltroAño.Size = new System.Drawing.Size(95, 24);
             this.combFiltroAño.TabIndex = 3;
+            this.combFiltroAño.ValueMember = "Año";
+            // 
+            // vwFiltroAñosBindingSource
+            // 
+            this.vwFiltroAñosBindingSource.DataMember = "vw_Filtro_Años";
+            this.vwFiltroAñosBindingSource.DataSource = this.finanzasDBDataSet;
+            // 
+            // finanzasDBDataSet
+            // 
+            this.finanzasDBDataSet.DataSetName = "FinanzasDBDataSet";
+            this.finanzasDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lblFiltroAño
             // 
@@ -470,11 +499,11 @@
             this.lblFiltroAño.TabIndex = 2;
             this.lblFiltroAño.Text = "Año:";
             // 
-            // comb
+            // combFiltroMes
             // 
-            this.comb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comb.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.comb.Items.AddRange(new object[] {
+            this.combFiltroMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combFiltroMes.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.combFiltroMes.Items.AddRange(new object[] {
             "Deciembre",
             "Enero",
             "Febrero",
@@ -487,10 +516,10 @@
             "Septiembre",
             "Octubre",
             "Noviembre"});
-            this.comb.Location = new System.Drawing.Point(7, 27);
-            this.comb.Name = "comb";
-            this.comb.Size = new System.Drawing.Size(95, 24);
-            this.comb.TabIndex = 1;
+            this.combFiltroMes.Location = new System.Drawing.Point(7, 27);
+            this.combFiltroMes.Name = "combFiltroMes";
+            this.combFiltroMes.Size = new System.Drawing.Size(95, 24);
+            this.combFiltroMes.TabIndex = 1;
             // 
             // lblFiltroMes
             // 
@@ -501,6 +530,28 @@
             this.lblFiltroMes.Size = new System.Drawing.Size(47, 20);
             this.lblFiltroMes.TabIndex = 0;
             this.lblFiltroMes.Text = "Mes:";
+            // 
+            // vw_Filtro_AñosTableAdapter
+            // 
+            this.vw_Filtro_AñosTableAdapter.ClearBeforeFill = true;
+            // 
+            // pieChart1
+            // 
+            this.pieChart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pieChart1.Location = new System.Drawing.Point(3, 3);
+            this.pieChart1.Name = "pieChart1";
+            this.pieChart1.Size = new System.Drawing.Size(475, 197);
+            this.pieChart1.TabIndex = 0;
+            this.pieChart1.Text = "pieChart1";
+            // 
+            // certGastosIngresos
+            // 
+            this.certGastosIngresos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.certGastosIngresos.Location = new System.Drawing.Point(484, 3);
+            this.certGastosIngresos.Name = "certGastosIngresos";
+            this.certGastosIngresos.Size = new System.Drawing.Size(476, 197);
+            this.certGastosIngresos.TabIndex = 1;
+            this.certGastosIngresos.Text = "cartesianChart1";
             // 
             // Ventana_Inicial
             // 
@@ -529,8 +580,11 @@
             this.panelDashboard.ResumeLayout(false);
             this.panelDashboard.PerformLayout();
             this.panelAnalitica.ResumeLayout(false);
+            this.tabLayoutAnalitica.ResumeLayout(false);
             this.panelFiltros.ResumeLayout(false);
             this.panelFiltros.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vwFiltroAñosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.finanzasDBDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -567,8 +621,14 @@
         private System.Windows.Forms.Panel panelAnalitica;
         private System.Windows.Forms.Panel panelFiltros;
         private System.Windows.Forms.Label lblFiltroMes;
-        private System.Windows.Forms.ComboBox comb;
+        private System.Windows.Forms.ComboBox combFiltroMes;
         private System.Windows.Forms.Label lblFiltroAño;
         private System.Windows.Forms.ComboBox combFiltroAño;
+        private FinanzasDBDataSet finanzasDBDataSet;
+        private System.Windows.Forms.BindingSource vwFiltroAñosBindingSource;
+        private FinanzasDBDataSetTableAdapters.vw_Filtro_AñosTableAdapter vw_Filtro_AñosTableAdapter;
+        private System.Windows.Forms.TableLayoutPanel tabLayoutAnalitica;
+        private LiveCharts.WinForms.PieChart pieChart1;
+        private LiveCharts.WinForms.CartesianChart certGastosIngresos;
     }
 }
