@@ -590,7 +590,6 @@
         }
 
         #endregion
-        private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.Label lbDashboard;
         private System.Windows.Forms.Panel panelSidebar;
