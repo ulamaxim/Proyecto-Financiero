@@ -32,3 +32,4 @@ AS
 	SELECT DISTINCT(YEAR(Fecha_Operacion)) Año
 	FROM Transacciones
 GO
+
