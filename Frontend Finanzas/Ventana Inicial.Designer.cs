@@ -18,12 +18,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ventana_Inicial));
             this.panelHeader = new System.Windows.Forms.Panel();
             this.lbDashboard = new System.Windows.Forms.Label();
             this.lbAnalitica = new System.Windows.Forms.Label();
@@ -52,21 +53,34 @@
             this.lblIngresosValor = new System.Windows.Forms.Label();
             this.panelDashboard = new System.Windows.Forms.Panel();
             this.panelAnalitica = new System.Windows.Forms.Panel();
-            this.tabLayoutAnalitica = new System.Windows.Forms.TableLayoutPanel();
-            this.cartesianChartGastosContraIngresos = new LiveCharts.WinForms.CartesianChart();
-            this.cartesianChartEvolucionDelSaldo = new LiveCharts.WinForms.CartesianChart();
-            this.dataGridPieChartFiltro = new System.Windows.Forms.DataGridView();
-            this.dataGridTopGastos = new System.Windows.Forms.DataGridView();
+            this.panelPieChart = new System.Windows.Forms.Panel();
+            this.lblPieChartGastos = new System.Windows.Forms.Label();
             this.pieChart1 = new LiveCharts.WinForms.PieChart();
+            this.tabLayoutAnalitica = new System.Windows.Forms.TableLayoutPanel();
+            this.panelDataGridPieChartFilter = new System.Windows.Forms.Panel();
+            this.lblFiltroPieChart = new System.Windows.Forms.Label();
+            this.dataGridPieChartFiltro = new System.Windows.Forms.DataGridView();
+            this.panelGastosContraIngresos = new System.Windows.Forms.Panel();
+            this.LblGastosVSIngresos = new System.Windows.Forms.Label();
+            this.cartesianChartGastosContraIngresos = new LiveCharts.WinForms.CartesianChart();
+            this.panelEvolucionDeSueldo = new System.Windows.Forms.Panel();
+            this.LblEvolucionDeSueldo = new System.Windows.Forms.Label();
+            this.cartesianChartEvolucionDelSaldo = new LiveCharts.WinForms.CartesianChart();
+            this.panelGridTopGastos = new System.Windows.Forms.Panel();
+            this.LblTopGastos = new System.Windows.Forms.Label();
+            this.dataGridTopGastos = new System.Windows.Forms.DataGridView();
             this.panelFiltros = new System.Windows.Forms.Panel();
-            this.combFiltroAño = new System.Windows.Forms.ComboBox();
-            this.vwFiltroAñosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.finanzasDBDataSet = new Proyecto_Financiero.FinanzasDBDataSet();
-            this.lblFiltroAño = new System.Windows.Forms.Label();
+            this.combFiltroAnio = new System.Windows.Forms.ComboBox();
+            this.lblFiltroAnio = new System.Windows.Forms.Label();
             this.combFiltroMes = new System.Windows.Forms.ComboBox();
             this.lblFiltroMes = new System.Windows.Forms.Label();
+            this.vwFiltroAñosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.finanzasDBDataSet = new Proyecto_Financiero.FinanzasDBDataSet();
             this.vw_Filtro_AñosTableAdapter = new Proyecto_Financiero.FinanzasDBDataSetTableAdapters.vw_Filtro_AñosTableAdapter();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.panelHeader.SuspendLayout();
             this.panelSidebar.SuspendLayout();
             this.panelContenidoGrid.SuspendLayout();
@@ -77,13 +91,17 @@
             this.cardIngresos.SuspendLayout();
             this.panelDashboard.SuspendLayout();
             this.panelAnalitica.SuspendLayout();
+            this.panelPieChart.SuspendLayout();
             this.tabLayoutAnalitica.SuspendLayout();
+            this.panelDataGridPieChartFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPieChartFiltro)).BeginInit();
+            this.panelGastosContraIngresos.SuspendLayout();
+            this.panelEvolucionDeSueldo.SuspendLayout();
+            this.panelGridTopGastos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTopGastos)).BeginInit();
             this.panelFiltros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vwFiltroAñosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.finanzasDBDataSet)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -285,23 +303,23 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridView1.ColumnHeadersHeight = 12;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridView1.Location = new System.Drawing.Point(11, 41);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
@@ -438,7 +456,7 @@
             // 
             // panelAnalitica
             // 
-            this.panelAnalitica.Controls.Add(this.panel1);
+            this.panelAnalitica.Controls.Add(this.panelPieChart);
             this.panelAnalitica.Controls.Add(this.tabLayoutAnalitica);
             this.panelAnalitica.Controls.Add(this.panelFiltros);
             this.panelAnalitica.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -448,6 +466,37 @@
             this.panelAnalitica.Size = new System.Drawing.Size(968, 465);
             this.panelAnalitica.TabIndex = 5;
             // 
+            // panelPieChart
+            // 
+            this.panelPieChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelPieChart.BackColor = System.Drawing.Color.White;
+            this.panelPieChart.Controls.Add(this.lblPieChartGastos);
+            this.panelPieChart.Controls.Add(this.pieChart1);
+            this.panelPieChart.Location = new System.Drawing.Point(0, 57);
+            this.panelPieChart.Name = "panelPieChart";
+            this.panelPieChart.Size = new System.Drawing.Size(246, 408);
+            this.panelPieChart.TabIndex = 2;
+            // 
+            // lblPieChartGastos
+            // 
+            this.lblPieChartGastos.AutoSize = true;
+            this.lblPieChartGastos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPieChartGastos.Location = new System.Drawing.Point(13, 0);
+            this.lblPieChartGastos.Name = "lblPieChartGastos";
+            this.lblPieChartGastos.Size = new System.Drawing.Size(223, 29);
+            this.lblPieChartGastos.TabIndex = 1;
+            this.lblPieChartGastos.Text = "Pie Chart de gastos";
+            // 
+            // pieChart1
+            // 
+            this.pieChart1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pieChart1.Location = new System.Drawing.Point(0, 35);
+            this.pieChart1.Name = "pieChart1";
+            this.pieChart1.Size = new System.Drawing.Size(246, 373);
+            this.pieChart1.TabIndex = 0;
+            // 
             // tabLayoutAnalitica
             // 
             this.tabLayoutAnalitica.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -456,151 +505,222 @@
             this.tabLayoutAnalitica.ColumnCount = 2;
             this.tabLayoutAnalitica.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tabLayoutAnalitica.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tabLayoutAnalitica.Controls.Add(this.dataGridPieChartFiltro, 0, 0);
-            this.tabLayoutAnalitica.Controls.Add(this.cartesianChartGastosContraIngresos, 1, 0);
-            this.tabLayoutAnalitica.Controls.Add(this.cartesianChartEvolucionDelSaldo, 0, 1);
-            this.tabLayoutAnalitica.Controls.Add(this.dataGridTopGastos, 1, 1);
+            this.tabLayoutAnalitica.Controls.Add(this.panelDataGridPieChartFilter, 0, 0);
+            this.tabLayoutAnalitica.Controls.Add(this.panelGastosContraIngresos, 1, 0);
+            this.tabLayoutAnalitica.Controls.Add(this.panelEvolucionDeSueldo, 0, 1);
+            this.tabLayoutAnalitica.Controls.Add(this.panelGridTopGastos, 1, 1);
             this.tabLayoutAnalitica.Location = new System.Drawing.Point(249, 57);
             this.tabLayoutAnalitica.Name = "tabLayoutAnalitica";
             this.tabLayoutAnalitica.RowCount = 2;
             this.tabLayoutAnalitica.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tabLayoutAnalitica.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tabLayoutAnalitica.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tabLayoutAnalitica.Size = new System.Drawing.Size(716, 406);
             this.tabLayoutAnalitica.TabIndex = 1;
             // 
-            // cartesianChartGastosContraIngresos
+            // panelDataGridPieChartFilter
             // 
-            this.cartesianChartGastosContraIngresos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cartesianChartGastosContraIngresos.Location = new System.Drawing.Point(361, 48);
-            this.cartesianChartGastosContraIngresos.Name = "cartesianChartGastosContraIngresos";
-            this.cartesianChartGastosContraIngresos.Size = new System.Drawing.Size(352, 152);
-            this.cartesianChartGastosContraIngresos.TabIndex = 4;
-            this.cartesianChartGastosContraIngresos.Text = "cartesianChart2";
+            this.panelDataGridPieChartFilter.Controls.Add(this.lblFiltroPieChart);
+            this.panelDataGridPieChartFilter.Controls.Add(this.dataGridPieChartFiltro);
+            this.panelDataGridPieChartFilter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDataGridPieChartFilter.Location = new System.Drawing.Point(3, 3);
+            this.panelDataGridPieChartFilter.Name = "panelDataGridPieChartFilter";
+            this.panelDataGridPieChartFilter.Size = new System.Drawing.Size(352, 197);
+            this.panelDataGridPieChartFilter.TabIndex = 6;
             // 
-            // cartesianChartEvolucionDelSaldo
+            // lblFiltroPieChart
             // 
-            this.cartesianChartEvolucionDelSaldo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cartesianChartEvolucionDelSaldo.Location = new System.Drawing.Point(3, 251);
-            this.cartesianChartEvolucionDelSaldo.Name = "cartesianChartEvolucionDelSaldo";
-            this.cartesianChartEvolucionDelSaldo.Size = new System.Drawing.Size(352, 152);
-            this.cartesianChartEvolucionDelSaldo.TabIndex = 2;
-            this.cartesianChartEvolucionDelSaldo.Text = "cartesianChart1";
+            this.lblFiltroPieChart.AutoSize = true;
+            this.lblFiltroPieChart.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblFiltroPieChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFiltroPieChart.Location = new System.Drawing.Point(0, 0);
+            this.lblFiltroPieChart.Name = "lblFiltroPieChart";
+            this.lblFiltroPieChart.Size = new System.Drawing.Size(173, 29);
+            this.lblFiltroPieChart.TabIndex = 5;
+            this.lblFiltroPieChart.Text = "Filtro Pie Chart";
             // 
             // dataGridPieChartFiltro
             // 
-            this.dataGridPieChartFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridPieChartFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridPieChartFiltro.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridPieChartFiltro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridPieChartFiltro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridPieChartFiltro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridPieChartFiltro.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridPieChartFiltro.Location = new System.Drawing.Point(3, 48);
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridPieChartFiltro.DefaultCellStyle = dataGridViewCellStyle22;
+            this.dataGridPieChartFiltro.Location = new System.Drawing.Point(0, 32);
             this.dataGridPieChartFiltro.Name = "dataGridPieChartFiltro";
-            this.dataGridPieChartFiltro.Size = new System.Drawing.Size(352, 152);
-            this.dataGridPieChartFiltro.TabIndex = 3;
+            this.dataGridPieChartFiltro.Size = new System.Drawing.Size(352, 165);
+            this.dataGridPieChartFiltro.TabIndex = 4;
+            // 
+            // panelGastosContraIngresos
+            // 
+            this.panelGastosContraIngresos.Controls.Add(this.LblGastosVSIngresos);
+            this.panelGastosContraIngresos.Controls.Add(this.cartesianChartGastosContraIngresos);
+            this.panelGastosContraIngresos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelGastosContraIngresos.Location = new System.Drawing.Point(361, 3);
+            this.panelGastosContraIngresos.Name = "panelGastosContraIngresos";
+            this.panelGastosContraIngresos.Size = new System.Drawing.Size(352, 197);
+            this.panelGastosContraIngresos.TabIndex = 7;
+            // 
+            // LblGastosVSIngresos
+            // 
+            this.LblGastosVSIngresos.AutoSize = true;
+            this.LblGastosVSIngresos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.LblGastosVSIngresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblGastosVSIngresos.Location = new System.Drawing.Point(0, 0);
+            this.LblGastosVSIngresos.Name = "LblGastosVSIngresos";
+            this.LblGastosVSIngresos.Size = new System.Drawing.Size(224, 29);
+            this.LblGastosVSIngresos.TabIndex = 6;
+            this.LblGastosVSIngresos.Text = "Gastos VS Ingresos";
+            // 
+            // cartesianChartGastosContraIngresos
+            // 
+            this.cartesianChartGastosContraIngresos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cartesianChartGastosContraIngresos.Location = new System.Drawing.Point(0, 32);
+            this.cartesianChartGastosContraIngresos.Name = "cartesianChartGastosContraIngresos";
+            this.cartesianChartGastosContraIngresos.Size = new System.Drawing.Size(352, 165);
+            this.cartesianChartGastosContraIngresos.TabIndex = 5;
+            this.cartesianChartGastosContraIngresos.Text = "cartesianChart2";
+            // 
+            // panelEvolucionDeSueldo
+            // 
+            this.panelEvolucionDeSueldo.Controls.Add(this.LblEvolucionDeSueldo);
+            this.panelEvolucionDeSueldo.Controls.Add(this.cartesianChartEvolucionDelSaldo);
+            this.panelEvolucionDeSueldo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEvolucionDeSueldo.Location = new System.Drawing.Point(3, 206);
+            this.panelEvolucionDeSueldo.Name = "panelEvolucionDeSueldo";
+            this.panelEvolucionDeSueldo.Size = new System.Drawing.Size(352, 197);
+            this.panelEvolucionDeSueldo.TabIndex = 8;
+            // 
+            // LblEvolucionDeSueldo
+            // 
+            this.LblEvolucionDeSueldo.AutoSize = true;
+            this.LblEvolucionDeSueldo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.LblEvolucionDeSueldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblEvolucionDeSueldo.Location = new System.Drawing.Point(0, 0);
+            this.LblEvolucionDeSueldo.Name = "LblEvolucionDeSueldo";
+            this.LblEvolucionDeSueldo.Size = new System.Drawing.Size(235, 29);
+            this.LblEvolucionDeSueldo.TabIndex = 7;
+            this.LblEvolucionDeSueldo.Text = "Evolucion de Sueldo";
+            // 
+            // cartesianChartEvolucionDelSaldo
+            // 
+            this.cartesianChartEvolucionDelSaldo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cartesianChartEvolucionDelSaldo.Location = new System.Drawing.Point(0, 32);
+            this.cartesianChartEvolucionDelSaldo.Name = "cartesianChartEvolucionDelSaldo";
+            this.cartesianChartEvolucionDelSaldo.Size = new System.Drawing.Size(352, 165);
+            this.cartesianChartEvolucionDelSaldo.TabIndex = 3;
+            this.cartesianChartEvolucionDelSaldo.Text = "cartesianChart1";
+            // 
+            // panelGridTopGastos
+            // 
+            this.panelGridTopGastos.Controls.Add(this.LblTopGastos);
+            this.panelGridTopGastos.Controls.Add(this.dataGridTopGastos);
+            this.panelGridTopGastos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelGridTopGastos.Location = new System.Drawing.Point(361, 206);
+            this.panelGridTopGastos.Name = "panelGridTopGastos";
+            this.panelGridTopGastos.Size = new System.Drawing.Size(352, 197);
+            this.panelGridTopGastos.TabIndex = 9;
+            // 
+            // LblTopGastos
+            // 
+            this.LblTopGastos.AutoSize = true;
+            this.LblTopGastos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.LblTopGastos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTopGastos.Location = new System.Drawing.Point(0, 0);
+            this.LblTopGastos.Name = "LblTopGastos";
+            this.LblTopGastos.Size = new System.Drawing.Size(251, 29);
+            this.LblTopGastos.TabIndex = 7;
+            this.LblTopGastos.Text = "Top 5 mayores gastos";
             // 
             // dataGridTopGastos
             // 
-            this.dataGridTopGastos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridTopGastos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridTopGastos.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridTopGastos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridTopGastos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.dataGridTopGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridTopGastos.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridTopGastos.Location = new System.Drawing.Point(361, 251);
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridTopGastos.DefaultCellStyle = dataGridViewCellStyle24;
+            this.dataGridTopGastos.Location = new System.Drawing.Point(0, 32);
             this.dataGridTopGastos.Name = "dataGridTopGastos";
-            this.dataGridTopGastos.Size = new System.Drawing.Size(352, 152);
-            this.dataGridTopGastos.TabIndex = 5;
-            // 
-            // pieChart1
-            // 
-            this.pieChart1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pieChart1.Location = new System.Drawing.Point(0, 53);
-            this.pieChart1.Name = "pieChart1";
-            this.pieChart1.Size = new System.Drawing.Size(246, 355);
-            this.pieChart1.TabIndex = 0;
+            this.dataGridTopGastos.Size = new System.Drawing.Size(352, 165);
+            this.dataGridTopGastos.TabIndex = 6;
             // 
             // panelFiltros
             // 
             this.panelFiltros.BackColor = System.Drawing.Color.White;
-            this.panelFiltros.Controls.Add(this.combFiltroAño);
-            this.panelFiltros.Controls.Add(this.lblFiltroAño);
+            this.panelFiltros.Controls.Add(this.combFiltroAnio);
+            this.panelFiltros.Controls.Add(this.lblFiltroAnio);
             this.panelFiltros.Controls.Add(this.combFiltroMes);
             this.panelFiltros.Controls.Add(this.lblFiltroMes);
             this.panelFiltros.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelFiltros.Location = new System.Drawing.Point(0, 0);
             this.panelFiltros.Name = "panelFiltros";
-            this.panelFiltros.Size = new System.Drawing.Size(968, 56);
+            this.panelFiltros.Size = new System.Drawing.Size(968, 57);
             this.panelFiltros.TabIndex = 0;
             // 
-            // combFiltroAño
+            // combFiltroAnio
             // 
-            this.combFiltroAño.DataSource = this.vwFiltroAñosBindingSource;
-            this.combFiltroAño.DisplayMember = "Año";
-            this.combFiltroAño.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.combFiltroAño.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.combFiltroAño.Location = new System.Drawing.Point(131, 27);
-            this.combFiltroAño.Name = "combFiltroAño";
-            this.combFiltroAño.Size = new System.Drawing.Size(95, 24);
-            this.combFiltroAño.TabIndex = 3;
-            this.combFiltroAño.ValueMember = "Año";
+            this.combFiltroAnio.DataSource = this.vwFiltroAñosBindingSource;
+            this.combFiltroAnio.DisplayMember = "Año";
+            this.combFiltroAnio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combFiltroAnio.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.combFiltroAnio.Location = new System.Drawing.Point(131, 27);
+            this.combFiltroAnio.Name = "combFiltroAnio";
+            this.combFiltroAnio.Size = new System.Drawing.Size(95, 24);
+            this.combFiltroAnio.TabIndex = 3;
+            this.combFiltroAnio.ValueMember = "Año";
+            this.combFiltroAnio.SelectedIndexChanged += new System.EventHandler(this.combFiltroAnio_SelectedIndexChanged);
             // 
-            // vwFiltroAñosBindingSource
+            // lblFiltroAnio
             // 
-            this.vwFiltroAñosBindingSource.DataMember = "vw_Filtro_Años";
-            this.vwFiltroAñosBindingSource.DataSource = this.finanzasDBDataSet;
-            // 
-            // finanzasDBDataSet
-            // 
-            this.finanzasDBDataSet.DataSetName = "FinanzasDBDataSet";
-            this.finanzasDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // lblFiltroAño
-            // 
-            this.lblFiltroAño.AutoSize = true;
-            this.lblFiltroAño.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltroAño.Location = new System.Drawing.Point(127, 4);
-            this.lblFiltroAño.Name = "lblFiltroAño";
-            this.lblFiltroAño.Size = new System.Drawing.Size(46, 20);
-            this.lblFiltroAño.TabIndex = 2;
-            this.lblFiltroAño.Text = "Año:";
+            this.lblFiltroAnio.AutoSize = true;
+            this.lblFiltroAnio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFiltroAnio.Location = new System.Drawing.Point(127, 4);
+            this.lblFiltroAnio.Name = "lblFiltroAnio";
+            this.lblFiltroAnio.Size = new System.Drawing.Size(46, 20);
+            this.lblFiltroAnio.TabIndex = 2;
+            this.lblFiltroAnio.Text = "Año:";
             // 
             // combFiltroMes
             // 
             this.combFiltroMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combFiltroMes.ImeMode = System.Windows.Forms.ImeMode.On;
             this.combFiltroMes.Items.AddRange(new object[] {
-            "Deciembre",
             "Enero",
             "Febrero",
             "Marzo",
@@ -611,11 +731,13 @@
             "Agosto",
             "Septiembre",
             "Octubre",
-            "Noviembre"});
+            "Noviembre",
+            "Diciembre"});
             this.combFiltroMes.Location = new System.Drawing.Point(7, 27);
             this.combFiltroMes.Name = "combFiltroMes";
             this.combFiltroMes.Size = new System.Drawing.Size(95, 24);
             this.combFiltroMes.TabIndex = 1;
+            this.combFiltroMes.SelectedIndexChanged += new System.EventHandler(this.combFiltroMes_SelectedIndexChanged);
             // 
             // lblFiltroMes
             // 
@@ -627,21 +749,47 @@
             this.lblFiltroMes.TabIndex = 0;
             this.lblFiltroMes.Text = "Mes:";
             // 
+            // vwFiltroAñosBindingSource
+            // 
+            this.vwFiltroAñosBindingSource.DataMember = "vw_Filtro_Años";
+            this.vwFiltroAñosBindingSource.DataSource = this.finanzasDBDataSet;
+            // 
+            // finanzasDBDataSet
+            // 
+            this.finanzasDBDataSet.DataSetName = "FinanzasDBDataSet";
+            this.finanzasDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // vw_Filtro_AñosTableAdapter
             // 
             this.vw_Filtro_AñosTableAdapter.ClearBeforeFill = true;
             // 
-            // panel1
+            // fillByToolStripButton
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.pieChart1);
-            this.panel1.Location = new System.Drawing.Point(0, 57);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(246, 408);
-            this.panel1.TabIndex = 2;
+            this.fillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.fillByToolStripButton.Name = "fillByToolStripButton";
+            this.fillByToolStripButton.Size = new System.Drawing.Size(39, 22);
+            this.fillByToolStripButton.Text = "FillBy";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(86, 22);
+            this.toolStripLabel1.Text = "toolStripLabel1";
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(86, 22);
+            this.toolStripLabel2.Text = "toolStripLabel2";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
             // 
             // Ventana_Inicial
             // 
@@ -670,14 +818,23 @@
             this.panelDashboard.ResumeLayout(false);
             this.panelDashboard.PerformLayout();
             this.panelAnalitica.ResumeLayout(false);
+            this.panelPieChart.ResumeLayout(false);
+            this.panelPieChart.PerformLayout();
             this.tabLayoutAnalitica.ResumeLayout(false);
+            this.panelDataGridPieChartFilter.ResumeLayout(false);
+            this.panelDataGridPieChartFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPieChartFiltro)).EndInit();
+            this.panelGastosContraIngresos.ResumeLayout(false);
+            this.panelGastosContraIngresos.PerformLayout();
+            this.panelEvolucionDeSueldo.ResumeLayout(false);
+            this.panelEvolucionDeSueldo.PerformLayout();
+            this.panelGridTopGastos.ResumeLayout(false);
+            this.panelGridTopGastos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTopGastos)).EndInit();
             this.panelFiltros.ResumeLayout(false);
             this.panelFiltros.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vwFiltroAñosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.finanzasDBDataSet)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -714,17 +871,30 @@
         private System.Windows.Forms.Panel panelFiltros;
         private System.Windows.Forms.Label lblFiltroMes;
         private System.Windows.Forms.ComboBox combFiltroMes;
-        private System.Windows.Forms.Label lblFiltroAño;
-        private System.Windows.Forms.ComboBox combFiltroAño;
+        private System.Windows.Forms.Label lblFiltroAnio;
+        private System.Windows.Forms.ComboBox combFiltroAnio;
         private FinanzasDBDataSet finanzasDBDataSet;
         private System.Windows.Forms.BindingSource vwFiltroAñosBindingSource;
         private FinanzasDBDataSetTableAdapters.vw_Filtro_AñosTableAdapter vw_Filtro_AñosTableAdapter;
         private System.Windows.Forms.TableLayoutPanel tabLayoutAnalitica;
         private LiveCharts.WinForms.PieChart pieChart1;
-        private LiveCharts.WinForms.CartesianChart cartesianChartEvolucionDelSaldo;
+        private System.Windows.Forms.Panel panelPieChart;
+        private System.Windows.Forms.Panel panelDataGridPieChartFilter;
         private System.Windows.Forms.DataGridView dataGridPieChartFiltro;
+        private System.Windows.Forms.Panel panelGastosContraIngresos;
         private LiveCharts.WinForms.CartesianChart cartesianChartGastosContraIngresos;
+        private System.Windows.Forms.Panel panelEvolucionDeSueldo;
+        private LiveCharts.WinForms.CartesianChart cartesianChartEvolucionDelSaldo;
+        private System.Windows.Forms.Panel panelGridTopGastos;
         private System.Windows.Forms.DataGridView dataGridTopGastos;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblPieChartGastos;
+        private System.Windows.Forms.Label lblFiltroPieChart;
+        private System.Windows.Forms.Label LblGastosVSIngresos;
+        private System.Windows.Forms.Label LblEvolucionDeSueldo;
+        private System.Windows.Forms.Label LblTopGastos;
+        private System.Windows.Forms.ToolStripButton fillByToolStripButton;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

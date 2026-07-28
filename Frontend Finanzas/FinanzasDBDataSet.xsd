@@ -28,13 +28,13 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="FinanzasDBDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="FinanzasDBDataSet" msprop:Generator_DataSetName="FinanzasDBDataSet">
+  <xs:element name="FinanzasDBDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="FinanzasDBDataSet" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="FinanzasDBDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="vw_Filtro_Años" msprop:Generator_RowEvHandlerName="vw_Filtro_AñosRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_Filtro_AñosRowDeleted" msprop:Generator_RowDeletingName="vw_Filtro_AñosRowDeleting" msprop:Generator_RowEvArgName="vw_Filtro_AñosRowChangeEvent" msprop:Generator_TablePropName="vw_Filtro_Años" msprop:Generator_RowChangedName="vw_Filtro_AñosRowChanged" msprop:Generator_RowChangingName="vw_Filtro_AñosRowChanging" msprop:Generator_TableClassName="vw_Filtro_AñosDataTable" msprop:Generator_RowClassName="vw_Filtro_AñosRow" msprop:Generator_TableVarName="tablevw_Filtro_Años" msprop:Generator_UserTableName="vw_Filtro_Años">
+        <xs:element name="vw_Filtro_Años" msprop:Generator_RowClassName="vw_Filtro_AñosRow" msprop:Generator_RowEvHandlerName="vw_Filtro_AñosRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_Filtro_AñosRowDeleted" msprop:Generator_RowDeletingName="vw_Filtro_AñosRowDeleting" msprop:Generator_RowEvArgName="vw_Filtro_AñosRowChangeEvent" msprop:Generator_TablePropName="vw_Filtro_Años" msprop:Generator_RowChangedName="vw_Filtro_AñosRowChanged" msprop:Generator_UserTableName="vw_Filtro_Años" msprop:Generator_RowChangingName="vw_Filtro_AñosRowChanging" msprop:Generator_TableClassName="vw_Filtro_AñosDataTable" msprop:Generator_TableVarName="tablevw_Filtro_Años">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Año" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="Año" msprop:Generator_ColumnPropNameInTable="AñoColumn" msprop:Generator_ColumnVarNameInTable="columnAño" msprop:Generator_UserColumnName="Año" type="xs:int" minOccurs="0" />
+              <xs:element name="Año" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Año" msprop:Generator_ColumnPropNameInTable="AñoColumn" msprop:Generator_ColumnPropNameInRow="Año" msprop:Generator_ColumnVarNameInTable="columnAño" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

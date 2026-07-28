@@ -271,6 +271,82 @@ namespace Proyecto_Financiero
         }
 
         /// <summary>
+        /// Cargo de datos del datagridview1 al pie chart,
+        /// aplicando los filtros de tiempos
+        /// </summary>
+        private void CargaPieChart()
+        {
+            // Obtención de los registros desde la vista de la base de datos
+            var transactions = (IEnumerable<vw_datagrid1>)dataGridView1.DataSource;
+
+            int? mesSeleccionado = combFiltroMes.SelectedIndex > 0 ? (int?)combFiltroMes.SelectedIndex : null;
+            object valorAnio = combFiltroAnio.SelectedValue ?? combFiltroAnio.SelectedItem;
+
+            int? anioSeleccionado = null;
+
+            if (valorAnio != null && int.TryParse(valorAnio.ToString(), out int anioParseado))
+            {
+                anioSeleccionado = anioParseado;
+            }
+
+            // Carga de datos a la variable gastosPieChart que se utilizara para rellenar el Pie Chart
+            var gastosPieChart = transactions
+                .Where(i => i.Importe.HasValue && i.Importe < 0 && !string.IsNullOrEmpty(i.Categoria))
+                .Where(i => i.Fecha_Operacion.HasValue &&
+                            (!mesSeleccionado.HasValue || i.Fecha_Operacion.Value.Month == mesSeleccionado.Value) &&
+                            (!anioSeleccionado.HasValue || i.Fecha_Operacion.Value.Year == anioSeleccionado.Value))
+                .GroupBy(i => i.Categoria)
+                .Select(g => new
+                {
+                    Categoria = g.Key,
+                    Total = Math.Abs(g.Sum(i => i.Importe.Value))
+                })
+                .OrderByDescending(x => x.Total)
+                .ToList();
+
+            // Calculamos el total global para saber los porcentajes manualmente sin fallos de LiveCharts
+            decimal totalGastos = gastosPieChart.Sum(x => x.Total);
+
+            // Cultivo de moneda local para formatear a Euros
+            var euro = new System.Globalization.CultureInfo("es-ES");
+
+            // 2. Definimos las series
+            LiveCharts.SeriesCollection series = new LiveCharts.SeriesCollection();
+
+            foreach (var item in gastosPieChart)
+            {
+                // Calculamos el porcentaje real
+                decimal porcentaje = totalGastos > 0 ? (item.Total / totalGastos) : 0;
+
+                // Si la categoría representa menos del 4%, desactivamos su etiqueta visual interna
+                bool mostrarEtiqueta = porcentaje >= 0.04m;
+
+                series.Add(new PieSeries
+                {
+                    Title = item.Categoria,
+                    Values = new ChartValues<decimal> { item.Total },
+                    DataLabels = mostrarEtiqueta,
+                    LabelPoint = point => item.Total.ToString("C2", euro),
+                    FontSize = 10,
+                    Foreground = System.Windows.Media.Brushes.Black,
+                });
+            }
+
+            // 3. Asignamos la colección y la estética
+            pieChart1.Series = series;
+            pieChart1.InnerRadius = 25;
+            pieChart1.LegendLocation = LiveCharts.LegendLocation.Top;
+
+            // Creamos un Tooltip nativo de LiveCharts y le pedimos que muestre la selección de forma clara
+            var customTooltip = new LiveCharts.Wpf.DefaultTooltip
+            {
+                SelectionMode = LiveCharts.TooltipSelectionMode.OnlySender
+            };
+
+            pieChart1.DataTooltip = customTooltip;
+        }
+
+        /// <summary>
         /// ===============================================================================================
         /// Evento clic para el botón 'Analítica'. Muestra el panel de analítica y oculta las demás vistas.
         /// Al cargar el panel de analitica se cargan automaticamente los graficos
@@ -295,64 +371,8 @@ namespace Proyecto_Financiero
             panelEdicion.Enabled = false;
             lbEdicion.Visible = false;
 
-            //==============================================
-            // Cargo de datos del datagridview1 al pie chart,
-            // aplicando los filtros de tiempos
-            //==============================================
-
-            // Obtención de los registros desde la vista de la base de datos
-            var transactions = (IEnumerable<vw_datagrid1>)dataGridView1.DataSource;
-
-            var gastosPieChart = transactions
-                .Where(i => i.Importe.HasValue && i.Importe < 0 && !string.IsNullOrEmpty(i.Categoria))
-                .GroupBy(i => i.Categoria)
-                .Select(g => new
-                {
-                    Categoria = g.Key,
-                    Total = Math.Abs(g.Sum(i => i.Importe.Value))
-                })
-                .OrderByDescending(x => x.Total)
-                .ToList();
-
-            // Calculamos el total global para saber los porcentajes manualmente sin fallos de LiveCharts
-            decimal totalGastos = gastosPieChart.Sum(x => x.Total);
-
-            // Cultivo de moneda local para formatear a Euros
-            var euro = new System.Globalization.CultureInfo("es-ES");
-
-            // 2. Definimos las series
-            LiveCharts.SeriesCollection series = new LiveCharts.SeriesCollection();
-
-            foreach (var item in gastosPieChart)
-            {
-                // Calculamos el porcentaje real
-                decimal porcentaje = totalGastos > 0 ? (item.Total / totalGastos) : 0;
-
-                // Si la categoría representa menos del 3% (0.03), desactivamos su etiqueta visual interna
-                bool mostrarEtiqueta = porcentaje >= 0.03m;
-
-                series.Add(new PieSeries
-                {
-                    Title = item.Categoria,
-                    Values = new ChartValues<decimal> { item.Total },
-                    DataLabels = mostrarEtiqueta,
-                    LabelPoint = point => item.Total.ToString("C2", euro)
-                });
-            }
-
-            // 3. Asignamos la colección y la estética
-            pieChart1.Series = series;
-            pieChart1.InnerRadius = 25;
-            pieChart1.LegendLocation = LiveCharts.LegendLocation.Right;
-
-            // 4. Personalización del Tooltip Flotante
-            // Creamos un Tooltip nativo de LiveCharts y le pedimos que MUESTRE la selección de forma clara
-            var customTooltip = new LiveCharts.Wpf.DefaultTooltip
-            {
-                SelectionMode = LiveCharts.TooltipSelectionMode.OnlySender
-            };
-
-            pieChart1.DataTooltip = customTooltip;
+            CargaPieChart();
+            FiltrosAnioMesPorDefecto();
         }
 
         // Evento clic para el botón 'Planificación'. Muestra el panel de planificación y oculta las demás vistas.
@@ -399,7 +419,29 @@ namespace Proyecto_Financiero
 
         private void pieChart1_DataClick(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
         {
+            
+        }
 
+        // Filtros del mes y año selecionados
+        private void FiltrosAnioMesPorDefecto()
+        {
+            // Mes
+            combFiltroMes.SelectedIndex = DateTime.Now.Month - 1;
+
+            // Año: Le asignamos directamente el número o string al SelectedValue
+            combFiltroAnio.SelectedValue = DateTime.Now.Year;
+        }
+
+        // Actualizacion de PieChart1 al cambiar de mes
+        private void combFiltroMes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargaPieChart();
+        }
+
+        // Actualizacion de PieChart1 al cambiar de año
+        private void combFiltroAnio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargaPieChart();
         }
     }
 }
