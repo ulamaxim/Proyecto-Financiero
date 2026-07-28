@@ -336,8 +336,6 @@ namespace Proyecto_Financiero
                     Title = item.Categoria,
                     Values = new ChartValues<decimal> { item.Total },
                     DataLabels = mostrarEtiqueta,
-                    // Pasamos SOLO el importe formateado en Euros. 
-                    // De este modo, el Tooltip mostrará: [Importe en €] + [Porcentaje % de LiveCharts]
                     LabelPoint = point => item.Total.ToString("C2", euro)
                 });
             }
