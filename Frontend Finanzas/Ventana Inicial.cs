@@ -337,7 +337,13 @@ namespace Proyecto_Financiero
 
             // Leemos los filtros activos de mes y año
             int? mesSeleccionado = combFiltroMes.SelectedIndex > 0 ? (int?)combFiltroMes.SelectedIndex : null;
-            int? anioSeleccionado = int.TryParse(combFiltroAnio.SelectedItem?.ToString(), out int a) ? (int?)a : null;
+            object valorAnio = combFiltroAnio.SelectedValue ?? combFiltroAnio.SelectedItem;
+            int? anioSeleccionado = null;
+
+            if (valorAnio != null && int.TryParse(valorAnio.ToString(), out int anioParseado) && anioParseado > 0)
+            {
+                anioSeleccionado = anioParseado;
+            }
 
             // Filtramos los registros por la categoría pulsada, la fecha y solo gastos (Importe < 0)
             var filtroPieChart = transactions
@@ -429,8 +435,8 @@ namespace Proyecto_Financiero
                     Title = "Ingresos",
                     Values = listaIngresos,
                     Fill = System.Windows.Media.Brushes.MediumSeaGreen,
-                    MaxColumnWidth = 20, 
-                    ColumnPadding = 4    
+                    MaxColumnWidth = 20,
+                    ColumnPadding = 4
                 },
                 new LiveCharts.Wpf.ColumnSeries
                 {
@@ -452,7 +458,7 @@ namespace Proyecto_Financiero
                 FontSize = 11,
                 Separator = new LiveCharts.Wpf.Separator
                 {
-                    IsEnabled = false 
+                    IsEnabled = false
                 }
             });
 
@@ -467,9 +473,9 @@ namespace Proyecto_Financiero
                 FontSize = 11,
                 Separator = new LiveCharts.Wpf.Separator
                 {
-                    IsEnabled = true, 
+                    IsEnabled = true,
                     Stroke = System.Windows.Media.Brushes.Black,
-                    StrokeThickness = 1 
+                    StrokeThickness = 1
                 }
             });
         }
@@ -484,7 +490,13 @@ namespace Proyecto_Financiero
 
             // Leemos los filtros activos de mes y año
             int? mesSeleccionado = combFiltroMes.SelectedIndex > 0 ? (int?)combFiltroMes.SelectedIndex : null;
-            int? anioSeleccionado = int.TryParse(combFiltroAnio.SelectedItem?.ToString(), out int a) ? (int?)a : null;
+            object valorAnio = combFiltroAnio.SelectedValue ?? combFiltroAnio.SelectedItem;
+            int? anioSeleccionado = null;
+
+            if (valorAnio != null && int.TryParse(valorAnio.ToString(), out int anioParseado) && anioParseado > 0)
+            {
+                anioSeleccionado = anioParseado;
+            }
 
             var top10Gastos = transactions
                 .Where(i => i.Importe.HasValue)
@@ -525,7 +537,13 @@ namespace Proyecto_Financiero
 
             // Leemos los filtros activos de mes y año
             int? mesSeleccionado = combFiltroMes.SelectedIndex > 0 ? (int?)combFiltroMes.SelectedIndex : null;
-            int? anioSeleccionado = int.TryParse(combFiltroAnio.SelectedItem?.ToString(), out int a) ? (int?)a : null;
+            object valorAnio = combFiltroAnio.SelectedValue ?? combFiltroAnio.SelectedItem;
+            int? anioSeleccionado = null;
+
+            if (valorAnio != null && int.TryParse(valorAnio.ToString(), out int anioParseado) && anioParseado > 0)
+            {
+                anioSeleccionado = anioParseado;
+            }
 
             var evolucionSaldo = transactions
                 .Where(i => i.Importe.HasValue)
@@ -558,10 +576,10 @@ namespace Proyecto_Financiero
             {
                 Title = "Saldo",
                 Values = valoresSaldo,
-                Stroke = System.Windows.Media.Brushes.DodgerBlue,               
-                Fill = System.Windows.Media.Brushes.AliceBlue, 
-                PointGeometrySize = 3,                                         
-                PointForeground = System.Windows.Media.Brushes.SteelBlue,      
+                Stroke = System.Windows.Media.Brushes.DodgerBlue,
+                Fill = System.Windows.Media.Brushes.AliceBlue,
+                PointGeometrySize = 5,
+                PointForeground = System.Windows.Media.Brushes.SteelBlue,
                 LineSmoothness = 0.2,
                 LabelPoint = point => point.Y.ToString("C2", euro)
             };
@@ -578,7 +596,7 @@ namespace Proyecto_Financiero
                 LabelsRotation = 45,
                 Separator = new LiveCharts.Wpf.Separator
                 {
-                    Step = 3,
+                    Step = 2,
                     IsEnabled = false,
                 }
             });

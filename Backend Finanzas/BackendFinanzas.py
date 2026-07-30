@@ -56,6 +56,8 @@ df['Fecha_Valor'] = pd.to_datetime(df['Fecha_Valor'], dayfirst=True, errors='coe
     
 # Limpiamos espacios vacios en Concepto
 df['Concepto'] = df['Concepto'].astype(str).str.strip()
+df['Concepto'] = df['Concepto'].str.replace(r'TRANSACCION\s+CONTACTLESS\s+EN', '', regex=True, case=False).str.strip()
+df['Concepto'] = df['Concepto'].str.replace(r'COMPRA', '', regex=True, case=False).str.strip()
 
 # Le decimos a Python el formato exacto de fechas para evitar posibles errores
 df['Fecha_Operacion'] = pd.to_datetime(df['Fecha_Operacion'], dayfirst=True, errors='coerce')
