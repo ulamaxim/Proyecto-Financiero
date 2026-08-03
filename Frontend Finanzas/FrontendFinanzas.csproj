@@ -84,7 +84,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FinanzasDBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Ventana Inicial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,9 +92,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="obj\Debug\Proyecto_Financiero.Form1.resources" />
-    <EmbeddedResource Include="obj\Debug\Proyecto_Financiero.Properties.Resources.resources" />
-    <EmbeddedResource Include="obj\Debug\Proyecto_Financiero.Ventana_Inicial.resources" />
     <EmbeddedResource Include="Ventana Inicial.resx">
       <DependentUpon>Ventana Inicial.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,9 +104,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="bin\Debug\libHarfBuzzSharp.dylib" />
-    <None Include="bin\Debug\libSkiaSharp.dylib" />
-    <None Include="bin\Debug\Proyecto Financiero.exe.config" />
     <None Include="DataClasses1.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
@@ -130,15 +123,6 @@
     <None Include="FinanzasDBDataSet.xss">
       <DependentUpon>FinanzasDBDataSet.xsd</DependentUpon>
     </None>
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\Debug\Frontend.9BCCDCA1.Up2Date" />
-    <None Include="obj\Debug\FrontendFinanzas.csproj.AssemblyReference.cache" />
-    <None Include="obj\Debug\FrontendFinanzas.csproj.CoreCompileInputs.cache" />
-    <None Include="obj\Debug\FrontendFinanzas.csproj.GenerateResource.cache" />
-    <None Include="obj\Debug\Proyecto Financiero.csproj.AssemblyReference.cache" />
-    <None Include="obj\Debug\Proyecto Financiero.csproj.CoreCompileInputs.cache" />
-    <None Include="obj\Debug\Proyecto Financiero.csproj.GenerateResource.cache" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -156,66 +140,6 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\Debug\arm64\libHarfBuzzSharp.dll" />
-    <Content Include="bin\Debug\arm64\libSkiaSharp.dll" />
-    <Content Include="bin\Debug\HarfBuzzSharp.dll" />
-    <Content Include="bin\Debug\HarfBuzzSharp.pdb" />
-    <Content Include="bin\Debug\HarfBuzzSharp.xml" />
-    <Content Include="bin\Debug\LiveCharts.dll" />
-    <Content Include="bin\Debug\LiveCharts.pdb" />
-    <Content Include="bin\Debug\LiveCharts.WinForms.dll" />
-    <Content Include="bin\Debug\LiveCharts.WinForms.pdb" />
-    <Content Include="bin\Debug\LiveCharts.WinForms.xml" />
-    <Content Include="bin\Debug\LiveCharts.Wpf.dll" />
-    <Content Include="bin\Debug\LiveCharts.Wpf.pdb" />
-    <Content Include="bin\Debug\LiveCharts.Wpf.xml" />
-    <Content Include="bin\Debug\LiveCharts.xml" />
-    <Content Include="bin\Debug\LiveChartsCore.dll" />
-    <Content Include="bin\Debug\LiveChartsCore.SkiaSharpView.dll" />
-    <Content Include="bin\Debug\LiveChartsCore.SkiaSharpView.xml" />
-    <Content Include="bin\Debug\LiveChartsCore.xml" />
-    <Content Include="bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll" />
-    <Content Include="bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml" />
-    <Content Include="bin\Debug\Proyecto Financiero.exe" />
-    <Content Include="bin\Debug\Proyecto Financiero.pdb" />
-    <Content Include="bin\Debug\SkiaSharp.dll" />
-    <Content Include="bin\Debug\SkiaSharp.HarfBuzz.dll" />
-    <Content Include="bin\Debug\SkiaSharp.HarfBuzz.pdb" />
-    <Content Include="bin\Debug\SkiaSharp.HarfBuzz.xml" />
-    <Content Include="bin\Debug\SkiaSharp.pdb" />
-    <Content Include="bin\Debug\SkiaSharp.xml" />
-    <Content Include="bin\Debug\System.Buffers.dll" />
-    <Content Include="bin\Debug\System.Buffers.xml" />
-    <Content Include="bin\Debug\System.Memory.dll" />
-    <Content Include="bin\Debug\System.Memory.xml" />
-    <Content Include="bin\Debug\System.Numerics.Vectors.dll" />
-    <Content Include="bin\Debug\System.Numerics.Vectors.xml" />
-    <Content Include="bin\Debug\System.Runtime.CompilerServices.Unsafe.dll" />
-    <Content Include="bin\Debug\System.Runtime.CompilerServices.Unsafe.xml" />
-    <Content Include="bin\Debug\System.Text.Encodings.Web.dll" />
-    <Content Include="bin\Debug\System.Text.Encodings.Web.xml" />
-    <Content Include="bin\Debug\System.Text.Json.dll" />
-    <Content Include="bin\Debug\System.Text.Json.xml" />
-    <Content Include="bin\Debug\System.Threading.Tasks.Extensions.dll" />
-    <Content Include="bin\Debug\System.Threading.Tasks.Extensions.xml" />
-    <Content Include="bin\Debug\System.ValueTuple.dll" />
-    <Content Include="bin\Debug\System.ValueTuple.xml" />
-    <Content Include="bin\Debug\x64\libHarfBuzzSharp.dll" />
-    <Content Include="bin\Debug\x64\libSkiaSharp.dll" />
-    <Content Include="bin\Debug\x86\libHarfBuzzSharp.dll" />
-    <Content Include="bin\Debug\x86\libSkiaSharp.dll" />
-    <Content Include="obj\Debug\FrontendFinanzas.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\Proyecto Financiero.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\Proyecto Financiero.exe" />
-    <Content Include="obj\Debug\Proyecto Financiero.pdb" />
-    <Content Include="obj\Debug\TempPE\DataClasses1.designer.cs.dll" />
-    <Content Include="obj\Debug\TempPE\FinanzasDatasetFiltroMeses.Designer.cs.dll" />
-    <Content Include="obj\Debug\TempPE\FinanzasDBDataSet.Designer.cs.dll" />
-    <Content Include="obj\Debug\TempPE\FinanzasDBDataSet1.Designer.cs.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Release\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
