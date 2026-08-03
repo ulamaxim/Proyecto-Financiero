@@ -673,51 +673,65 @@ namespace Proyecto_Financiero
 
         private Panel CrearControlTarjeta(string categoria, double gastado, double limite)
         {
-            // === PANEL CONTENEDOR DE LA TARJETA ===
-            Panel pnlTarjeta = new Panel();
-            pnlTarjeta.Dock = DockStyle.Fill;
-            pnlTarjeta.BackColor = Color.White;
-            pnlTarjeta.Margin = new Padding(5);
-            pnlTarjeta.BorderStyle = BorderStyle.FixedSingle;
+            Panel pnlTarjeta = new Panel
+            {
+                Dock = DockStyle.Fill,
+                BackColor = Color.White,
+                Margin = new Padding(3),
+                BorderStyle = BorderStyle.FixedSingle
+            };
 
-            // === TÍTULO DE LA CATEGORÍA ===
-            Label lblCategoria = new Label();
-            lblCategoria.Text = categoria;
-            lblCategoria.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblCategoria.Location = new Point(10, 8);
-            lblCategoria.AutoSize = true;
+            int porcentaje = limite > 0 ? (int)((gastado / limite) * 100) : 0;
+
+            // 1. TÍTULO DE CATEGORÍA (Pegado a la izquierda, ancho fijo corto)
+            Label lblCategoria = new Label
+            {
+                Text = categoria,
+                Font = new Font("Segoe UI", 8.5F, FontStyle.Bold),
+                Location = new Point(5, 10),
+                Size = new Size(100, 20),
+                AutoEllipsis = true // Si el texto es largo pone "..."
+            };
             pnlTarjeta.Controls.Add(lblCategoria);
 
-            // === TEXTO DE IMPORTES (Gastado / Límite) ===
-            Label lblValores = new Label();
-            lblValores.Text = $"{gastado:N2} € / {limite:N2} €";
-            lblValores.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
-            lblValores.ForeColor = Color.DimGray;
-            lblValores.Location = new Point(70, 8);
-            lblValores.AutoSize = true;
+            // 2. BOTÓN EDITAR (Pegado al borde derecho absoluto)
+            Button btnEditar = new Button
+            {
+                Text = "✏️",
+                Size = new Size(26, 22),
+                FlatStyle = FlatStyle.Flat,
+                Tag = categoria,
+                Anchor = AnchorStyles.Top | AnchorStyles.Right
+            };
+            btnEditar.FlatAppearance.BorderSize = 0;
+            // Lo posicionamos restando desde el ancho actual del panel
+            btnEditar.Location = new Point(pnlTarjeta.Width - 30, 8);
+            btnEditar.Click += BtnEditar_Click;
+            pnlTarjeta.Controls.Add(btnEditar);
+
+            // 3. VALORES (Pegado justo a la izquierda del botón de editar)
+            Label lblValores = new Label
+            {
+                Text = $"{gastado:N0}€/{limite:N0}€",
+                Font = new Font("Segoe UI", 8F, FontStyle.Regular),
+                ForeColor = Color.DimGray,
+                Size = new Size(90, 20),
+                TextAlign = ContentAlignment.MiddleRight,
+                Anchor = AnchorStyles.Top | AnchorStyles.Right
+            };
+            lblValores.Location = new Point(pnlTarjeta.Width - 125, 10);
             pnlTarjeta.Controls.Add(lblValores);
 
-            // === BARRA DE PROGRESO ===
-            ProgressBar barra = new ProgressBar();
-            int porcentaje = (int)((gastado / limite) * 100);
-            barra.Value = Math.Min(porcentaje, 100); // Evitar que supere el 100% y dé error
-            barra.Location = new Point(120, 8);
-            barra.Size = new Size(250, 18);
+            // 4. BARRA DE PROGRESO (Rellena el espacio del centro)
+            ProgressBar barra = new ProgressBar
+            {
+                Value = Math.Min(porcentaje, 100),
+                Location = new Point(110, 11),
+                // La barra se estirará tanto a la izquierda como a la derecha automáticamente
+                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
+                Size = new Size(Math.Max(20, pnlTarjeta.Width - 240), 16)
+            };
             pnlTarjeta.Controls.Add(barra);
-
-            // === BOTÓN DE EDITAR LÍMITE ===
-            Button btnEditar = new Button();
-            btnEditar.Text = "✏";
-            btnEditar.Size = new Size(35, 25);
-            btnEditar.FlatStyle = FlatStyle.Flat;
-            btnEditar.Dock = DockStyle.Right;
-            btnEditar.FlatAppearance.BorderSize = 0;
-
-            // Guardar la categoría en el Tag del botón para saber cuál editar
-            btnEditar.Tag = categoria;
-            btnEditar.Click += BtnEditar_Click; 
-
-            pnlTarjeta.Controls.Add(btnEditar);
 
             return pnlTarjeta;
         }
