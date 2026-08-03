@@ -14,6 +14,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Windows.Forms;
 
 namespace Proyecto_Financiero
@@ -177,7 +178,7 @@ namespace Proyecto_Financiero
             dataGridView1.Columns["Fecha_Operacion"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             // Formateamos Concepto
-            dataGridView1.Columns["Concepto"].FillWeight = 280;
+            dataGridView1.Columns["Concepto"].FillWeight = 220;
 
             // Formateamos Categoria
             dataGridView1.Columns["Categoria"].FillWeight = 70;
@@ -327,6 +328,20 @@ namespace Proyecto_Financiero
             };
 
             pieChart1.DataTooltip = customTooltip;
+        }
+
+        private void CargarFiltroAños()
+        {
+            // Obtenemos únicamente los años de las transacciones reales guardadas
+            var añosDisponibles = datalinq.vw_datagrid1
+                .Where(t => t.Fecha_Operacion.HasValue)
+                .Select(t => t.Fecha_Operacion.Value.Year)
+                .Distinct()
+                .OrderByDescending(y => y)
+                .ToList();
+
+            // Asignamos la lista limpia al ComboBox de años
+            combFiltroAnio.DataSource = añosDisponibles;
         }
 
         /// <summary>
@@ -604,6 +619,114 @@ namespace Proyecto_Financiero
             });
         }
 
+        //===============================================================
+        //         CARGA DE DATOS A EL PANEL DE PLANIFICACION
+        //===============================================================
+
+        /// <summary>
+        /// Carga de datos al panel de limites de gastos 
+        /// al pulsar el boton de planificacion
+        /// </summary>
+        private void CargarTarjetasPresupuesto()
+        {
+            // 1. Limpiar filas y controles previos del TableLayoutPanel
+            tableLayoutLimitesPorCategoria.SuspendLayout(); // Pausa el renderizado para mejorar rendimiento
+            tableLayoutLimitesPorCategoria.Controls.Clear();
+            tableLayoutLimitesPorCategoria.RowStyles.Clear();
+            tableLayoutLimitesPorCategoria.RowCount = 0;
+
+            // Configurar 1 sola columna que ocupe el 100% del ancho
+            tableLayoutLimitesPorCategoria.ColumnCount = 1;
+            tableLayoutLimitesPorCategoria.ColumnStyles.Clear();
+            tableLayoutLimitesPorCategoria.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+
+            // 2. Obtener gastos por categoría de tu LINQ / SQL
+            var resumenGastos = datalinq.vw_datagrid1
+                .Where(t => t.Importe.HasValue && t.Importe < 0 && t.Fecha_Operacion.Value.Month == DateTime.Now.Month)
+                .GroupBy(t => t.Categoria)
+                .Select(g => new
+                {
+                    Categoria = g.Key,
+                    Gastado = Math.Abs((double)g.Sum(t => t.Importe.Value))
+                })
+                .ToList();
+
+            // 3. Crear una tarjeta (Panel) por cada categoría
+            foreach (var item in resumenGastos)
+            {
+                // Añadir una nueva fila al TableLayoutPanel de altura fija 
+                tableLayoutLimitesPorCategoria.RowCount++;
+                tableLayoutLimitesPorCategoria.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+
+                // Presupuesto límite (puedes traerlo de una tabla en la BD o usar un valor por defecto)
+                double limitePresupuesto = 350.00;
+
+                // Generar la tarjeta
+                Panel tarjeta = CrearControlTarjeta(item.Categoria, item.Gastado, limitePresupuesto);
+
+                // Meter la tarjeta en la fila recién creada
+                tableLayoutLimitesPorCategoria.Controls.Add(tarjeta, 0, tableLayoutLimitesPorCategoria.RowCount - 1);
+            }
+
+            tableLayoutLimitesPorCategoria.ResumeLayout(); 
+        }
+
+        private Panel CrearControlTarjeta(string categoria, double gastado, double limite)
+        {
+            // === PANEL CONTENEDOR DE LA TARJETA ===
+            Panel pnlTarjeta = new Panel();
+            pnlTarjeta.Dock = DockStyle.Fill;
+            pnlTarjeta.BackColor = Color.White;
+            pnlTarjeta.Margin = new Padding(5);
+            pnlTarjeta.BorderStyle = BorderStyle.FixedSingle;
+
+            // === TÍTULO DE LA CATEGORÍA ===
+            Label lblCategoria = new Label();
+            lblCategoria.Text = categoria;
+            lblCategoria.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblCategoria.Location = new Point(10, 8);
+            lblCategoria.AutoSize = true;
+            pnlTarjeta.Controls.Add(lblCategoria);
+
+            // === TEXTO DE IMPORTES (Gastado / Límite) ===
+            Label lblValores = new Label();
+            lblValores.Text = $"{gastado:N2} € / {limite:N2} €";
+            lblValores.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            lblValores.ForeColor = Color.DimGray;
+            lblValores.Location = new Point(70, 8);
+            lblValores.AutoSize = true;
+            pnlTarjeta.Controls.Add(lblValores);
+
+            // === BARRA DE PROGRESO ===
+            ProgressBar barra = new ProgressBar();
+            int porcentaje = (int)((gastado / limite) * 100);
+            barra.Value = Math.Min(porcentaje, 100); // Evitar que supere el 100% y dé error
+            barra.Location = new Point(120, 8);
+            barra.Size = new Size(250, 18);
+            pnlTarjeta.Controls.Add(barra);
+
+            // === BOTÓN DE EDITAR LÍMITE ===
+            Button btnEditar = new Button();
+            btnEditar.Text = "✏";
+            btnEditar.Size = new Size(35, 25);
+            btnEditar.FlatStyle = FlatStyle.Flat;
+            btnEditar.Dock = DockStyle.Right;
+            btnEditar.FlatAppearance.BorderSize = 0;
+
+            // Guardar la categoría en el Tag del botón para saber cuál editar
+            btnEditar.Tag = categoria;
+            btnEditar.Click += BtnEditar_Click; 
+
+            pnlTarjeta.Controls.Add(btnEditar);
+
+            return pnlTarjeta;
+        }
+
+        private void BtnEditar_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //======================================================
         //        BOTONES DE CONTROL DE PANELES PRINCIPALES
         //======================================================
@@ -655,6 +778,7 @@ namespace Proyecto_Financiero
             CargaGastosVSIngresos();
             CargaTop10Gastos();
             EvolucionDeSueldo();
+            CargarFiltroAños();
         }
 
         private void pieChart1_DataClick(object sender, LiveCharts.ChartPoint chartPoint)
@@ -701,6 +825,8 @@ namespace Proyecto_Financiero
             panelEdicion.Visible = false;
             panelEdicion.Enabled = false;
             lbEdicion.Visible = false;
+
+            CargarTarjetasPresupuesto();
         }
 
         // Evento clic para el botón 'Edición'. Muestra el panel de edición y oculta las demás vistas.
