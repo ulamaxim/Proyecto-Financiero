@@ -105,6 +105,8 @@ namespace Proyecto_Financiero
             start.CreateNoWindow = true; // Oculta la ventana de símbolo del sistema (CMD)
             start.RedirectStandardOutput = true;
             start.RedirectStandardError = true;
+            start.StandardOutputEncoding = System.Text.Encoding.UTF8;
+            start.StandardErrorEncoding = System.Text.Encoding.UTF8;
 
             // Inicia el proceso externo
             using (Process proceso = Process.Start(start))

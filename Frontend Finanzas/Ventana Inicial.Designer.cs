@@ -18,12 +18,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ventana_Inicial));
             this.panelHeader = new System.Windows.Forms.Panel();
             this.lbDashboard = new System.Windows.Forms.Label();
@@ -115,7 +115,7 @@
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Margin = new System.Windows.Forms.Padding(2);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1118, 57);
+            this.panelHeader.Size = new System.Drawing.Size(1238, 57);
             this.panelHeader.TabIndex = 3;
             // 
             // lbDashboard
@@ -173,7 +173,7 @@
             this.panelSidebar.Location = new System.Drawing.Point(0, 57);
             this.panelSidebar.Margin = new System.Windows.Forms.Padding(2);
             this.panelSidebar.Name = "panelSidebar";
-            this.panelSidebar.Size = new System.Drawing.Size(150, 465);
+            this.panelSidebar.Size = new System.Drawing.Size(188, 465);
             this.panelSidebar.TabIndex = 4;
             // 
             // btnMenuPlanificacion
@@ -185,7 +185,7 @@
             this.btnMenuPlanificacion.Location = new System.Drawing.Point(9, 159);
             this.btnMenuPlanificacion.Margin = new System.Windows.Forms.Padding(2);
             this.btnMenuPlanificacion.Name = "btnMenuPlanificacion";
-            this.btnMenuPlanificacion.Size = new System.Drawing.Size(132, 32);
+            this.btnMenuPlanificacion.Size = new System.Drawing.Size(174, 32);
             this.btnMenuPlanificacion.TabIndex = 4;
             this.btnMenuPlanificacion.Text = "📈 Planificacion";
             this.btnMenuPlanificacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -201,7 +201,7 @@
             this.btnMenuEdicion.Location = new System.Drawing.Point(9, 213);
             this.btnMenuEdicion.Margin = new System.Windows.Forms.Padding(2);
             this.btnMenuEdicion.Name = "btnMenuEdicion";
-            this.btnMenuEdicion.Size = new System.Drawing.Size(132, 32);
+            this.btnMenuEdicion.Size = new System.Drawing.Size(174, 32);
             this.btnMenuEdicion.TabIndex = 3;
             this.btnMenuEdicion.Text = "📝 Edicion";
             this.btnMenuEdicion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -228,7 +228,7 @@
             this.btnMenuDashboard.Location = new System.Drawing.Point(9, 51);
             this.btnMenuDashboard.Margin = new System.Windows.Forms.Padding(2);
             this.btnMenuDashboard.Name = "btnMenuDashboard";
-            this.btnMenuDashboard.Size = new System.Drawing.Size(132, 32);
+            this.btnMenuDashboard.Size = new System.Drawing.Size(174, 32);
             this.btnMenuDashboard.TabIndex = 1;
             this.btnMenuDashboard.Text = "🔲 Dashboard";
             this.btnMenuDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -244,7 +244,7 @@
             this.btnMenuAnalitica.Location = new System.Drawing.Point(9, 105);
             this.btnMenuAnalitica.Margin = new System.Windows.Forms.Padding(2);
             this.btnMenuAnalitica.Name = "btnMenuAnalitica";
-            this.btnMenuAnalitica.Size = new System.Drawing.Size(132, 32);
+            this.btnMenuAnalitica.Size = new System.Drawing.Size(174, 32);
             this.btnMenuAnalitica.TabIndex = 2;
             this.btnMenuAnalitica.Text = "📊 Analitica";
             this.btnMenuAnalitica.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -254,17 +254,17 @@
             // panelEdicion
             // 
             this.panelEdicion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEdicion.Location = new System.Drawing.Point(150, 57);
+            this.panelEdicion.Location = new System.Drawing.Point(188, 57);
             this.panelEdicion.Name = "panelEdicion";
-            this.panelEdicion.Size = new System.Drawing.Size(968, 465);
+            this.panelEdicion.Size = new System.Drawing.Size(1050, 465);
             this.panelEdicion.TabIndex = 6;
             // 
             // panelPlanificacion
             // 
             this.panelPlanificacion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPlanificacion.Location = new System.Drawing.Point(150, 57);
+            this.panelPlanificacion.Location = new System.Drawing.Point(188, 57);
             this.panelPlanificacion.Name = "panelPlanificacion";
-            this.panelPlanificacion.Size = new System.Drawing.Size(968, 465);
+            this.panelPlanificacion.Size = new System.Drawing.Size(1050, 465);
             this.panelPlanificacion.TabIndex = 6;
             // 
             // panelContenidoGrid
@@ -279,7 +279,7 @@
             this.panelContenidoGrid.Location = new System.Drawing.Point(7, 114);
             this.panelContenidoGrid.Margin = new System.Windows.Forms.Padding(2);
             this.panelContenidoGrid.Name = "panelContenidoGrid";
-            this.panelContenidoGrid.Size = new System.Drawing.Size(961, 349);
+            this.panelContenidoGrid.Size = new System.Drawing.Size(1085, 349);
             this.panelContenidoGrid.TabIndex = 1;
             // 
             // lblSubtituloGrid
@@ -303,30 +303,30 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridView1.ColumnHeadersHeight = 12;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridView1.Location = new System.Drawing.Point(11, 41);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(940, 295);
+            this.dataGridView1.Size = new System.Drawing.Size(1064, 295);
             this.dataGridView1.TabIndex = 1;
             // 
             // tblLayoutPanelKpis
@@ -345,7 +345,7 @@
             this.tblLayoutPanelKpis.RowCount = 1;
             this.tblLayoutPanelKpis.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblLayoutPanelKpis.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 109F));
-            this.tblLayoutPanelKpis.Size = new System.Drawing.Size(968, 109);
+            this.tblLayoutPanelKpis.Size = new System.Drawing.Size(1050, 109);
             this.tblLayoutPanelKpis.TabIndex = 5;
             // 
             // cardSaldo
@@ -357,7 +357,7 @@
             this.cardSaldo.Location = new System.Drawing.Point(12, 2);
             this.cardSaldo.Margin = new System.Windows.Forms.Padding(2);
             this.cardSaldo.Name = "cardSaldo";
-            this.cardSaldo.Size = new System.Drawing.Size(312, 105);
+            this.cardSaldo.Size = new System.Drawing.Size(339, 105);
             this.cardSaldo.TabIndex = 0;
             // 
             // lblSaldoTitulo
@@ -386,10 +386,10 @@
             this.cardGastos.Controls.Add(this.lblGastosTitulo);
             this.cardGastos.Controls.Add(this.lblGastosValor);
             this.cardGastos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cardGastos.Location = new System.Drawing.Point(644, 2);
+            this.cardGastos.Location = new System.Drawing.Point(698, 2);
             this.cardGastos.Margin = new System.Windows.Forms.Padding(2);
             this.cardGastos.Name = "cardGastos";
-            this.cardGastos.Size = new System.Drawing.Size(312, 105);
+            this.cardGastos.Size = new System.Drawing.Size(340, 105);
             this.cardGastos.TabIndex = 2;
             // 
             // lblGastosTitulo
@@ -418,10 +418,10 @@
             this.cardIngresos.Controls.Add(this.lblIngresosTitulo);
             this.cardIngresos.Controls.Add(this.lblIngresosValor);
             this.cardIngresos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cardIngresos.Location = new System.Drawing.Point(328, 2);
+            this.cardIngresos.Location = new System.Drawing.Point(355, 2);
             this.cardIngresos.Margin = new System.Windows.Forms.Padding(2);
             this.cardIngresos.Name = "cardIngresos";
-            this.cardIngresos.Size = new System.Drawing.Size(312, 105);
+            this.cardIngresos.Size = new System.Drawing.Size(339, 105);
             this.cardIngresos.TabIndex = 1;
             // 
             // lblIngresosTitulo
@@ -449,34 +449,32 @@
             this.panelDashboard.Controls.Add(this.tblLayoutPanelKpis);
             this.panelDashboard.Controls.Add(this.panelContenidoGrid);
             this.panelDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDashboard.Location = new System.Drawing.Point(150, 57);
+            this.panelDashboard.Location = new System.Drawing.Point(188, 57);
             this.panelDashboard.Name = "panelDashboard";
-            this.panelDashboard.Size = new System.Drawing.Size(968, 465);
+            this.panelDashboard.Size = new System.Drawing.Size(1050, 465);
             this.panelDashboard.TabIndex = 1;
             // 
             // panelAnalitica
             // 
-            this.panelAnalitica.Controls.Add(this.panelPieChart);
             this.panelAnalitica.Controls.Add(this.tabLayoutAnalitica);
+            this.panelAnalitica.Controls.Add(this.panelPieChart);
             this.panelAnalitica.Controls.Add(this.panelFiltros);
             this.panelAnalitica.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAnalitica.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.panelAnalitica.Location = new System.Drawing.Point(150, 57);
+            this.panelAnalitica.Location = new System.Drawing.Point(188, 57);
             this.panelAnalitica.Name = "panelAnalitica";
-            this.panelAnalitica.Size = new System.Drawing.Size(968, 465);
+            this.panelAnalitica.Size = new System.Drawing.Size(1050, 465);
             this.panelAnalitica.TabIndex = 5;
             // 
             // panelPieChart
             // 
-            this.panelPieChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelPieChart.BackColor = System.Drawing.Color.White;
             this.panelPieChart.Controls.Add(this.lblPieChartGastos);
             this.panelPieChart.Controls.Add(this.pieChart1);
+            this.panelPieChart.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelPieChart.Location = new System.Drawing.Point(0, 57);
             this.panelPieChart.Name = "panelPieChart";
-            this.panelPieChart.Size = new System.Drawing.Size(246, 408);
+            this.panelPieChart.Size = new System.Drawing.Size(351, 408);
             this.panelPieChart.TabIndex = 2;
             // 
             // lblPieChartGastos
@@ -494,12 +492,13 @@
             this.pieChart1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pieChart1.Location = new System.Drawing.Point(0, 35);
             this.pieChart1.Name = "pieChart1";
-            this.pieChart1.Size = new System.Drawing.Size(246, 373);
+            this.pieChart1.Size = new System.Drawing.Size(351, 373);
             this.pieChart1.TabIndex = 0;
             // 
             // tabLayoutAnalitica
             // 
-            this.tabLayoutAnalitica.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tabLayoutAnalitica.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabLayoutAnalitica.BackColor = System.Drawing.Color.White;
             this.tabLayoutAnalitica.ColumnCount = 2;
@@ -509,13 +508,13 @@
             this.tabLayoutAnalitica.Controls.Add(this.panelGastosContraIngresos, 1, 0);
             this.tabLayoutAnalitica.Controls.Add(this.panelEvolucionDeSueldo, 0, 1);
             this.tabLayoutAnalitica.Controls.Add(this.panelGridTopGastos, 1, 1);
-            this.tabLayoutAnalitica.Location = new System.Drawing.Point(249, 57);
+            this.tabLayoutAnalitica.Location = new System.Drawing.Point(354, 57);
             this.tabLayoutAnalitica.Name = "tabLayoutAnalitica";
             this.tabLayoutAnalitica.RowCount = 2;
             this.tabLayoutAnalitica.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tabLayoutAnalitica.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tabLayoutAnalitica.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tabLayoutAnalitica.Size = new System.Drawing.Size(716, 406);
+            this.tabLayoutAnalitica.Size = new System.Drawing.Size(693, 406);
             this.tabLayoutAnalitica.TabIndex = 1;
             // 
             // panelDataGridPieChartFilter
@@ -525,7 +524,7 @@
             this.panelDataGridPieChartFilter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDataGridPieChartFilter.Location = new System.Drawing.Point(3, 3);
             this.panelDataGridPieChartFilter.Name = "panelDataGridPieChartFilter";
-            this.panelDataGridPieChartFilter.Size = new System.Drawing.Size(352, 197);
+            this.panelDataGridPieChartFilter.Size = new System.Drawing.Size(340, 197);
             this.panelDataGridPieChartFilter.TabIndex = 6;
             // 
             // lblFiltroPieChart
@@ -545,26 +544,26 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridPieChartFiltro.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridPieChartFiltro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridPieChartFiltro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridPieChartFiltro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridPieChartFiltro.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridPieChartFiltro.DefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridPieChartFiltro.Location = new System.Drawing.Point(0, 32);
             this.dataGridPieChartFiltro.Name = "dataGridPieChartFiltro";
-            this.dataGridPieChartFiltro.Size = new System.Drawing.Size(352, 165);
+            this.dataGridPieChartFiltro.Size = new System.Drawing.Size(340, 165);
             this.dataGridPieChartFiltro.TabIndex = 4;
             // 
             // panelGastosContraIngresos
@@ -572,9 +571,9 @@
             this.panelGastosContraIngresos.Controls.Add(this.LblGastosVSIngresos);
             this.panelGastosContraIngresos.Controls.Add(this.cartesianChartGastosContraIngresos);
             this.panelGastosContraIngresos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGastosContraIngresos.Location = new System.Drawing.Point(361, 3);
+            this.panelGastosContraIngresos.Location = new System.Drawing.Point(349, 3);
             this.panelGastosContraIngresos.Name = "panelGastosContraIngresos";
-            this.panelGastosContraIngresos.Size = new System.Drawing.Size(352, 197);
+            this.panelGastosContraIngresos.Size = new System.Drawing.Size(341, 197);
             this.panelGastosContraIngresos.TabIndex = 7;
             // 
             // LblGastosVSIngresos
@@ -596,7 +595,7 @@
             this.cartesianChartGastosContraIngresos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.cartesianChartGastosContraIngresos.Location = new System.Drawing.Point(0, 32);
             this.cartesianChartGastosContraIngresos.Name = "cartesianChartGastosContraIngresos";
-            this.cartesianChartGastosContraIngresos.Size = new System.Drawing.Size(352, 165);
+            this.cartesianChartGastosContraIngresos.Size = new System.Drawing.Size(341, 165);
             this.cartesianChartGastosContraIngresos.TabIndex = 5;
             this.cartesianChartGastosContraIngresos.Text = "cartesianChart2";
             // 
@@ -607,7 +606,7 @@
             this.panelEvolucionDeSueldo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEvolucionDeSueldo.Location = new System.Drawing.Point(3, 206);
             this.panelEvolucionDeSueldo.Name = "panelEvolucionDeSueldo";
-            this.panelEvolucionDeSueldo.Size = new System.Drawing.Size(352, 197);
+            this.panelEvolucionDeSueldo.Size = new System.Drawing.Size(340, 197);
             this.panelEvolucionDeSueldo.TabIndex = 8;
             // 
             // LblEvolucionDeSueldo
@@ -629,7 +628,7 @@
             this.cartesianChartEvolucionSaldo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.cartesianChartEvolucionSaldo.Location = new System.Drawing.Point(0, 32);
             this.cartesianChartEvolucionSaldo.Name = "cartesianChartEvolucionSaldo";
-            this.cartesianChartEvolucionSaldo.Size = new System.Drawing.Size(352, 165);
+            this.cartesianChartEvolucionSaldo.Size = new System.Drawing.Size(340, 165);
             this.cartesianChartEvolucionSaldo.TabIndex = 3;
             this.cartesianChartEvolucionSaldo.Text = "cartesianChart1";
             // 
@@ -638,9 +637,9 @@
             this.panelGridTopGastos.Controls.Add(this.LblTopGastos);
             this.panelGridTopGastos.Controls.Add(this.dataGridTopGastos);
             this.panelGridTopGastos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGridTopGastos.Location = new System.Drawing.Point(361, 206);
+            this.panelGridTopGastos.Location = new System.Drawing.Point(349, 206);
             this.panelGridTopGastos.Name = "panelGridTopGastos";
-            this.panelGridTopGastos.Size = new System.Drawing.Size(352, 197);
+            this.panelGridTopGastos.Size = new System.Drawing.Size(341, 197);
             this.panelGridTopGastos.TabIndex = 9;
             // 
             // LblTopGastos
@@ -660,26 +659,26 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridTopGastos.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridTopGastos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridTopGastos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridTopGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridTopGastos.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridTopGastos.DefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridTopGastos.Location = new System.Drawing.Point(0, 32);
             this.dataGridTopGastos.Name = "dataGridTopGastos";
-            this.dataGridTopGastos.Size = new System.Drawing.Size(352, 165);
+            this.dataGridTopGastos.Size = new System.Drawing.Size(341, 165);
             this.dataGridTopGastos.TabIndex = 6;
             // 
             // panelFiltros
@@ -692,7 +691,7 @@
             this.panelFiltros.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelFiltros.Location = new System.Drawing.Point(0, 0);
             this.panelFiltros.Name = "panelFiltros";
-            this.panelFiltros.Size = new System.Drawing.Size(968, 57);
+            this.panelFiltros.Size = new System.Drawing.Size(1050, 57);
             this.panelFiltros.TabIndex = 0;
             // 
             // combFiltroAnio
@@ -799,7 +798,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.ClientSize = new System.Drawing.Size(1118, 522);
+            this.ClientSize = new System.Drawing.Size(1238, 522);
             this.Controls.Add(this.panelAnalitica);
             this.Controls.Add(this.panelDashboard);
             this.Controls.Add(this.panelPlanificacion);

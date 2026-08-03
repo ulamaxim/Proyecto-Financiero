@@ -10,6 +10,7 @@ import os
 import pyodbc
 import pandas as pd
 import warnings
+import sys
 
 # Ignoramos los advertencias no importantes
 warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
@@ -45,6 +46,11 @@ def limpiar_dinero_excel(columna):
     contenido = contenido.str.replace('.', '', regex=False)
     contenido = contenido.str.replace(',', '.', regex=False)
     return pd.to_numeric(contenido, errors='coerce')
+
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout.reconfigure(encoding='utf-8')
+if sys.stderr.encoding != 'utf-8':
+    sys.stderr.reconfigure(encoding='utf-8')
 
 # Aplicamos la funcion a las dichas columnas
 df['Importe'] = limpiar_dinero_excel(df['Importe'])
