@@ -668,10 +668,7 @@ namespace Proyecto_Financiero
                 tableLayoutLimitesPorCategoria.Controls.Add(tarjeta, 0, tableLayoutLimitesPorCategoria.RowCount - 1);
             }
 
-            tableLayoutLimitesPorCategoria.RowCount++;
-            tableLayoutLimitesPorCategoria.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-
-            tableLayoutLimitesPorCategoria.ResumeLayout();
+            tableLayoutLimitesPorCategoria.ResumeLayout(); 
         }
 
         private Panel CrearControlTarjeta(string categoria, double gastado, double limite)
@@ -692,7 +689,7 @@ namespace Proyecto_Financiero
                 Text = categoria,
                 Font = new Font("Segoe UI", 8.5F, FontStyle.Bold),
                 Location = new Point(5, 10),
-                Size = new Size(175, 20),
+                Size = new Size(100, 20),
                 AutoEllipsis = true // Si el texto es largo pone "..."
             };
             pnlTarjeta.Controls.Add(lblCategoria);
