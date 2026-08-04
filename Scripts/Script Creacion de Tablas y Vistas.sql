@@ -19,6 +19,15 @@ CREATE TABLE Transacciones (
 );
 GO
 
+-- Creamos la tabla de Presupuestos
+DROP TABLE IF EXISTS Limites;
+CREATE TABLE Limites (
+    Categoria NVARCHAR(100) PRIMARY KEY,
+    Limite DECIMAL(18, 2) NOT NULL,
+    FechaModificacion DATETIME DEFAULT GETDATE()
+);
+GO
+
 -- Vista que muestre todos los datos para el dataGridView1
 CREATE OR ALTER VIEW vw_datagrid1 
 AS

@@ -18,12 +18,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ventana_Inicial));
             this.panelHeader = new System.Windows.Forms.Panel();
             this.lbDashboard = new System.Windows.Forms.Label();
@@ -53,21 +53,21 @@
             this.panelDashboard = new System.Windows.Forms.Panel();
             this.panelAnalitica = new System.Windows.Forms.Panel();
             this.tabLayoutAnalitica = new System.Windows.Forms.TableLayoutPanel();
-            this.panelDataGridPieChartFilter = new System.Windows.Forms.Panel();
-            this.lblFiltroPieChart = new System.Windows.Forms.Label();
-            this.dataGridPieChartFiltro = new System.Windows.Forms.DataGridView();
+            this.panelPieChart = new System.Windows.Forms.Panel();
+            this.pieChart1 = new LiveCharts.WinForms.PieChart();
+            this.lblPieChartGastos = new System.Windows.Forms.Label();
             this.panelGastosContraIngresos = new System.Windows.Forms.Panel();
             this.LblGastosVSIngresos = new System.Windows.Forms.Label();
             this.cartesianChartGastosContraIngresos = new LiveCharts.WinForms.CartesianChart();
-            this.panelEvolucionDeSueldo = new System.Windows.Forms.Panel();
-            this.LblEvolucionDeSueldo = new System.Windows.Forms.Label();
-            this.cartesianChartEvolucionSaldo = new LiveCharts.WinForms.CartesianChart();
+            this.panelDataGridPieChartFilter = new System.Windows.Forms.Panel();
+            this.lblFiltroPieChart = new System.Windows.Forms.Label();
+            this.dataGridPieChartFiltro = new System.Windows.Forms.DataGridView();
             this.panelGridTopGastos = new System.Windows.Forms.Panel();
             this.LblTopGastos = new System.Windows.Forms.Label();
             this.dataGridTopGastos = new System.Windows.Forms.DataGridView();
-            this.panelPieChart = new System.Windows.Forms.Panel();
-            this.lblPieChartGastos = new System.Windows.Forms.Label();
-            this.pieChart1 = new LiveCharts.WinForms.PieChart();
+            this.panelEvolucionDeSueldo = new System.Windows.Forms.Panel();
+            this.LblEvolucionDeSueldo = new System.Windows.Forms.Label();
+            this.cartesianChartEvolucionSaldo = new LiveCharts.WinForms.CartesianChart();
             this.panelFiltros = new System.Windows.Forms.Panel();
             this.combFiltroAnio = new System.Windows.Forms.ComboBox();
             this.vwFiltroAñosBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -99,6 +99,8 @@
             this.lblValorAhorro = new System.Windows.Forms.Label();
             this.lblAhorroDisponible = new System.Windows.Forms.Label();
             this.lblMetricas = new System.Windows.Forms.Label();
+            this.panelMetas = new System.Windows.Forms.Panel();
+            this.panelGastosFuturos = new System.Windows.Forms.Panel();
             this.panelHeader.SuspendLayout();
             this.panelSidebar.SuspendLayout();
             this.panelContenidoGrid.SuspendLayout();
@@ -110,13 +112,13 @@
             this.panelDashboard.SuspendLayout();
             this.panelAnalitica.SuspendLayout();
             this.tabLayoutAnalitica.SuspendLayout();
+            this.panelPieChart.SuspendLayout();
+            this.panelGastosContraIngresos.SuspendLayout();
             this.panelDataGridPieChartFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPieChartFiltro)).BeginInit();
-            this.panelGastosContraIngresos.SuspendLayout();
-            this.panelEvolucionDeSueldo.SuspendLayout();
             this.panelGridTopGastos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTopGastos)).BeginInit();
-            this.panelPieChart.SuspendLayout();
+            this.panelEvolucionDeSueldo.SuspendLayout();
             this.panelFiltros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vwFiltroAñosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.finanzasDBDataSet)).BeginInit();
@@ -320,23 +322,23 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 12;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(11, 41);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
@@ -503,54 +505,36 @@
             this.tabLayoutAnalitica.Size = new System.Drawing.Size(1050, 408);
             this.tabLayoutAnalitica.TabIndex = 1;
             // 
-            // panelDataGridPieChartFilter
+            // panelPieChart
             // 
-            this.panelDataGridPieChartFilter.Controls.Add(this.lblFiltroPieChart);
-            this.panelDataGridPieChartFilter.Controls.Add(this.dataGridPieChartFiltro);
-            this.panelDataGridPieChartFilter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDataGridPieChartFilter.Location = new System.Drawing.Point(318, 3);
-            this.panelDataGridPieChartFilter.Name = "panelDataGridPieChartFilter";
-            this.panelDataGridPieChartFilter.Size = new System.Drawing.Size(361, 198);
-            this.panelDataGridPieChartFilter.TabIndex = 6;
+            this.panelPieChart.BackColor = System.Drawing.Color.White;
+            this.panelPieChart.Controls.Add(this.pieChart1);
+            this.panelPieChart.Controls.Add(this.lblPieChartGastos);
+            this.panelPieChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPieChart.Location = new System.Drawing.Point(3, 3);
+            this.panelPieChart.Name = "panelPieChart";
+            this.tabLayoutAnalitica.SetRowSpan(this.panelPieChart, 2);
+            this.panelPieChart.Size = new System.Drawing.Size(309, 402);
+            this.panelPieChart.TabIndex = 2;
             // 
-            // lblFiltroPieChart
+            // pieChart1
             // 
-            this.lblFiltroPieChart.AutoSize = true;
-            this.lblFiltroPieChart.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblFiltroPieChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltroPieChart.Location = new System.Drawing.Point(0, 0);
-            this.lblFiltroPieChart.Name = "lblFiltroPieChart";
-            this.lblFiltroPieChart.Size = new System.Drawing.Size(173, 29);
-            this.lblFiltroPieChart.TabIndex = 5;
-            this.lblFiltroPieChart.Text = "Filtro Pie Chart";
+            this.pieChart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pieChart1.Location = new System.Drawing.Point(0, 29);
+            this.pieChart1.Name = "pieChart1";
+            this.pieChart1.Size = new System.Drawing.Size(309, 373);
+            this.pieChart1.TabIndex = 0;
             // 
-            // dataGridPieChartFiltro
+            // lblPieChartGastos
             // 
-            this.dataGridPieChartFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridPieChartFiltro.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridPieChartFiltro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
-            this.dataGridPieChartFiltro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridPieChartFiltro.DefaultCellStyle = dataGridViewCellStyle28;
-            this.dataGridPieChartFiltro.Location = new System.Drawing.Point(0, 29);
-            this.dataGridPieChartFiltro.Name = "dataGridPieChartFiltro";
-            this.dataGridPieChartFiltro.Size = new System.Drawing.Size(361, 169);
-            this.dataGridPieChartFiltro.TabIndex = 4;
+            this.lblPieChartGastos.AutoSize = true;
+            this.lblPieChartGastos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblPieChartGastos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPieChartGastos.Location = new System.Drawing.Point(0, 0);
+            this.lblPieChartGastos.Name = "lblPieChartGastos";
+            this.lblPieChartGastos.Size = new System.Drawing.Size(223, 29);
+            this.lblPieChartGastos.TabIndex = 1;
+            this.lblPieChartGastos.Text = "Pie Chart de gastos";
             // 
             // panelGastosContraIngresos
             // 
@@ -585,6 +569,104 @@
             this.cartesianChartGastosContraIngresos.TabIndex = 5;
             this.cartesianChartGastosContraIngresos.Text = "cartesianChart2";
             // 
+            // panelDataGridPieChartFilter
+            // 
+            this.panelDataGridPieChartFilter.Controls.Add(this.lblFiltroPieChart);
+            this.panelDataGridPieChartFilter.Controls.Add(this.dataGridPieChartFiltro);
+            this.panelDataGridPieChartFilter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDataGridPieChartFilter.Location = new System.Drawing.Point(318, 3);
+            this.panelDataGridPieChartFilter.Name = "panelDataGridPieChartFilter";
+            this.panelDataGridPieChartFilter.Size = new System.Drawing.Size(361, 198);
+            this.panelDataGridPieChartFilter.TabIndex = 6;
+            // 
+            // lblFiltroPieChart
+            // 
+            this.lblFiltroPieChart.AutoSize = true;
+            this.lblFiltroPieChart.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblFiltroPieChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFiltroPieChart.Location = new System.Drawing.Point(0, 0);
+            this.lblFiltroPieChart.Name = "lblFiltroPieChart";
+            this.lblFiltroPieChart.Size = new System.Drawing.Size(173, 29);
+            this.lblFiltroPieChart.TabIndex = 5;
+            this.lblFiltroPieChart.Text = "Filtro Pie Chart";
+            // 
+            // dataGridPieChartFiltro
+            // 
+            this.dataGridPieChartFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridPieChartFiltro.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridPieChartFiltro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridPieChartFiltro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridPieChartFiltro.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridPieChartFiltro.Location = new System.Drawing.Point(0, 29);
+            this.dataGridPieChartFiltro.Name = "dataGridPieChartFiltro";
+            this.dataGridPieChartFiltro.Size = new System.Drawing.Size(361, 169);
+            this.dataGridPieChartFiltro.TabIndex = 4;
+            // 
+            // panelGridTopGastos
+            // 
+            this.panelGridTopGastos.Controls.Add(this.LblTopGastos);
+            this.panelGridTopGastos.Controls.Add(this.dataGridTopGastos);
+            this.panelGridTopGastos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelGridTopGastos.Location = new System.Drawing.Point(685, 207);
+            this.panelGridTopGastos.Name = "panelGridTopGastos";
+            this.panelGridTopGastos.Size = new System.Drawing.Size(362, 198);
+            this.panelGridTopGastos.TabIndex = 9;
+            // 
+            // LblTopGastos
+            // 
+            this.LblTopGastos.AutoSize = true;
+            this.LblTopGastos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.LblTopGastos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTopGastos.Location = new System.Drawing.Point(0, 0);
+            this.LblTopGastos.Name = "LblTopGastos";
+            this.LblTopGastos.Size = new System.Drawing.Size(264, 29);
+            this.LblTopGastos.TabIndex = 7;
+            this.LblTopGastos.Text = "Top 10 mayores gastos";
+            // 
+            // dataGridTopGastos
+            // 
+            this.dataGridTopGastos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridTopGastos.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridTopGastos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridTopGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridTopGastos.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridTopGastos.Location = new System.Drawing.Point(0, 32);
+            this.dataGridTopGastos.Name = "dataGridTopGastos";
+            this.dataGridTopGastos.Size = new System.Drawing.Size(362, 166);
+            this.dataGridTopGastos.TabIndex = 6;
+            // 
             // panelEvolucionDeSueldo
             // 
             this.panelEvolucionDeSueldo.Controls.Add(this.LblEvolucionDeSueldo);
@@ -617,86 +699,6 @@
             this.cartesianChartEvolucionSaldo.Size = new System.Drawing.Size(361, 166);
             this.cartesianChartEvolucionSaldo.TabIndex = 3;
             this.cartesianChartEvolucionSaldo.Text = "cartesianChart1";
-            // 
-            // panelGridTopGastos
-            // 
-            this.panelGridTopGastos.Controls.Add(this.LblTopGastos);
-            this.panelGridTopGastos.Controls.Add(this.dataGridTopGastos);
-            this.panelGridTopGastos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGridTopGastos.Location = new System.Drawing.Point(685, 207);
-            this.panelGridTopGastos.Name = "panelGridTopGastos";
-            this.panelGridTopGastos.Size = new System.Drawing.Size(362, 198);
-            this.panelGridTopGastos.TabIndex = 9;
-            // 
-            // LblTopGastos
-            // 
-            this.LblTopGastos.AutoSize = true;
-            this.LblTopGastos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.LblTopGastos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTopGastos.Location = new System.Drawing.Point(0, 0);
-            this.LblTopGastos.Name = "LblTopGastos";
-            this.LblTopGastos.Size = new System.Drawing.Size(264, 29);
-            this.LblTopGastos.TabIndex = 7;
-            this.LblTopGastos.Text = "Top 10 mayores gastos";
-            // 
-            // dataGridTopGastos
-            // 
-            this.dataGridTopGastos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridTopGastos.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridTopGastos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
-            this.dataGridTopGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridTopGastos.DefaultCellStyle = dataGridViewCellStyle30;
-            this.dataGridTopGastos.Location = new System.Drawing.Point(0, 32);
-            this.dataGridTopGastos.Name = "dataGridTopGastos";
-            this.dataGridTopGastos.Size = new System.Drawing.Size(362, 166);
-            this.dataGridTopGastos.TabIndex = 6;
-            // 
-            // panelPieChart
-            // 
-            this.panelPieChart.BackColor = System.Drawing.Color.White;
-            this.panelPieChart.Controls.Add(this.pieChart1);
-            this.panelPieChart.Controls.Add(this.lblPieChartGastos);
-            this.panelPieChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPieChart.Location = new System.Drawing.Point(3, 3);
-            this.panelPieChart.Name = "panelPieChart";
-            this.tabLayoutAnalitica.SetRowSpan(this.panelPieChart, 2);
-            this.panelPieChart.Size = new System.Drawing.Size(309, 402);
-            this.panelPieChart.TabIndex = 2;
-            // 
-            // lblPieChartGastos
-            // 
-            this.lblPieChartGastos.AutoSize = true;
-            this.lblPieChartGastos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblPieChartGastos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPieChartGastos.Location = new System.Drawing.Point(0, 0);
-            this.lblPieChartGastos.Name = "lblPieChartGastos";
-            this.lblPieChartGastos.Size = new System.Drawing.Size(223, 29);
-            this.lblPieChartGastos.TabIndex = 1;
-            this.lblPieChartGastos.Text = "Pie Chart de gastos";
-            // 
-            // pieChart1
-            // 
-            this.pieChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pieChart1.Location = new System.Drawing.Point(0, 29);
-            this.pieChart1.Name = "pieChart1";
-            this.pieChart1.Size = new System.Drawing.Size(309, 373);
-            this.pieChart1.TabIndex = 0;
             // 
             // panelFiltros
             // 
@@ -835,10 +837,13 @@
             this.tableLayoutContenidoPlanificacion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutContenidoPlanificacion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutContenidoPlanificacion.Controls.Add(this.panelLimitesGastosPorCategoria, 0, 0);
+            this.tableLayoutContenidoPlanificacion.Controls.Add(this.panelMetas, 1, 0);
+            this.tableLayoutContenidoPlanificacion.Controls.Add(this.panelGastosFuturos, 1, 1);
             this.tableLayoutContenidoPlanificacion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutContenidoPlanificacion.Location = new System.Drawing.Point(0, 83);
             this.tableLayoutContenidoPlanificacion.Name = "tableLayoutContenidoPlanificacion";
-            this.tableLayoutContenidoPlanificacion.RowCount = 1;
+            this.tableLayoutContenidoPlanificacion.RowCount = 2;
+            this.tableLayoutContenidoPlanificacion.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutContenidoPlanificacion.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutContenidoPlanificacion.Size = new System.Drawing.Size(1050, 382);
             this.tableLayoutContenidoPlanificacion.TabIndex = 1;
@@ -851,6 +856,7 @@
             this.panelLimitesGastosPorCategoria.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelLimitesGastosPorCategoria.Location = new System.Drawing.Point(3, 3);
             this.panelLimitesGastosPorCategoria.Name = "panelLimitesGastosPorCategoria";
+            this.tableLayoutContenidoPlanificacion.SetRowSpan(this.panelLimitesGastosPorCategoria, 2);
             this.panelLimitesGastosPorCategoria.Size = new System.Drawing.Size(519, 376);
             this.panelLimitesGastosPorCategoria.TabIndex = 0;
             // 
@@ -1021,6 +1027,22 @@
             this.lblMetricas.TabIndex = 0;
             this.lblMetricas.Text = "Metricas";
             // 
+            // panelMetas
+            // 
+            this.panelMetas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMetas.Location = new System.Drawing.Point(528, 3);
+            this.panelMetas.Name = "panelMetas";
+            this.panelMetas.Size = new System.Drawing.Size(519, 185);
+            this.panelMetas.TabIndex = 1;
+            // 
+            // panelGastosFuturos
+            // 
+            this.panelGastosFuturos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelGastosFuturos.Location = new System.Drawing.Point(528, 194);
+            this.panelGastosFuturos.Name = "panelGastosFuturos";
+            this.panelGastosFuturos.Size = new System.Drawing.Size(519, 185);
+            this.panelGastosFuturos.TabIndex = 2;
+            // 
             // Ventana_Inicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1049,18 +1071,18 @@
             this.panelDashboard.PerformLayout();
             this.panelAnalitica.ResumeLayout(false);
             this.tabLayoutAnalitica.ResumeLayout(false);
+            this.panelPieChart.ResumeLayout(false);
+            this.panelPieChart.PerformLayout();
+            this.panelGastosContraIngresos.ResumeLayout(false);
+            this.panelGastosContraIngresos.PerformLayout();
             this.panelDataGridPieChartFilter.ResumeLayout(false);
             this.panelDataGridPieChartFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPieChartFiltro)).EndInit();
-            this.panelGastosContraIngresos.ResumeLayout(false);
-            this.panelGastosContraIngresos.PerformLayout();
-            this.panelEvolucionDeSueldo.ResumeLayout(false);
-            this.panelEvolucionDeSueldo.PerformLayout();
             this.panelGridTopGastos.ResumeLayout(false);
             this.panelGridTopGastos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTopGastos)).EndInit();
-            this.panelPieChart.ResumeLayout(false);
-            this.panelPieChart.PerformLayout();
+            this.panelEvolucionDeSueldo.ResumeLayout(false);
+            this.panelEvolucionDeSueldo.PerformLayout();
             this.panelFiltros.ResumeLayout(false);
             this.panelFiltros.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vwFiltroAñosBindingSource)).EndInit();
@@ -1159,5 +1181,7 @@
         private System.Windows.Forms.Panel panelTituloLimiteGastos;
         private System.Windows.Forms.Label lblLimiteGastos;
         private System.Windows.Forms.TableLayoutPanel tableLayoutLimitesPorCategoria;
+        private System.Windows.Forms.Panel panelMetas;
+        private System.Windows.Forms.Panel panelGastosFuturos;
     }
 }

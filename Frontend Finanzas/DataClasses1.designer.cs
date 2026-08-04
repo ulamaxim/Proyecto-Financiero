@@ -33,6 +33,9 @@ namespace Proyecto_Financiero
     partial void InsertTransacciones(Transacciones instance);
     partial void UpdateTransacciones(Transacciones instance);
     partial void DeleteTransacciones(Transacciones instance);
+    partial void InsertLimites(Limites instance);
+    partial void UpdateLimites(Limites instance);
+    partial void DeleteLimites(Limites instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -78,6 +81,14 @@ namespace Proyecto_Financiero
 			get
 			{
 				return this.GetTable<Transacciones>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Limites> Limites
+		{
+			get
+			{
+				return this.GetTable<Limites>();
 			}
 		}
 	}
@@ -386,6 +397,116 @@ namespace Proyecto_Financiero
 					this._Divisa = value;
 					this.SendPropertyChanged("Divisa");
 					this.OnDivisaChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Limites")]
+	public partial class Limites : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Categoria;
+		
+		private decimal _Limite;
+		
+		private System.Nullable<System.DateTime> _FechaModificacion;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCategoriaChanging(string value);
+    partial void OnCategoriaChanged();
+    partial void OnLimiteChanging(decimal value);
+    partial void OnLimiteChanged();
+    partial void OnFechaModificacionChanging(System.Nullable<System.DateTime> value);
+    partial void OnFechaModificacionChanged();
+    #endregion
+		
+		public Limites()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Categoria", DbType="NVarChar(100) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Categoria
+		{
+			get
+			{
+				return this._Categoria;
+			}
+			set
+			{
+				if ((this._Categoria != value))
+				{
+					this.OnCategoriaChanging(value);
+					this.SendPropertyChanging();
+					this._Categoria = value;
+					this.SendPropertyChanged("Categoria");
+					this.OnCategoriaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Limite", DbType="Decimal(18,2) NOT NULL")]
+		public decimal Limite
+		{
+			get
+			{
+				return this._Limite;
+			}
+			set
+			{
+				if ((this._Limite != value))
+				{
+					this.OnLimiteChanging(value);
+					this.SendPropertyChanging();
+					this._Limite = value;
+					this.SendPropertyChanged("Limite");
+					this.OnLimiteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaModificacion", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FechaModificacion
+		{
+			get
+			{
+				return this._FechaModificacion;
+			}
+			set
+			{
+				if ((this._FechaModificacion != value))
+				{
+					this.OnFechaModificacionChanging(value);
+					this.SendPropertyChanging();
+					this._FechaModificacion = value;
+					this.SendPropertyChanged("FechaModificacion");
+					this.OnFechaModificacionChanged();
 				}
 			}
 		}
