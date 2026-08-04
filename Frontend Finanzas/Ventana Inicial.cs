@@ -673,65 +673,90 @@ namespace Proyecto_Financiero
 
         private Panel CrearControlTarjeta(string categoria, double gastado, double limite)
         {
+            // 1. PANEL PRINCIPAL DE LA TARJETA
             Panel pnlTarjeta = new Panel
             {
                 Dock = DockStyle.Fill,
                 BackColor = Color.White,
-                Margin = new Padding(3),
+                Margin = new Padding(2),
                 BorderStyle = BorderStyle.FixedSingle
             };
 
-            int porcentaje = limite > 0 ? (int)((gastado / limite) * 100) : 0;
+            double porcentajeReal = limite > 0 ? (gastado / limite) * 100 : 0;
+            double porcentajeVisual = Math.Min(porcentajeReal, 100.0);
 
-            // 1. TÍTULO DE CATEGORÍA (Pegado a la izquierda, ancho fijo corto)
+            // 2. TÍTULO CATEGORÍA (Izquierda - Ancho fijo de 110px)
             Label lblCategoria = new Label
             {
                 Text = categoria,
                 Font = new Font("Segoe UI", 8.5F, FontStyle.Bold),
-                Location = new Point(5, 10),
-                Size = new Size(100, 20),
-                AutoEllipsis = true // Si el texto es largo pone "..."
+                Location = new Point(5, 12),
+                Size = new Size(110, 20),
+                AutoEllipsis = true
             };
             pnlTarjeta.Controls.Add(lblCategoria);
 
-            // 2. BOTÓN EDITAR (Pegado al borde derecho absoluto)
+            // 3. BOTÓN EDITAR (Derecha - Fijado a 30px del borde derecho)
             Button btnEditar = new Button
             {
                 Text = "✏️",
-                Size = new Size(26, 22),
+                Size = new Size(24, 22),
                 FlatStyle = FlatStyle.Flat,
                 Tag = categoria,
                 Anchor = AnchorStyles.Top | AnchorStyles.Right
             };
             btnEditar.FlatAppearance.BorderSize = 0;
-            // Lo posicionamos restando desde el ancho actual del panel
-            btnEditar.Location = new Point(pnlTarjeta.Width - 30, 8);
+            btnEditar.Location = new Point(pnlTarjeta.Width - 28, 9);
             btnEditar.Click += BtnEditar_Click;
             pnlTarjeta.Controls.Add(btnEditar);
 
-            // 3. VALORES (Pegado justo a la izquierda del botón de editar)
+            // 4. TEXTO VALORES (Derecha - Fijado a la izquierda del botón)
             Label lblValores = new Label
             {
                 Text = $"{gastado:N0}€/{limite:N0}€",
                 Font = new Font("Segoe UI", 8F, FontStyle.Regular),
                 ForeColor = Color.DimGray,
-                Size = new Size(90, 20),
+                Size = new Size(95, 20),
                 TextAlign = ContentAlignment.MiddleRight,
                 Anchor = AnchorStyles.Top | AnchorStyles.Right
             };
-            lblValores.Location = new Point(pnlTarjeta.Width - 125, 10);
+            lblValores.Location = new Point(pnlTarjeta.Width - 125, 12);
             pnlTarjeta.Controls.Add(lblValores);
 
-            // 4. BARRA DE PROGRESO (Rellena el espacio del centro)
-            ProgressBar barra = new ProgressBar
+            // 5. BARRA DE PROGRESO (Centro - Ocupa el espacio entre Categoria y Valores)
+            Panel pnlBarraFondo = new Panel
             {
-                Value = Math.Min(porcentaje, 100),
-                Location = new Point(110, 11),
-                // La barra se estirará tanto a la izquierda como a la derecha automáticamente
+                Location = new Point(120, 14),
+                // Se ancla a la Izquierda y Derecha para estirarse automáticamente
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
-                Size = new Size(Math.Max(20, pnlTarjeta.Width - 240), 16)
+                Size = new Size(Math.Max(10, pnlTarjeta.Width - 250), 12),
+                BackColor = Color.FromArgb(230, 230, 230)
             };
-            pnlTarjeta.Controls.Add(barra);
+
+            Panel pnlBarraRelleno = new Panel
+            {
+                Height = 12,
+                BackColor = porcentajeReal < 70 ? Color.MediumSeaGreen :
+                            porcentajeReal < 90 ? Color.Goldenrod : Color.IndianRed
+            };
+
+            // Actualizar el ancho del relleno de forma segura
+            Action actualizarRelleno = () =>
+            {
+                int anchoCalculado = (int)(pnlBarraFondo.Width * (porcentajeVisual / 100.0));
+                pnlBarraRelleno.Width = Math.Max(0, anchoCalculado);
+            };
+
+            pnlBarraFondo.SizeChanged += (s, e) => actualizarRelleno();
+            pnlBarraFondo.Controls.Add(pnlBarraRelleno);
+            pnlTarjeta.Controls.Add(pnlBarraFondo);
+
+            // Forzamos un cálculo inicial tras agregar la tarjeta al contenedor
+            pnlTarjeta.Layout += (s, e) => {
+                btnEditar.Location = new Point(pnlTarjeta.Width - 28, 9);
+                lblValores.Location = new Point(pnlTarjeta.Width - 125, 12);
+                actualizarRelleno();
+            };
 
             return pnlTarjeta;
         }
