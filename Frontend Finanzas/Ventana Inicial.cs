@@ -682,9 +682,6 @@ namespace Proyecto_Financiero
                 BorderStyle = BorderStyle.FixedSingle
             };
 
-            double porcentajeReal = limite > 0 ? (gastado / limite) * 100 : 0;
-            double porcentajeVisual = Math.Min(porcentajeReal, 100.0);
-
             // 2. TÍTULO CATEGORÍA
             Label lblCategoria = new Label
             {
@@ -696,7 +693,7 @@ namespace Proyecto_Financiero
             };
             pnlTarjeta.Controls.Add(lblCategoria);
 
-            // 3. BOTÓN EDITAR (Alterna la visibilidad del panel de edición)
+            // 3. BOTÓN EDITAR
             Button btnEditar = new Button
             {
                 Text = "✏️",
@@ -706,54 +703,53 @@ namespace Proyecto_Financiero
                 Anchor = AnchorStyles.Top | AnchorStyles.Right
             };
             btnEditar.FlatAppearance.BorderSize = 0;
-            btnEditar.Location = new Point(pnlTarjeta.Width - 28, 9);
             pnlTarjeta.Controls.Add(btnEditar);
 
-            // 4. TEXTO VALORES
+            // 4. TEXTO VALORES (Sugerido ancho de 110 para evitar recortes)
             Label lblValores = new Label
             {
                 Text = $"{gastado:N0}€/{limite:N0}€",
                 Font = new Font("Segoe UI", 8F, FontStyle.Regular),
                 ForeColor = Color.DimGray,
-                Size = new Size(95, 20),
+                Size = new Size(110, 20),
                 TextAlign = ContentAlignment.MiddleRight,
                 Anchor = AnchorStyles.Top | AnchorStyles.Right
             };
-            lblValores.Location = new Point(pnlTarjeta.Width - 125, 12);
             pnlTarjeta.Controls.Add(lblValores);
 
-            // 5. BARRA DE PROGRESO
+            // 5. BARRA DE PROGRESO (Fondo Gris)
             Panel pnlBarraFondo = new Panel
             {
-                Location = new Point(120, 14),
-                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
-                Size = new Size(Math.Max(10, pnlTarjeta.Width - 250), 12),
+                Location = new Point(125, 14),
+                Height = 12,
                 BackColor = Color.FromArgb(230, 230, 230)
             };
+
+            // Determinar color de relleno según el gasto
+            Color colorRelleno = Color.Transparent;
+            if (limite > 0)
+            {
+                double pctTemp = (gastado / limite) * 100.0;
+                colorRelleno = pctTemp < 70 ? Color.MediumSeaGreen :
+                               pctTemp < 90 ? Color.Goldenrod : Color.IndianRed;
+            }
 
             Panel pnlBarraRelleno = new Panel
             {
                 Height = 12,
-                BackColor = porcentajeReal < 70 ? Color.MediumSeaGreen :
-                            porcentajeReal < 90 ? Color.Goldenrod : Color.IndianRed
+                Location = new Point(0, 0),
+                Width = 0,
+                BackColor = colorRelleno
             };
 
-            Action actualizarRelleno = () =>
-            {
-                int anchoCalculado = (int)(pnlBarraFondo.Width * (porcentajeVisual / 100.0));
-                pnlBarraRelleno.Width = Math.Max(0, anchoCalculado);
-            };
-
-            pnlBarraFondo.SizeChanged += (s, e) => actualizarRelleno();
             pnlBarraFondo.Controls.Add(pnlBarraRelleno);
             pnlTarjeta.Controls.Add(pnlBarraFondo);
 
-            // 6. PANEL DE EDICIÓN (Inicia Oculto y se coloca encima de la barra)
+            // 6. PANEL DE EDICIÓN
             Panel pnlEdicion = new Panel
             {
                 Location = new Point(120, 5),
-                Size = new Size(Math.Max(10, pnlTarjeta.Width - 155), 36),
-                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
+                Height = 36,
                 BackColor = Color.FromArgb(245, 245, 245),
                 BorderStyle = BorderStyle.FixedSingle,
                 Visible = false
@@ -762,8 +758,8 @@ namespace Proyecto_Financiero
             Label lblEdita = new Label
             {
                 Text = "Límite (€):",
-                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                Location = new Point(4, 8),
+                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                Location = new Point(4, 7),
                 Size = new Size(65, 20),
                 TextAlign = ContentAlignment.MiddleLeft
             };
@@ -771,32 +767,32 @@ namespace Proyecto_Financiero
             TextBox txtLimite = new TextBox
             {
                 Text = limite.ToString("F0"),
-                Font = new Font("Segoe UI", 10F),
-                Location = new Point(70, 5),
-                Size = new Size(80, 22)
+                Font = new Font("Segoe UI", 9F),
+                Location = new Point(70, 6),
+                Size = new Size(70, 22)
             };
 
             Button btnAceptar = new Button
             {
                 Text = "OK",
-                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                Font = new Font("Segoe UI", 8.5F, FontStyle.Bold),
                 BackColor = Color.MediumSeaGreen,
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
-                Location = new Point(160, 6),
-                Size = new Size(50, 24)
+                Location = new Point(145, 5),
+                Size = new Size(45, 24)
             };
             btnAceptar.FlatAppearance.BorderSize = 0;
 
             Button btnCancelar = new Button
             {
                 Text = "Cancelar",
-                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                Font = new Font("Segoe UI", 8.5F, FontStyle.Bold),
                 BackColor = Color.Gray,
-                ForeColor = Color.Black,
+                ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
-                Location = new Point(230, 6),
-                Size = new Size(70, 24)
+                Location = new Point(195, 5),
+                Size = new Size(65, 24)
             };
             btnCancelar.FlatAppearance.BorderSize = 0;
 
@@ -805,11 +801,57 @@ namespace Proyecto_Financiero
             pnlEdicion.Controls.Add(btnAceptar);
             pnlEdicion.Controls.Add(btnCancelar);
             pnlTarjeta.Controls.Add(pnlEdicion);
-            pnlEdicion.BringToFront(); // Asegura que quede por encima de la barra
+            pnlEdicion.BringToFront();
 
+            // -------------------------------------------------------------
+            // FUNCIONES DE DIBUJO Y RECALCULO DE TAMAÑOS
+            // -------------------------------------------------------------
+
+            // Actualiza únicamente la barra de color interna
+            Action actualizarRelleno = () =>
+            {
+                if (limite <= 0)
+                {
+                    pnlBarraRelleno.Width = 0;
+                    return;
+                }
+
+                double pctReal = (gastado / limite) * 100.0;
+                double pctVisual = Math.Min(pctReal, 100.0);
+                int anchoTotalFondo = pnlBarraFondo.Width;
+
+                if (anchoTotalFondo > 0)
+                {
+                    int anchoCalculado = (int)Math.Round(anchoTotalFondo * (pctVisual / 100.0));
+                    pnlBarraRelleno.Width = Math.Max(0, Math.Min(anchoCalculado, anchoTotalFondo));
+                }
+            };
+
+            // Recalcula posiciones relativas sin solapar elementos
+            Action recalcularDiseno = () =>
+            {
+                btnEditar.Location = new Point(pnlTarjeta.Width - 28, 9);
+                lblValores.Location = new Point(btnEditar.Left - lblValores.Width - 2, 12);
+
+                // La barra gris termina 10px antes de lblValores
+                int nuevoAnchoBarra = lblValores.Left - pnlBarraFondo.Left - 10;
+                pnlBarraFondo.Width = Math.Max(10, nuevoAnchoBarra);
+
+                // Ajustar panel de edición
+                pnlEdicion.Width = Math.Max(10, pnlTarjeta.Width - 155);
+
+                // Recalcular el relleno interno de la barra
+                actualizarRelleno();
+            };
+
+            // Eventos de trazado
+            pnlTarjeta.Layout += (s, e) => recalcularDiseno();
+            pnlBarraFondo.SizeChanged += (s, e) => actualizarRelleno();
+
+            // -------------------------------------------------------------
             // EVENTOS DE INTERACCIÓN
+            // -------------------------------------------------------------
 
-            // Abrir / Cerrar el panel de edición
             btnEditar.Click += (s, e) =>
             {
                 pnlEdicion.Visible = !pnlEdicion.Visible;
@@ -821,7 +863,6 @@ namespace Proyecto_Financiero
                 }
             };
 
-            // Confirmar edición y actualizar BD
             btnAceptar.Click += (s, e) =>
             {
                 if (decimal.TryParse(txtLimite.Text, out decimal nuevoLimite) && nuevoLimite > 0)
@@ -849,7 +890,7 @@ namespace Proyecto_Financiero
 
                         datalinq.SubmitChanges();
                         pnlEdicion.Visible = false;
-                        CargarTarjetasPresupuesto(); // Recarga las tarjetas con la BD actualizada
+                        CargarTarjetasPresupuesto();
                     }
                     catch (Exception ex)
                     {
@@ -865,14 +906,6 @@ namespace Proyecto_Financiero
             btnCancelar.Click += (s, e) =>
             {
                 pnlEdicion.Visible = false;
-            };
-
-            // Ajustar posiciones dinámicas al redimensionar
-            pnlTarjeta.Layout += (s, e) => {
-                btnEditar.Location = new Point(pnlTarjeta.Width - 28, 9);
-                lblValores.Location = new Point(pnlTarjeta.Width - 125, 12);
-                pnlEdicion.Size = new Size(Math.Max(10, pnlTarjeta.Width - 155), 36);
-                actualizarRelleno();
             };
 
             return pnlTarjeta;
@@ -924,8 +957,11 @@ namespace Proyecto_Financiero
             panelEdicion.Enabled = false;
             lbEdicion.Visible = false;
 
+            // Filtro de mes y año por defecto
+            combFiltroMes.SelectedIndex = DateTime.Now.Month;
+            combFiltroAnio.SelectedValue = DateTime.Now.Year;
+
             CargaPieChart();
-            FiltrosAnioMesPorDefecto();
             CargaGastosVSIngresos();
             CargaTop10Gastos();
             EvolucionDeSueldo();
@@ -999,16 +1035,6 @@ namespace Proyecto_Financiero
             panelEdicion.Visible = true;
             panelEdicion.Enabled = true;
             lbEdicion.Visible = true;
-        }
-
-        // Filtros del mes y año selecionados
-        private void FiltrosAnioMesPorDefecto()
-        {
-            // Mes
-            combFiltroMes.SelectedIndex = DateTime.Now.Month;
-
-            // Año: Le asignamos directamente el número o string al SelectedValue
-            combFiltroAnio.SelectedValue = DateTime.Now.Year;
         }
     }
 }
