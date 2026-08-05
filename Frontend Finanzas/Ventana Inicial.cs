@@ -624,12 +624,35 @@ namespace Proyecto_Financiero
         //===============================================================
 
         /// <summary>
+        /// Carga de los paneles de metricas
+        /// </summary>
+
+        private void CargaPanelesMetricas()
+        {
+            // Variable para formatear los valores monetarios en Euros
+            var euro = new System.Globalization.CultureInfo("es-ES");
+
+            // Obtenemos datos para las tarjetas
+            decimal presupuestoMes = datalinq.vw_datagrid1
+                .Where(t => t.Fecha_Operacion.HasValue &&
+                            t.Fecha_Operacion.Value.Month == DateTime.Now.Month &&
+                            t.Fecha_Operacion.Value.Year == DateTime.Now.Year)
+                .Where(t => t.Importe.HasValue && t.Importe > 0)
+                .Where(t => t.Categoria == "Nomina")
+                .Sum(t => t.Importe.Value);
+
+            
+
+            lblPresupuestoValor.Text = presupuestoMes.ToString("C2", euro);
+        }
+
+        /// <summary>
         /// Carga de datos al panel de limites de gastos 
         /// al pulsar el boton de planificacion
         /// </summary>
-        private void CargarTarjetasPresupuesto()
+        private void CargarTarjetasLimites()
         {
-            // 1. Limpiar filas y controles previos del TableLayoutPanel
+            // Limpiar filas y controles previos del TableLayoutPanel
             tableLayoutLimitesPorCategoria.SuspendLayout();
             tableLayoutLimitesPorCategoria.Controls.Clear();
             tableLayoutLimitesPorCategoria.RowStyles.Clear();
@@ -639,7 +662,7 @@ namespace Proyecto_Financiero
             tableLayoutLimitesPorCategoria.ColumnStyles.Clear();
             tableLayoutLimitesPorCategoria.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
 
-            // 2. Obtener gastos por categoría
+            // Obtener gastos por categoría
             var resumenGastos = datalinq.vw_datagrid1
                 .Where(t => t.Importe.HasValue && t.Importe < 0 && t.Fecha_Operacion.Value.Month == DateTime.Now.Month)
                 .GroupBy(t => t.Categoria)
@@ -650,10 +673,10 @@ namespace Proyecto_Financiero
                 })
                 .ToList();
 
-            // 3. Consultar los límites existentes en la BD en un diccionario para acceso rápido
+            // Consultar los límites existentes en la BD en un diccionario para acceso rápido
             var limitesBD = datalinq.Limites.ToDictionary(l => l.Categoria, l => (double)l.Limite);
 
-            // 4. Crear tarjetas con sus paneles de edición
+            // Crear tarjetas con sus paneles de edición
             foreach (var item in resumenGastos)
             {
                 tableLayoutLimitesPorCategoria.RowCount++;
@@ -673,7 +696,7 @@ namespace Proyecto_Financiero
 
         private Panel CrearControlTarjeta(string categoria, double gastado, double limite)
         {
-            // 1. PANEL PRINCIPAL DE LA TARJETA
+            // PANEL PRINCIPAL DE LA TARJETA
             Panel pnlTarjeta = new Panel
             {
                 Dock = DockStyle.Fill,
@@ -682,18 +705,18 @@ namespace Proyecto_Financiero
                 BorderStyle = BorderStyle.FixedSingle
             };
 
-            // 2. TÍTULO CATEGORÍA
+            // TÍTULO CATEGORÍA
             Label lblCategoria = new Label
             {
                 Text = categoria,
-                Font = new Font("Segoe UI", 8.5F, FontStyle.Bold),
+                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
                 Location = new Point(5, 12),
                 Size = new Size(110, 20),
                 AutoEllipsis = true
             };
             pnlTarjeta.Controls.Add(lblCategoria);
 
-            // 3. BOTÓN EDITAR
+            // BOTÓN EDITAR
             Button btnEditar = new Button
             {
                 Text = "✏️",
@@ -705,11 +728,11 @@ namespace Proyecto_Financiero
             btnEditar.FlatAppearance.BorderSize = 0;
             pnlTarjeta.Controls.Add(btnEditar);
 
-            // 4. TEXTO VALORES (Sugerido ancho de 110 para evitar recortes)
+            // TEXTO VALORES (Sugerido ancho de 110 para evitar recortes)
             Label lblValores = new Label
             {
                 Text = $"{gastado:N0}€/{limite:N0}€",
-                Font = new Font("Segoe UI", 8F, FontStyle.Regular),
+                Font = new Font("Segoe UI", 9F, FontStyle.Regular),
                 ForeColor = Color.DimGray,
                 Size = new Size(110, 20),
                 TextAlign = ContentAlignment.MiddleRight,
@@ -717,7 +740,7 @@ namespace Proyecto_Financiero
             };
             pnlTarjeta.Controls.Add(lblValores);
 
-            // 5. BARRA DE PROGRESO (Fondo Gris)
+            // BARRA DE PROGRESO (Fondo Gris)
             Panel pnlBarraFondo = new Panel
             {
                 Location = new Point(125, 14),
@@ -890,7 +913,7 @@ namespace Proyecto_Financiero
 
                         datalinq.SubmitChanges();
                         pnlEdicion.Visible = false;
-                        CargarTarjetasPresupuesto();
+                        CargarTarjetasLimites();
                     }
                     catch (Exception ex)
                     {
@@ -909,6 +932,16 @@ namespace Proyecto_Financiero
             };
 
             return pnlTarjeta;
+        }
+
+        /// <summary>
+        /// Carga de datos al panel de metas de ahorro 
+        /// al pulsar el boton de planificacion
+        /// </summary>
+
+        private void CargarTarjetasMetas()
+        {
+
         }
 
         //======================================================
@@ -1013,7 +1046,9 @@ namespace Proyecto_Financiero
             panelEdicion.Enabled = false;
             lbEdicion.Visible = false;
 
-            CargarTarjetasPresupuesto();
+            CargarTarjetasLimites();
+            CargarTarjetasMetas();
+            CargaPanelesMetricas();
         }
 
         // Evento clic para el botón 'Edición'. Muestra el panel de edición y oculta las demás vistas.

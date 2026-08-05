@@ -72,7 +72,7 @@ df['Fecha_Valor'] = pd.to_datetime(df['Fecha_Valor'], dayfirst=True, errors='coe
 # Creamos las reglas que se aplicaran a los datos de la columna Concepto para sacar la categoria
 REGLAS_CATEGORIAS = {
     # === INGRESOS Y DINERO EN EFECTIVO ===
-    'Nómina': ['NOMINA', 'ORDENANTE', 'HABERES', 'SALARIO'],
+    'Nomina': ['NOMINA', 'ORDENANTE', 'HABERES', 'SALARIO'],
     'Efectivo': ['CAJERO', 'RETIRADA', 'EFECTIVO', 'INGRESO EN EFECTIVO', 'DISPENSACION'],
     
     # === COMPRAS Y MODA (No supermercados) ===
@@ -82,7 +82,7 @@ REGLAS_CATEGORIAS = {
     'Supermercado': ['ALIMERKA', 'MERCADONA', 'CARREFOUR', 'DIA', 'ALCAMPO', 'LIDL', 'EROSKI', 'CONSUM', 'MASYMAS', 'FRUTERIA', 'PANADERIA'],
     
     # === COMER Y BEBER ===
-    'Restauración': ['CAFE', 'BAR', 'RESTAURANTE', 'BURGER KING', 'MCDONALD', 'TELEPIZZA', 'DOMINOS', 'STARBUCKS', 'TABERNA', 'PUB', 'FOOD PLANET'],
+    'Restauracion': ['CAFE', 'BAR', 'RESTAURANTE', 'BURGER KING', 'MCDONALD', 'TELEPIZZA', 'DOMINOS', 'STARBUCKS', 'TABERNA', 'PUB', 'FOOD PLANET'],
     
     # === OCIO Y JUEGOS ===
     'Entretenimiento': ['STEAM', 'NETFLIX', 'SPOTIFY', 'NINTENDO', 'PLAYSTATION', 'PLAY STATION', 'XBOX', 'CINE', 'YOUTUBEPREMIUM'],
