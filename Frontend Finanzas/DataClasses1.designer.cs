@@ -555,8 +555,6 @@ namespace Proyecto_Financiero
 		
 		private decimal _MontoObjetivo;
 		
-		private System.Nullable<decimal> _MontoActual;
-		
 		private bool _Completada;
 		
 		private System.Nullable<System.DateTime> _FechaCreacion;
@@ -571,8 +569,6 @@ namespace Proyecto_Financiero
     partial void OnConceptoChanged();
     partial void OnMontoObjetivoChanging(decimal value);
     partial void OnMontoObjetivoChanged();
-    partial void OnMontoActualChanging(System.Nullable<decimal> value);
-    partial void OnMontoActualChanged();
     partial void OnCompletadaChanging(bool value);
     partial void OnCompletadaChanged();
     partial void OnFechaCreacionChanging(System.Nullable<System.DateTime> value);
@@ -640,26 +636,6 @@ namespace Proyecto_Financiero
 					this._MontoObjetivo = value;
 					this.SendPropertyChanged("MontoObjetivo");
 					this.OnMontoObjetivoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MontoActual", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> MontoActual
-		{
-			get
-			{
-				return this._MontoActual;
-			}
-			set
-			{
-				if ((this._MontoActual != value))
-				{
-					this.OnMontoActualChanging(value);
-					this.SendPropertyChanging();
-					this._MontoActual = value;
-					this.SendPropertyChanged("MontoActual");
-					this.OnMontoActualChanged();
 				}
 			}
 		}

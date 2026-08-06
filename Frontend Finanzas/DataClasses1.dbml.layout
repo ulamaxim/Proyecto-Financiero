@@ -20,10 +20,10 @@
         <elementListCompartment Id="e0facb4d-86cd-4e5e-b2d3-c7584e302593" absoluteBounds="4.765, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="1474ebbf-8e2c-4edf-b511-d9ffb2c65cea" absoluteBounds="6.875, 0.5, 2, 1.9631982421875">
+    <classShape Id="963ceff1-b466-49f9-ab2b-f6a9f09dc2bf" absoluteBounds="6.875, 0.5, 2, 1.7708968098958331">
       <DataClassMoniker Name="/DataClasses1DataContext/MetasAhorro" />
       <nestedChildShapes>
-        <elementListCompartment Id="3c6eb61b-a6d0-4b1d-971b-a52ac5bf0ebc" absoluteBounds="6.89, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="1b15b739-0d77-457d-b89d-fe63b048745f" absoluteBounds="6.89, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

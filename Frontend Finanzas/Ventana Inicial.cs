@@ -640,7 +640,7 @@ namespace Proyecto_Financiero
                 .Where(t => t.Categoria == "Nomina")
                 .Sum(t => t.Importe.Value);
 
-            
+
 
             lblPresupuestoValor.Text = presupuestoMes.ToString("C2", euro);
         }
@@ -1002,7 +1002,7 @@ namespace Proyecto_Financiero
 
         private void pieChart1_DataClick(object sender, LiveCharts.ChartPoint chartPoint)
         {
-            // chartPoint.SeriesView.Title contiene el nombre de la Categoría seleccionada (ej: "Supermercado")
+            // chartPoint.SeriesView.Title contiene el nombre de la Categoría seleccionada
             string categoriaSeleccionada = chartPoint.SeriesView.Title;
 
             // Llamamos al filtro para actualizar el DataGridView

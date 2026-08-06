@@ -33,11 +33,13 @@ CREATE TABLE MetasAhorro (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Concepto NVARCHAR(100) NOT NULL,
     MontoObjetivo DECIMAL(18,2) NOT NULL,
-    MontoActual DECIMAL(18,2) DEFAULT 0.00,
-    Completada BIT DEFAULT 0,
+    Completada BIT DEFAULT 0 NOT NULL,
     FechaCreacion DATETIME DEFAULT GETDATE()
 );
 GO
+
+INSERT INTO MetasAhorro (Concepto, MontoObjetivo, Completada)
+VALUES ('Viaje a Europa', 5000.00, 0);
 
 -- Vista que muestre todos los datos para el dataGridView1
 CREATE OR ALTER VIEW vw_datagrid1 
