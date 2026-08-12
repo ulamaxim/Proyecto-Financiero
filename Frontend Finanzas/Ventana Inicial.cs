@@ -709,7 +709,6 @@ namespace Proyecto_Financiero
 
                 tuple.btnEditar.Dock = DockStyle.Fill;
                 tuple.btnEditar.Margin = new Padding(6, 12, 6, 12);
-
             }
 
             // Añadir fila espaciadora invisible para que el layout tenga un área final
@@ -787,7 +786,7 @@ namespace Proyecto_Financiero
                 pnlBarraRelleno.Width = Math.Max(0, Math.Min(ancho, pnlBarraFondo.Width));
             };
 
-            // Click editar -> mostrar diálogo modal para editar límite (más estable que edición inline)
+            // Click editar -> mostrar diálogo modal para editar límite
             btnEditar.Click += (s, e) =>
             {
                 if (MostrarDialogoLimite(categoria, limite, out decimal nuevoLimite) && nuevoLimite > 0)

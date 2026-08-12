@@ -18,12 +18,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ventana_Inicial));
             this.panelHeader = new System.Windows.Forms.Panel();
             this.lbDashboard = new System.Windows.Forms.Label();
@@ -89,6 +89,7 @@
             this.lblLimiteGastos = new System.Windows.Forms.Label();
             this.panelMetas = new System.Windows.Forms.Panel();
             this.panelEdicionMetas = new System.Windows.Forms.Panel();
+            this.btCancelarMeta = new System.Windows.Forms.Button();
             this.btAceptarMetaNueva = new System.Windows.Forms.Button();
             this.txtSaldoNecesario = new System.Windows.Forms.TextBox();
             this.txtNombreMeta = new System.Windows.Forms.TextBox();
@@ -112,7 +113,6 @@
             this.lblValorAhorro = new System.Windows.Forms.Label();
             this.lblAhorroDisponible = new System.Windows.Forms.Label();
             this.lblMetricas = new System.Windows.Forms.Label();
-            this.btCancelarMeta = new System.Windows.Forms.Button();
             this.panelHeader.SuspendLayout();
             this.panelSidebar.SuspendLayout();
             this.panelContenidoGrid.SuspendLayout();
@@ -157,28 +157,26 @@
             this.panelHeader.Controls.Add(this.lbEdicion);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Margin = new System.Windows.Forms.Padding(2);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1238, 57);
+            this.panelHeader.Size = new System.Drawing.Size(1540, 70);
             this.panelHeader.TabIndex = 3;
             // 
             // lbDashboard
             // 
             this.lbDashboard.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lbDashboard.Location = new System.Drawing.Point(15, 12);
-            this.lbDashboard.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbDashboard.Location = new System.Drawing.Point(20, 15);
             this.lbDashboard.Name = "lbDashboard";
-            this.lbDashboard.Size = new System.Drawing.Size(300, 32);
+            this.lbDashboard.Size = new System.Drawing.Size(400, 39);
             this.lbDashboard.TabIndex = 0;
             this.lbDashboard.Text = "Dashboard";
             // 
             // lbAnalitica
             // 
             this.lbAnalitica.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lbAnalitica.Location = new System.Drawing.Point(23, 12);
-            this.lbAnalitica.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbAnalitica.Location = new System.Drawing.Point(31, 15);
             this.lbAnalitica.Name = "lbAnalitica";
-            this.lbAnalitica.Size = new System.Drawing.Size(300, 32);
+            this.lbAnalitica.Size = new System.Drawing.Size(400, 39);
             this.lbAnalitica.TabIndex = 1;
             this.lbAnalitica.Text = "Analitica";
             this.lbAnalitica.Visible = false;
@@ -186,10 +184,9 @@
             // lbPlanificacion
             // 
             this.lbPlanificacion.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lbPlanificacion.Location = new System.Drawing.Point(15, 12);
-            this.lbPlanificacion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbPlanificacion.Location = new System.Drawing.Point(20, 15);
             this.lbPlanificacion.Name = "lbPlanificacion";
-            this.lbPlanificacion.Size = new System.Drawing.Size(300, 32);
+            this.lbPlanificacion.Size = new System.Drawing.Size(400, 39);
             this.lbPlanificacion.TabIndex = 2;
             this.lbPlanificacion.Text = "Planificacion";
             this.lbPlanificacion.Visible = false;
@@ -197,10 +194,9 @@
             // lbEdicion
             // 
             this.lbEdicion.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lbEdicion.Location = new System.Drawing.Point(15, 12);
-            this.lbEdicion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbEdicion.Location = new System.Drawing.Point(20, 15);
             this.lbEdicion.Name = "lbEdicion";
-            this.lbEdicion.Size = new System.Drawing.Size(300, 32);
+            this.lbEdicion.Size = new System.Drawing.Size(400, 39);
             this.lbEdicion.TabIndex = 3;
             this.lbEdicion.Text = "Edicion";
             this.lbEdicion.Visible = false;
@@ -214,10 +210,10 @@
             this.panelSidebar.Controls.Add(this.btnMenuDashboard);
             this.panelSidebar.Controls.Add(this.btnMenuAnalitica);
             this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelSidebar.Location = new System.Drawing.Point(0, 57);
-            this.panelSidebar.Margin = new System.Windows.Forms.Padding(2);
+            this.panelSidebar.Location = new System.Drawing.Point(0, 70);
+            this.panelSidebar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelSidebar.Name = "panelSidebar";
-            this.panelSidebar.Size = new System.Drawing.Size(188, 465);
+            this.panelSidebar.Size = new System.Drawing.Size(251, 572);
             this.panelSidebar.TabIndex = 4;
             // 
             // btnMenuPlanificacion
@@ -226,10 +222,10 @@
             this.btnMenuPlanificacion.FlatAppearance.BorderSize = 0;
             this.btnMenuPlanificacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuPlanificacion.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnMenuPlanificacion.Location = new System.Drawing.Point(9, 159);
-            this.btnMenuPlanificacion.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMenuPlanificacion.Location = new System.Drawing.Point(12, 196);
+            this.btnMenuPlanificacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMenuPlanificacion.Name = "btnMenuPlanificacion";
-            this.btnMenuPlanificacion.Size = new System.Drawing.Size(174, 32);
+            this.btnMenuPlanificacion.Size = new System.Drawing.Size(232, 39);
             this.btnMenuPlanificacion.TabIndex = 4;
             this.btnMenuPlanificacion.Text = "📈 Planificacion";
             this.btnMenuPlanificacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -242,10 +238,10 @@
             this.btnMenuEdicion.FlatAppearance.BorderSize = 0;
             this.btnMenuEdicion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuEdicion.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnMenuEdicion.Location = new System.Drawing.Point(9, 213);
-            this.btnMenuEdicion.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMenuEdicion.Location = new System.Drawing.Point(12, 262);
+            this.btnMenuEdicion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMenuEdicion.Name = "btnMenuEdicion";
-            this.btnMenuEdicion.Size = new System.Drawing.Size(174, 32);
+            this.btnMenuEdicion.Size = new System.Drawing.Size(232, 39);
             this.btnMenuEdicion.TabIndex = 3;
             this.btnMenuEdicion.Text = "📝 Edicion";
             this.btnMenuEdicion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -255,10 +251,9 @@
             // lblLogo
             // 
             this.lblLogo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblLogo.Location = new System.Drawing.Point(9, 16);
-            this.lblLogo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLogo.Location = new System.Drawing.Point(12, 20);
             this.lblLogo.Name = "lblLogo";
-            this.lblLogo.Size = new System.Drawing.Size(132, 33);
+            this.lblLogo.Size = new System.Drawing.Size(176, 41);
             this.lblLogo.TabIndex = 0;
             this.lblLogo.Text = "Navegador";
             this.lblLogo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -269,10 +264,10 @@
             this.btnMenuDashboard.FlatAppearance.BorderSize = 0;
             this.btnMenuDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuDashboard.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnMenuDashboard.Location = new System.Drawing.Point(9, 51);
-            this.btnMenuDashboard.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMenuDashboard.Location = new System.Drawing.Point(12, 63);
+            this.btnMenuDashboard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMenuDashboard.Name = "btnMenuDashboard";
-            this.btnMenuDashboard.Size = new System.Drawing.Size(174, 32);
+            this.btnMenuDashboard.Size = new System.Drawing.Size(232, 39);
             this.btnMenuDashboard.TabIndex = 1;
             this.btnMenuDashboard.Text = "🔲 Dashboard";
             this.btnMenuDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -285,10 +280,10 @@
             this.btnMenuAnalitica.FlatAppearance.BorderSize = 0;
             this.btnMenuAnalitica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMenuAnalitica.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnMenuAnalitica.Location = new System.Drawing.Point(9, 105);
-            this.btnMenuAnalitica.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMenuAnalitica.Location = new System.Drawing.Point(12, 129);
+            this.btnMenuAnalitica.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMenuAnalitica.Name = "btnMenuAnalitica";
-            this.btnMenuAnalitica.Size = new System.Drawing.Size(174, 32);
+            this.btnMenuAnalitica.Size = new System.Drawing.Size(232, 39);
             this.btnMenuAnalitica.TabIndex = 2;
             this.btnMenuAnalitica.Text = "📊 Analitica";
             this.btnMenuAnalitica.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -298,9 +293,10 @@
             // panelEdicion
             // 
             this.panelEdicion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEdicion.Location = new System.Drawing.Point(188, 57);
+            this.panelEdicion.Location = new System.Drawing.Point(251, 70);
+            this.panelEdicion.Margin = new System.Windows.Forms.Padding(4);
             this.panelEdicion.Name = "panelEdicion";
-            this.panelEdicion.Size = new System.Drawing.Size(1050, 465);
+            this.panelEdicion.Size = new System.Drawing.Size(1289, 572);
             this.panelEdicion.TabIndex = 6;
             // 
             // panelContenidoGrid
@@ -310,19 +306,18 @@
             this.panelContenidoGrid.Controls.Add(this.lblSubtituloGrid);
             this.panelContenidoGrid.Controls.Add(this.dataGridView1);
             this.panelContenidoGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContenidoGrid.Location = new System.Drawing.Point(0, 109);
-            this.panelContenidoGrid.Margin = new System.Windows.Forms.Padding(2);
+            this.panelContenidoGrid.Location = new System.Drawing.Point(0, 134);
+            this.panelContenidoGrid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelContenidoGrid.Name = "panelContenidoGrid";
-            this.panelContenidoGrid.Size = new System.Drawing.Size(1050, 356);
+            this.panelContenidoGrid.Size = new System.Drawing.Size(1289, 438);
             this.panelContenidoGrid.TabIndex = 1;
             // 
             // lblSubtituloGrid
             // 
             this.lblSubtituloGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblSubtituloGrid.Location = new System.Drawing.Point(11, 12);
-            this.lblSubtituloGrid.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSubtituloGrid.Location = new System.Drawing.Point(15, 15);
             this.lblSubtituloGrid.Name = "lblSubtituloGrid";
-            this.lblSubtituloGrid.Size = new System.Drawing.Size(225, 20);
+            this.lblSubtituloGrid.Size = new System.Drawing.Size(300, 25);
             this.lblSubtituloGrid.TabIndex = 0;
             this.lblSubtituloGrid.Text = "ÚLTIMOS MOVIMIENTOS";
             // 
@@ -337,30 +332,31 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.ColumnHeadersHeight = 12;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(11, 41);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridView1.Location = new System.Drawing.Point(15, 50);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1029, 302);
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(1261, 372);
             this.dataGridView1.TabIndex = 1;
             // 
             // tblLayoutPanelKpis
@@ -374,12 +370,13 @@
             this.tblLayoutPanelKpis.Controls.Add(this.cardIngresos, 1, 0);
             this.tblLayoutPanelKpis.Dock = System.Windows.Forms.DockStyle.Top;
             this.tblLayoutPanelKpis.Location = new System.Drawing.Point(0, 0);
+            this.tblLayoutPanelKpis.Margin = new System.Windows.Forms.Padding(4);
             this.tblLayoutPanelKpis.Name = "tblLayoutPanelKpis";
-            this.tblLayoutPanelKpis.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.tblLayoutPanelKpis.Padding = new System.Windows.Forms.Padding(13, 0, 13, 0);
             this.tblLayoutPanelKpis.RowCount = 1;
             this.tblLayoutPanelKpis.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLayoutPanelKpis.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 109F));
-            this.tblLayoutPanelKpis.Size = new System.Drawing.Size(1050, 109);
+            this.tblLayoutPanelKpis.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+            this.tblLayoutPanelKpis.Size = new System.Drawing.Size(1289, 134);
             this.tblLayoutPanelKpis.TabIndex = 5;
             // 
             // cardSaldo
@@ -388,29 +385,27 @@
             this.cardSaldo.Controls.Add(this.lblSaldoTitulo);
             this.cardSaldo.Controls.Add(this.lblSaldoValor);
             this.cardSaldo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cardSaldo.Location = new System.Drawing.Point(15, 12);
-            this.cardSaldo.Margin = new System.Windows.Forms.Padding(5, 12, 5, 12);
+            this.cardSaldo.Location = new System.Drawing.Point(20, 15);
+            this.cardSaldo.Margin = new System.Windows.Forms.Padding(7, 15, 7, 15);
             this.cardSaldo.Name = "cardSaldo";
-            this.cardSaldo.Size = new System.Drawing.Size(333, 85);
+            this.cardSaldo.Size = new System.Drawing.Size(407, 104);
             this.cardSaldo.TabIndex = 0;
             // 
             // lblSaldoTitulo
             // 
             this.lblSaldoTitulo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSaldoTitulo.Location = new System.Drawing.Point(11, 12);
-            this.lblSaldoTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSaldoTitulo.Location = new System.Drawing.Point(15, 15);
             this.lblSaldoTitulo.Name = "lblSaldoTitulo";
-            this.lblSaldoTitulo.Size = new System.Drawing.Size(150, 16);
+            this.lblSaldoTitulo.Size = new System.Drawing.Size(200, 20);
             this.lblSaldoTitulo.TabIndex = 0;
             this.lblSaldoTitulo.Text = "SALDO ACTUAL";
             // 
             // lblSaldoValor
             // 
             this.lblSaldoValor.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.lblSaldoValor.Location = new System.Drawing.Point(11, 37);
-            this.lblSaldoValor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSaldoValor.Location = new System.Drawing.Point(15, 46);
             this.lblSaldoValor.Name = "lblSaldoValor";
-            this.lblSaldoValor.Size = new System.Drawing.Size(188, 41);
+            this.lblSaldoValor.Size = new System.Drawing.Size(251, 50);
             this.lblSaldoValor.TabIndex = 1;
             this.lblSaldoValor.Text = " €";
             // 
@@ -420,29 +415,27 @@
             this.cardGastos.Controls.Add(this.lblGastosTitulo);
             this.cardGastos.Controls.Add(this.lblGastosValor);
             this.cardGastos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cardGastos.Location = new System.Drawing.Point(701, 12);
-            this.cardGastos.Margin = new System.Windows.Forms.Padding(5, 12, 5, 12);
+            this.cardGastos.Location = new System.Drawing.Point(862, 15);
+            this.cardGastos.Margin = new System.Windows.Forms.Padding(7, 15, 7, 15);
             this.cardGastos.Name = "cardGastos";
-            this.cardGastos.Size = new System.Drawing.Size(334, 85);
+            this.cardGastos.Size = new System.Drawing.Size(407, 104);
             this.cardGastos.TabIndex = 2;
             // 
             // lblGastosTitulo
             // 
             this.lblGastosTitulo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblGastosTitulo.Location = new System.Drawing.Point(11, 12);
-            this.lblGastosTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblGastosTitulo.Location = new System.Drawing.Point(15, 15);
             this.lblGastosTitulo.Name = "lblGastosTitulo";
-            this.lblGastosTitulo.Size = new System.Drawing.Size(150, 16);
+            this.lblGastosTitulo.Size = new System.Drawing.Size(200, 20);
             this.lblGastosTitulo.TabIndex = 0;
             this.lblGastosTitulo.Text = "GASTOS DEL MES";
             // 
             // lblGastosValor
             // 
             this.lblGastosValor.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.lblGastosValor.Location = new System.Drawing.Point(11, 37);
-            this.lblGastosValor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblGastosValor.Location = new System.Drawing.Point(15, 46);
             this.lblGastosValor.Name = "lblGastosValor";
-            this.lblGastosValor.Size = new System.Drawing.Size(188, 41);
+            this.lblGastosValor.Size = new System.Drawing.Size(251, 50);
             this.lblGastosValor.TabIndex = 1;
             this.lblGastosValor.Text = "€";
             // 
@@ -452,29 +445,27 @@
             this.cardIngresos.Controls.Add(this.lblIngresosTitulo);
             this.cardIngresos.Controls.Add(this.lblIngresosValor);
             this.cardIngresos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cardIngresos.Location = new System.Drawing.Point(358, 12);
-            this.cardIngresos.Margin = new System.Windows.Forms.Padding(5, 12, 5, 12);
+            this.cardIngresos.Location = new System.Drawing.Point(441, 15);
+            this.cardIngresos.Margin = new System.Windows.Forms.Padding(7, 15, 7, 15);
             this.cardIngresos.Name = "cardIngresos";
-            this.cardIngresos.Size = new System.Drawing.Size(333, 85);
+            this.cardIngresos.Size = new System.Drawing.Size(407, 104);
             this.cardIngresos.TabIndex = 1;
             // 
             // lblIngresosTitulo
             // 
             this.lblIngresosTitulo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblIngresosTitulo.Location = new System.Drawing.Point(11, 12);
-            this.lblIngresosTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblIngresosTitulo.Location = new System.Drawing.Point(15, 15);
             this.lblIngresosTitulo.Name = "lblIngresosTitulo";
-            this.lblIngresosTitulo.Size = new System.Drawing.Size(150, 16);
+            this.lblIngresosTitulo.Size = new System.Drawing.Size(200, 20);
             this.lblIngresosTitulo.TabIndex = 0;
             this.lblIngresosTitulo.Text = "INGRESOS DEL MES";
             // 
             // lblIngresosValor
             // 
             this.lblIngresosValor.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.lblIngresosValor.Location = new System.Drawing.Point(11, 37);
-            this.lblIngresosValor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblIngresosValor.Location = new System.Drawing.Point(15, 46);
             this.lblIngresosValor.Name = "lblIngresosValor";
-            this.lblIngresosValor.Size = new System.Drawing.Size(188, 41);
+            this.lblIngresosValor.Size = new System.Drawing.Size(251, 50);
             this.lblIngresosValor.TabIndex = 1;
             this.lblIngresosValor.Text = "€";
             // 
@@ -483,9 +474,10 @@
             this.panelDashboard.Controls.Add(this.panelContenidoGrid);
             this.panelDashboard.Controls.Add(this.tblLayoutPanelKpis);
             this.panelDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDashboard.Location = new System.Drawing.Point(188, 57);
+            this.panelDashboard.Location = new System.Drawing.Point(251, 70);
+            this.panelDashboard.Margin = new System.Windows.Forms.Padding(4);
             this.panelDashboard.Name = "panelDashboard";
-            this.panelDashboard.Size = new System.Drawing.Size(1050, 465);
+            this.panelDashboard.Size = new System.Drawing.Size(1289, 572);
             this.panelDashboard.TabIndex = 1;
             // 
             // panelAnalitica
@@ -494,9 +486,10 @@
             this.panelAnalitica.Controls.Add(this.panelFiltros);
             this.panelAnalitica.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAnalitica.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.panelAnalitica.Location = new System.Drawing.Point(188, 57);
+            this.panelAnalitica.Location = new System.Drawing.Point(251, 70);
+            this.panelAnalitica.Margin = new System.Windows.Forms.Padding(4);
             this.panelAnalitica.Name = "panelAnalitica";
-            this.panelAnalitica.Size = new System.Drawing.Size(1050, 465);
+            this.panelAnalitica.Size = new System.Drawing.Size(1289, 572);
             this.panelAnalitica.TabIndex = 5;
             // 
             // tabLayoutAnalitica
@@ -512,12 +505,13 @@
             this.tabLayoutAnalitica.Controls.Add(this.panelGridTopGastos, 2, 1);
             this.tabLayoutAnalitica.Controls.Add(this.panelEvolucionDeSueldo, 1, 1);
             this.tabLayoutAnalitica.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabLayoutAnalitica.Location = new System.Drawing.Point(0, 57);
+            this.tabLayoutAnalitica.Location = new System.Drawing.Point(0, 70);
+            this.tabLayoutAnalitica.Margin = new System.Windows.Forms.Padding(4);
             this.tabLayoutAnalitica.Name = "tabLayoutAnalitica";
             this.tabLayoutAnalitica.RowCount = 2;
             this.tabLayoutAnalitica.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tabLayoutAnalitica.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tabLayoutAnalitica.Size = new System.Drawing.Size(1050, 408);
+            this.tabLayoutAnalitica.Size = new System.Drawing.Size(1289, 502);
             this.tabLayoutAnalitica.TabIndex = 1;
             // 
             // panelPieChart
@@ -526,18 +520,20 @@
             this.panelPieChart.Controls.Add(this.pieChart1);
             this.panelPieChart.Controls.Add(this.lblPieChartGastos);
             this.panelPieChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPieChart.Location = new System.Drawing.Point(3, 3);
+            this.panelPieChart.Location = new System.Drawing.Point(4, 4);
+            this.panelPieChart.Margin = new System.Windows.Forms.Padding(4);
             this.panelPieChart.Name = "panelPieChart";
             this.tabLayoutAnalitica.SetRowSpan(this.panelPieChart, 2);
-            this.panelPieChart.Size = new System.Drawing.Size(309, 402);
+            this.panelPieChart.Size = new System.Drawing.Size(378, 494);
             this.panelPieChart.TabIndex = 2;
             // 
             // pieChart1
             // 
             this.pieChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pieChart1.Location = new System.Drawing.Point(0, 29);
+            this.pieChart1.Location = new System.Drawing.Point(0, 36);
+            this.pieChart1.Margin = new System.Windows.Forms.Padding(4);
             this.pieChart1.Name = "pieChart1";
-            this.pieChart1.Size = new System.Drawing.Size(309, 373);
+            this.pieChart1.Size = new System.Drawing.Size(378, 458);
             this.pieChart1.TabIndex = 0;
             // 
             // lblPieChartGastos
@@ -546,8 +542,9 @@
             this.lblPieChartGastos.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblPieChartGastos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPieChartGastos.Location = new System.Drawing.Point(0, 0);
+            this.lblPieChartGastos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPieChartGastos.Name = "lblPieChartGastos";
-            this.lblPieChartGastos.Size = new System.Drawing.Size(223, 29);
+            this.lblPieChartGastos.Size = new System.Drawing.Size(275, 36);
             this.lblPieChartGastos.TabIndex = 1;
             this.lblPieChartGastos.Text = "Pie Chart de gastos";
             // 
@@ -556,9 +553,10 @@
             this.panelGastosContraIngresos.Controls.Add(this.LblGastosVSIngresos);
             this.panelGastosContraIngresos.Controls.Add(this.cartesianChartGastosContraIngresos);
             this.panelGastosContraIngresos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGastosContraIngresos.Location = new System.Drawing.Point(685, 3);
+            this.panelGastosContraIngresos.Location = new System.Drawing.Point(841, 4);
+            this.panelGastosContraIngresos.Margin = new System.Windows.Forms.Padding(4);
             this.panelGastosContraIngresos.Name = "panelGastosContraIngresos";
-            this.panelGastosContraIngresos.Size = new System.Drawing.Size(362, 198);
+            this.panelGastosContraIngresos.Size = new System.Drawing.Size(444, 243);
             this.panelGastosContraIngresos.TabIndex = 7;
             // 
             // LblGastosVSIngresos
@@ -567,8 +565,9 @@
             this.LblGastosVSIngresos.Dock = System.Windows.Forms.DockStyle.Top;
             this.LblGastosVSIngresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblGastosVSIngresos.Location = new System.Drawing.Point(0, 0);
+            this.LblGastosVSIngresos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblGastosVSIngresos.Name = "LblGastosVSIngresos";
-            this.LblGastosVSIngresos.Size = new System.Drawing.Size(224, 29);
+            this.LblGastosVSIngresos.Size = new System.Drawing.Size(281, 36);
             this.LblGastosVSIngresos.TabIndex = 6;
             this.LblGastosVSIngresos.Text = "Gastos VS Ingresos";
             // 
@@ -578,9 +577,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cartesianChartGastosContraIngresos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.cartesianChartGastosContraIngresos.Location = new System.Drawing.Point(0, 29);
+            this.cartesianChartGastosContraIngresos.Location = new System.Drawing.Point(0, 36);
+            this.cartesianChartGastosContraIngresos.Margin = new System.Windows.Forms.Padding(4);
             this.cartesianChartGastosContraIngresos.Name = "cartesianChartGastosContraIngresos";
-            this.cartesianChartGastosContraIngresos.Size = new System.Drawing.Size(362, 169);
+            this.cartesianChartGastosContraIngresos.Size = new System.Drawing.Size(444, 207);
             this.cartesianChartGastosContraIngresos.TabIndex = 5;
             this.cartesianChartGastosContraIngresos.Text = "cartesianChart2";
             // 
@@ -589,9 +589,10 @@
             this.panelDataGridPieChartFilter.Controls.Add(this.lblFiltroPieChart);
             this.panelDataGridPieChartFilter.Controls.Add(this.dataGridPieChartFiltro);
             this.panelDataGridPieChartFilter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDataGridPieChartFilter.Location = new System.Drawing.Point(318, 3);
+            this.panelDataGridPieChartFilter.Location = new System.Drawing.Point(390, 4);
+            this.panelDataGridPieChartFilter.Margin = new System.Windows.Forms.Padding(4);
             this.panelDataGridPieChartFilter.Name = "panelDataGridPieChartFilter";
-            this.panelDataGridPieChartFilter.Size = new System.Drawing.Size(361, 198);
+            this.panelDataGridPieChartFilter.Size = new System.Drawing.Size(443, 243);
             this.panelDataGridPieChartFilter.TabIndex = 6;
             // 
             // lblFiltroPieChart
@@ -600,8 +601,9 @@
             this.lblFiltroPieChart.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblFiltroPieChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFiltroPieChart.Location = new System.Drawing.Point(0, 0);
+            this.lblFiltroPieChart.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFiltroPieChart.Name = "lblFiltroPieChart";
-            this.lblFiltroPieChart.Size = new System.Drawing.Size(173, 29);
+            this.lblFiltroPieChart.Size = new System.Drawing.Size(213, 36);
             this.lblFiltroPieChart.TabIndex = 5;
             this.lblFiltroPieChart.Text = "Filtro Pie Chart";
             // 
@@ -611,26 +613,28 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridPieChartFiltro.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridPieChartFiltro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridPieChartFiltro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridPieChartFiltro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridPieChartFiltro.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridPieChartFiltro.Location = new System.Drawing.Point(0, 29);
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridPieChartFiltro.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dataGridPieChartFiltro.Location = new System.Drawing.Point(0, 36);
+            this.dataGridPieChartFiltro.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridPieChartFiltro.Name = "dataGridPieChartFiltro";
-            this.dataGridPieChartFiltro.Size = new System.Drawing.Size(361, 169);
+            this.dataGridPieChartFiltro.RowHeadersWidth = 51;
+            this.dataGridPieChartFiltro.Size = new System.Drawing.Size(443, 207);
             this.dataGridPieChartFiltro.TabIndex = 4;
             // 
             // panelGridTopGastos
@@ -638,9 +642,10 @@
             this.panelGridTopGastos.Controls.Add(this.LblTopGastos);
             this.panelGridTopGastos.Controls.Add(this.dataGridTopGastos);
             this.panelGridTopGastos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGridTopGastos.Location = new System.Drawing.Point(685, 207);
+            this.panelGridTopGastos.Location = new System.Drawing.Point(841, 255);
+            this.panelGridTopGastos.Margin = new System.Windows.Forms.Padding(4);
             this.panelGridTopGastos.Name = "panelGridTopGastos";
-            this.panelGridTopGastos.Size = new System.Drawing.Size(362, 198);
+            this.panelGridTopGastos.Size = new System.Drawing.Size(444, 243);
             this.panelGridTopGastos.TabIndex = 9;
             // 
             // LblTopGastos
@@ -649,8 +654,9 @@
             this.LblTopGastos.Dock = System.Windows.Forms.DockStyle.Top;
             this.LblTopGastos.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTopGastos.Location = new System.Drawing.Point(0, 0);
+            this.LblTopGastos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblTopGastos.Name = "LblTopGastos";
-            this.LblTopGastos.Size = new System.Drawing.Size(264, 29);
+            this.LblTopGastos.Size = new System.Drawing.Size(325, 36);
             this.LblTopGastos.TabIndex = 7;
             this.LblTopGastos.Text = "Top 10 mayores gastos";
             // 
@@ -660,26 +666,28 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridTopGastos.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridTopGastos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridTopGastos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridTopGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridTopGastos.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridTopGastos.Location = new System.Drawing.Point(0, 32);
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridTopGastos.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dataGridTopGastos.Location = new System.Drawing.Point(0, 39);
+            this.dataGridTopGastos.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridTopGastos.Name = "dataGridTopGastos";
-            this.dataGridTopGastos.Size = new System.Drawing.Size(362, 166);
+            this.dataGridTopGastos.RowHeadersWidth = 51;
+            this.dataGridTopGastos.Size = new System.Drawing.Size(444, 203);
             this.dataGridTopGastos.TabIndex = 6;
             // 
             // panelEvolucionDeSueldo
@@ -687,9 +695,10 @@
             this.panelEvolucionDeSueldo.Controls.Add(this.LblEvolucionDeSueldo);
             this.panelEvolucionDeSueldo.Controls.Add(this.cartesianChartEvolucionSaldo);
             this.panelEvolucionDeSueldo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEvolucionDeSueldo.Location = new System.Drawing.Point(318, 207);
+            this.panelEvolucionDeSueldo.Location = new System.Drawing.Point(390, 255);
+            this.panelEvolucionDeSueldo.Margin = new System.Windows.Forms.Padding(4);
             this.panelEvolucionDeSueldo.Name = "panelEvolucionDeSueldo";
-            this.panelEvolucionDeSueldo.Size = new System.Drawing.Size(361, 198);
+            this.panelEvolucionDeSueldo.Size = new System.Drawing.Size(443, 243);
             this.panelEvolucionDeSueldo.TabIndex = 8;
             // 
             // LblEvolucionDeSueldo
@@ -698,8 +707,9 @@
             this.LblEvolucionDeSueldo.Dock = System.Windows.Forms.DockStyle.Top;
             this.LblEvolucionDeSueldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblEvolucionDeSueldo.Location = new System.Drawing.Point(0, 0);
+            this.LblEvolucionDeSueldo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LblEvolucionDeSueldo.Name = "LblEvolucionDeSueldo";
-            this.LblEvolucionDeSueldo.Size = new System.Drawing.Size(235, 29);
+            this.LblEvolucionDeSueldo.Size = new System.Drawing.Size(290, 36);
             this.LblEvolucionDeSueldo.TabIndex = 7;
             this.LblEvolucionDeSueldo.Text = "Evolucion de Sueldo";
             // 
@@ -709,9 +719,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cartesianChartEvolucionSaldo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.cartesianChartEvolucionSaldo.Location = new System.Drawing.Point(0, 32);
+            this.cartesianChartEvolucionSaldo.Location = new System.Drawing.Point(0, 39);
+            this.cartesianChartEvolucionSaldo.Margin = new System.Windows.Forms.Padding(4);
             this.cartesianChartEvolucionSaldo.Name = "cartesianChartEvolucionSaldo";
-            this.cartesianChartEvolucionSaldo.Size = new System.Drawing.Size(361, 166);
+            this.cartesianChartEvolucionSaldo.Size = new System.Drawing.Size(443, 203);
             this.cartesianChartEvolucionSaldo.TabIndex = 3;
             this.cartesianChartEvolucionSaldo.Text = "cartesianChart1";
             // 
@@ -724,8 +735,9 @@
             this.panelFiltros.Controls.Add(this.lblFiltroMes);
             this.panelFiltros.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelFiltros.Location = new System.Drawing.Point(0, 0);
+            this.panelFiltros.Margin = new System.Windows.Forms.Padding(4);
             this.panelFiltros.Name = "panelFiltros";
-            this.panelFiltros.Size = new System.Drawing.Size(1050, 57);
+            this.panelFiltros.Size = new System.Drawing.Size(1289, 70);
             this.panelFiltros.TabIndex = 0;
             // 
             // combFiltroAnio
@@ -734,9 +746,10 @@
             this.combFiltroAnio.DisplayMember = "Año";
             this.combFiltroAnio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combFiltroAnio.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.combFiltroAnio.Location = new System.Drawing.Point(178, 25);
+            this.combFiltroAnio.Location = new System.Drawing.Point(237, 31);
+            this.combFiltroAnio.Margin = new System.Windows.Forms.Padding(4);
             this.combFiltroAnio.Name = "combFiltroAnio";
-            this.combFiltroAnio.Size = new System.Drawing.Size(120, 24);
+            this.combFiltroAnio.Size = new System.Drawing.Size(159, 28);
             this.combFiltroAnio.TabIndex = 3;
             this.combFiltroAnio.ValueMember = "Año";
             this.combFiltroAnio.SelectedIndexChanged += new System.EventHandler(this.combFiltroAnio_SelectedIndexChanged);
@@ -755,9 +768,10 @@
             // 
             this.lblFiltroAnio.AutoSize = true;
             this.lblFiltroAnio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltroAnio.Location = new System.Drawing.Point(174, 2);
+            this.lblFiltroAnio.Location = new System.Drawing.Point(232, 2);
+            this.lblFiltroAnio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFiltroAnio.Name = "lblFiltroAnio";
-            this.lblFiltroAnio.Size = new System.Drawing.Size(46, 20);
+            this.lblFiltroAnio.Size = new System.Drawing.Size(58, 25);
             this.lblFiltroAnio.TabIndex = 2;
             this.lblFiltroAnio.Text = "Año:";
             // 
@@ -779,9 +793,10 @@
             "Octubre",
             "Noviembre",
             "Diciembre"});
-            this.combFiltroMes.Location = new System.Drawing.Point(7, 25);
+            this.combFiltroMes.Location = new System.Drawing.Point(9, 31);
+            this.combFiltroMes.Margin = new System.Windows.Forms.Padding(4);
             this.combFiltroMes.Name = "combFiltroMes";
-            this.combFiltroMes.Size = new System.Drawing.Size(120, 24);
+            this.combFiltroMes.Size = new System.Drawing.Size(159, 28);
             this.combFiltroMes.TabIndex = 1;
             this.combFiltroMes.SelectedIndexChanged += new System.EventHandler(this.combFiltroMes_SelectedIndexChanged);
             // 
@@ -789,9 +804,10 @@
             // 
             this.lblFiltroMes.AutoSize = true;
             this.lblFiltroMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltroMes.Location = new System.Drawing.Point(3, 4);
+            this.lblFiltroMes.Location = new System.Drawing.Point(4, 5);
+            this.lblFiltroMes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFiltroMes.Name = "lblFiltroMes";
-            this.lblFiltroMes.Size = new System.Drawing.Size(47, 20);
+            this.lblFiltroMes.Size = new System.Drawing.Size(60, 25);
             this.lblFiltroMes.TabIndex = 0;
             this.lblFiltroMes.Text = "Mes:";
             // 
@@ -840,9 +856,10 @@
             this.panelPlanificacion.Controls.Add(this.tableLayoutContenidoPlanificacion);
             this.panelPlanificacion.Controls.Add(this.panelHeaderMetricas);
             this.panelPlanificacion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPlanificacion.Location = new System.Drawing.Point(188, 57);
+            this.panelPlanificacion.Location = new System.Drawing.Point(251, 70);
+            this.panelPlanificacion.Margin = new System.Windows.Forms.Padding(4);
             this.panelPlanificacion.Name = "panelPlanificacion";
-            this.panelPlanificacion.Size = new System.Drawing.Size(1050, 465);
+            this.panelPlanificacion.Size = new System.Drawing.Size(1289, 572);
             this.panelPlanificacion.TabIndex = 6;
             // 
             // tableLayoutContenidoPlanificacion
@@ -855,12 +872,13 @@
             this.tableLayoutContenidoPlanificacion.Controls.Add(this.panelMetas, 1, 0);
             this.tableLayoutContenidoPlanificacion.Controls.Add(this.panelGastosFuturos, 1, 1);
             this.tableLayoutContenidoPlanificacion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutContenidoPlanificacion.Location = new System.Drawing.Point(0, 83);
+            this.tableLayoutContenidoPlanificacion.Location = new System.Drawing.Point(0, 102);
+            this.tableLayoutContenidoPlanificacion.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutContenidoPlanificacion.Name = "tableLayoutContenidoPlanificacion";
             this.tableLayoutContenidoPlanificacion.RowCount = 2;
             this.tableLayoutContenidoPlanificacion.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 56.52174F));
             this.tableLayoutContenidoPlanificacion.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.47826F));
-            this.tableLayoutContenidoPlanificacion.Size = new System.Drawing.Size(1050, 382);
+            this.tableLayoutContenidoPlanificacion.Size = new System.Drawing.Size(1289, 470);
             this.tableLayoutContenidoPlanificacion.TabIndex = 1;
             // 
             // panelLimitesGastosPorCategoria
@@ -869,10 +887,11 @@
             this.panelLimitesGastosPorCategoria.Controls.Add(this.tableLayoutLimitesPorCategoria);
             this.panelLimitesGastosPorCategoria.Controls.Add(this.panelTituloLimiteGastos);
             this.panelLimitesGastosPorCategoria.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelLimitesGastosPorCategoria.Location = new System.Drawing.Point(3, 3);
+            this.panelLimitesGastosPorCategoria.Location = new System.Drawing.Point(4, 4);
+            this.panelLimitesGastosPorCategoria.Margin = new System.Windows.Forms.Padding(4);
             this.panelLimitesGastosPorCategoria.Name = "panelLimitesGastosPorCategoria";
             this.tableLayoutContenidoPlanificacion.SetRowSpan(this.panelLimitesGastosPorCategoria, 2);
-            this.panelLimitesGastosPorCategoria.Size = new System.Drawing.Size(519, 376);
+            this.panelLimitesGastosPorCategoria.Size = new System.Drawing.Size(636, 462);
             this.panelLimitesGastosPorCategoria.TabIndex = 0;
             // 
             // tableLayoutLimitesPorCategoria
@@ -884,11 +903,12 @@
             this.tableLayoutLimitesPorCategoria.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutLimitesPorCategoria.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutLimitesPorCategoria.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutLimitesPorCategoria.Location = new System.Drawing.Point(0, 35);
+            this.tableLayoutLimitesPorCategoria.Location = new System.Drawing.Point(0, 43);
+            this.tableLayoutLimitesPorCategoria.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutLimitesPorCategoria.Name = "tableLayoutLimitesPorCategoria";
             this.tableLayoutLimitesPorCategoria.RowCount = 1;
             this.tableLayoutLimitesPorCategoria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutLimitesPorCategoria.Size = new System.Drawing.Size(519, 341);
+            this.tableLayoutLimitesPorCategoria.Size = new System.Drawing.Size(636, 419);
             this.tableLayoutLimitesPorCategoria.TabIndex = 4;
             // 
             // panelTituloLimiteGastos
@@ -897,17 +917,19 @@
             this.panelTituloLimiteGastos.Controls.Add(this.lblLimiteGastos);
             this.panelTituloLimiteGastos.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTituloLimiteGastos.Location = new System.Drawing.Point(0, 0);
+            this.panelTituloLimiteGastos.Margin = new System.Windows.Forms.Padding(4);
             this.panelTituloLimiteGastos.Name = "panelTituloLimiteGastos";
-            this.panelTituloLimiteGastos.Size = new System.Drawing.Size(519, 35);
+            this.panelTituloLimiteGastos.Size = new System.Drawing.Size(636, 43);
             this.panelTituloLimiteGastos.TabIndex = 3;
             // 
             // lblLimiteGastos
             // 
             this.lblLimiteGastos.AutoSize = true;
             this.lblLimiteGastos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLimiteGastos.Location = new System.Drawing.Point(0, 4);
+            this.lblLimiteGastos.Location = new System.Drawing.Point(0, 5);
+            this.lblLimiteGastos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLimiteGastos.Name = "lblLimiteGastos";
-            this.lblLimiteGastos.Size = new System.Drawing.Size(261, 20);
+            this.lblLimiteGastos.Size = new System.Drawing.Size(312, 25);
             this.lblLimiteGastos.TabIndex = 2;
             this.lblLimiteGastos.Text = "Limites de gastos por categoria";
             // 
@@ -917,9 +939,10 @@
             this.panelMetas.Controls.Add(this.tableLayoutMetasAhorro);
             this.panelMetas.Controls.Add(this.panelHeaderMetas);
             this.panelMetas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMetas.Location = new System.Drawing.Point(528, 3);
+            this.panelMetas.Location = new System.Drawing.Point(648, 4);
+            this.panelMetas.Margin = new System.Windows.Forms.Padding(4);
             this.panelMetas.Name = "panelMetas";
-            this.panelMetas.Size = new System.Drawing.Size(519, 209);
+            this.panelMetas.Size = new System.Drawing.Size(637, 257);
             this.panelMetas.TabIndex = 1;
             // 
             // panelEdicionMetas
@@ -931,18 +954,31 @@
             this.panelEdicionMetas.Controls.Add(this.lblSaldoNecesario);
             this.panelEdicionMetas.Controls.Add(this.lblNombreMeta);
             this.panelEdicionMetas.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelEdicionMetas.Location = new System.Drawing.Point(309, 35);
+            this.panelEdicionMetas.Location = new System.Drawing.Point(357, 43);
+            this.panelEdicionMetas.Margin = new System.Windows.Forms.Padding(4);
             this.panelEdicionMetas.Name = "panelEdicionMetas";
-            this.panelEdicionMetas.Size = new System.Drawing.Size(210, 174);
+            this.panelEdicionMetas.Size = new System.Drawing.Size(280, 214);
             this.panelEdicionMetas.TabIndex = 0;
             this.panelEdicionMetas.Visible = false;
+            // 
+            // btCancelarMeta
+            // 
+            this.btCancelarMeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCancelarMeta.Location = new System.Drawing.Point(157, 164);
+            this.btCancelarMeta.Margin = new System.Windows.Forms.Padding(4);
+            this.btCancelarMeta.Name = "btCancelarMeta";
+            this.btCancelarMeta.Size = new System.Drawing.Size(100, 41);
+            this.btCancelarMeta.TabIndex = 5;
+            this.btCancelarMeta.Text = "Cancelar";
+            this.btCancelarMeta.UseVisualStyleBackColor = true;
             // 
             // btAceptarMetaNueva
             // 
             this.btAceptarMetaNueva.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAceptarMetaNueva.Location = new System.Drawing.Point(12, 133);
+            this.btAceptarMetaNueva.Location = new System.Drawing.Point(16, 164);
+            this.btAceptarMetaNueva.Margin = new System.Windows.Forms.Padding(4);
             this.btAceptarMetaNueva.Name = "btAceptarMetaNueva";
-            this.btAceptarMetaNueva.Size = new System.Drawing.Size(75, 33);
+            this.btAceptarMetaNueva.Size = new System.Drawing.Size(100, 41);
             this.btAceptarMetaNueva.TabIndex = 4;
             this.btAceptarMetaNueva.Text = "Aceptar";
             this.btAceptarMetaNueva.UseVisualStyleBackColor = true;
@@ -950,26 +986,29 @@
             // txtSaldoNecesario
             // 
             this.txtSaldoNecesario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSaldoNecesario.Location = new System.Drawing.Point(12, 85);
+            this.txtSaldoNecesario.Location = new System.Drawing.Point(16, 105);
+            this.txtSaldoNecesario.Margin = new System.Windows.Forms.Padding(4);
             this.txtSaldoNecesario.Name = "txtSaldoNecesario";
-            this.txtSaldoNecesario.Size = new System.Drawing.Size(100, 23);
+            this.txtSaldoNecesario.Size = new System.Drawing.Size(132, 26);
             this.txtSaldoNecesario.TabIndex = 3;
             // 
             // txtNombreMeta
             // 
             this.txtNombreMeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreMeta.Location = new System.Drawing.Point(11, 30);
+            this.txtNombreMeta.Location = new System.Drawing.Point(15, 37);
+            this.txtNombreMeta.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreMeta.Name = "txtNombreMeta";
-            this.txtNombreMeta.Size = new System.Drawing.Size(100, 23);
+            this.txtNombreMeta.Size = new System.Drawing.Size(132, 26);
             this.txtNombreMeta.TabIndex = 2;
             // 
             // lblSaldoNecesario
             // 
             this.lblSaldoNecesario.AutoSize = true;
             this.lblSaldoNecesario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSaldoNecesario.Location = new System.Drawing.Point(7, 62);
+            this.lblSaldoNecesario.Location = new System.Drawing.Point(9, 76);
+            this.lblSaldoNecesario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSaldoNecesario.Name = "lblSaldoNecesario";
-            this.lblSaldoNecesario.Size = new System.Drawing.Size(138, 20);
+            this.lblSaldoNecesario.Size = new System.Drawing.Size(168, 25);
             this.lblSaldoNecesario.TabIndex = 1;
             this.lblSaldoNecesario.Text = "Saldo necesario";
             // 
@@ -977,9 +1016,10 @@
             // 
             this.lblNombreMeta.AutoSize = true;
             this.lblNombreMeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreMeta.Location = new System.Drawing.Point(7, 7);
+            this.lblNombreMeta.Location = new System.Drawing.Point(9, 9);
+            this.lblNombreMeta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNombreMeta.Name = "lblNombreMeta";
-            this.lblNombreMeta.Size = new System.Drawing.Size(141, 20);
+            this.lblNombreMeta.Size = new System.Drawing.Size(170, 25);
             this.lblNombreMeta.TabIndex = 0;
             this.lblNombreMeta.Text = "Nombre de meta";
             // 
@@ -988,13 +1028,14 @@
             this.tableLayoutMetasAhorro.ColumnCount = 1;
             this.tableLayoutMetasAhorro.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutMetasAhorro.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutMetasAhorro.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 127F));
+            this.tableLayoutMetasAhorro.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 169F));
             this.tableLayoutMetasAhorro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutMetasAhorro.Location = new System.Drawing.Point(0, 35);
+            this.tableLayoutMetasAhorro.Location = new System.Drawing.Point(0, 43);
+            this.tableLayoutMetasAhorro.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutMetasAhorro.Name = "tableLayoutMetasAhorro";
             this.tableLayoutMetasAhorro.RowCount = 1;
             this.tableLayoutMetasAhorro.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutMetasAhorro.Size = new System.Drawing.Size(519, 174);
+            this.tableLayoutMetasAhorro.Size = new System.Drawing.Size(637, 214);
             this.tableLayoutMetasAhorro.TabIndex = 5;
             // 
             // panelHeaderMetas
@@ -1005,50 +1046,56 @@
             this.panelHeaderMetas.Controls.Add(this.lblMetas);
             this.panelHeaderMetas.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeaderMetas.Location = new System.Drawing.Point(0, 0);
+            this.panelHeaderMetas.Margin = new System.Windows.Forms.Padding(4);
             this.panelHeaderMetas.Name = "panelHeaderMetas";
-            this.panelHeaderMetas.Size = new System.Drawing.Size(519, 35);
+            this.panelHeaderMetas.Size = new System.Drawing.Size(637, 43);
             this.panelHeaderMetas.TabIndex = 4;
             // 
             // btEditarMeta
             // 
+            this.btEditarMeta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btEditarMeta.BackColor = System.Drawing.Color.White;
             this.btEditarMeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btEditarMeta.Location = new System.Drawing.Point(437, 3);
+            this.btEditarMeta.Location = new System.Drawing.Point(514, 5);
+            this.btEditarMeta.Margin = new System.Windows.Forms.Padding(4);
             this.btEditarMeta.Name = "btEditarMeta";
-            this.btEditarMeta.Size = new System.Drawing.Size(75, 26);
+            this.btEditarMeta.Size = new System.Drawing.Size(100, 32);
             this.btEditarMeta.TabIndex = 4;
             this.btEditarMeta.Text = "Editar";
             this.btEditarMeta.UseVisualStyleBackColor = false;
             // 
             // btAnadirMeta
             // 
+            this.btAnadirMeta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btAnadirMeta.BackColor = System.Drawing.Color.White;
             this.btAnadirMeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btAnadirMeta.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btAnadirMeta.Location = new System.Drawing.Point(356, 3);
+            this.btAnadirMeta.Location = new System.Drawing.Point(404, 5);
+            this.btAnadirMeta.Margin = new System.Windows.Forms.Padding(4);
             this.btAnadirMeta.Name = "btAnadirMeta";
-            this.btAnadirMeta.Size = new System.Drawing.Size(75, 26);
+            this.btAnadirMeta.Size = new System.Drawing.Size(100, 32);
             this.btAnadirMeta.TabIndex = 3;
             this.btAnadirMeta.Text = "Añadir";
             this.btAnadirMeta.UseVisualStyleBackColor = false;
-            this.btAnadirMeta.Click += new System.EventHandler(this.btAnadirMeta_Click);
             // 
             // lblMetas
             // 
             this.lblMetas.AutoSize = true;
             this.lblMetas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMetas.Location = new System.Drawing.Point(3, 4);
+            this.lblMetas.Location = new System.Drawing.Point(4, 5);
+            this.lblMetas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMetas.Name = "lblMetas";
-            this.lblMetas.Size = new System.Drawing.Size(149, 20);
+            this.lblMetas.Size = new System.Drawing.Size(180, 25);
             this.lblMetas.TabIndex = 2;
             this.lblMetas.Text = "Metas de ahorros";
             // 
             // panelGastosFuturos
             // 
             this.panelGastosFuturos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGastosFuturos.Location = new System.Drawing.Point(528, 218);
+            this.panelGastosFuturos.Location = new System.Drawing.Point(648, 269);
+            this.panelGastosFuturos.Margin = new System.Windows.Forms.Padding(4);
             this.panelGastosFuturos.Name = "panelGastosFuturos";
-            this.panelGastosFuturos.Size = new System.Drawing.Size(519, 161);
+            this.panelGastosFuturos.Size = new System.Drawing.Size(637, 197);
             this.panelGastosFuturos.TabIndex = 2;
             // 
             // panelHeaderMetricas
@@ -1057,8 +1104,9 @@
             this.panelHeaderMetricas.Controls.Add(this.lblMetricas);
             this.panelHeaderMetricas.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeaderMetricas.Location = new System.Drawing.Point(0, 0);
+            this.panelHeaderMetricas.Margin = new System.Windows.Forms.Padding(4);
             this.panelHeaderMetricas.Name = "panelHeaderMetricas";
-            this.panelHeaderMetricas.Size = new System.Drawing.Size(1050, 83);
+            this.panelHeaderMetricas.Size = new System.Drawing.Size(1289, 102);
             this.panelHeaderMetricas.TabIndex = 0;
             // 
             // tableLayoutMetricas
@@ -1072,11 +1120,12 @@
             this.tableLayoutMetricas.Controls.Add(this.panelGastosAsignados, 1, 0);
             this.tableLayoutMetricas.Controls.Add(this.panelAhorroDisponible, 2, 0);
             this.tableLayoutMetricas.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutMetricas.Location = new System.Drawing.Point(0, 39);
+            this.tableLayoutMetricas.Location = new System.Drawing.Point(0, 48);
+            this.tableLayoutMetricas.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutMetricas.Name = "tableLayoutMetricas";
             this.tableLayoutMetricas.RowCount = 1;
             this.tableLayoutMetricas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutMetricas.Size = new System.Drawing.Size(1050, 44);
+            this.tableLayoutMetricas.Size = new System.Drawing.Size(1289, 54);
             this.tableLayoutMetricas.TabIndex = 1;
             // 
             // panelPresupuesto
@@ -1085,18 +1134,20 @@
             this.panelPresupuesto.Controls.Add(this.lblPresupuestoValor);
             this.panelPresupuesto.Controls.Add(this.lblPresupuestoMes);
             this.panelPresupuesto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPresupuesto.Location = new System.Drawing.Point(3, 3);
+            this.panelPresupuesto.Location = new System.Drawing.Point(4, 4);
+            this.panelPresupuesto.Margin = new System.Windows.Forms.Padding(4);
             this.panelPresupuesto.Name = "panelPresupuesto";
-            this.panelPresupuesto.Size = new System.Drawing.Size(344, 38);
+            this.panelPresupuesto.Size = new System.Drawing.Size(421, 46);
             this.panelPresupuesto.TabIndex = 1;
             // 
             // lblPresupuestoValor
             // 
             this.lblPresupuestoValor.AutoSize = true;
             this.lblPresupuestoValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPresupuestoValor.Location = new System.Drawing.Point(191, 10);
+            this.lblPresupuestoValor.Location = new System.Drawing.Point(255, 12);
+            this.lblPresupuestoValor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPresupuestoValor.Name = "lblPresupuestoValor";
-            this.lblPresupuestoValor.Size = new System.Drawing.Size(19, 20);
+            this.lblPresupuestoValor.Size = new System.Drawing.Size(24, 25);
             this.lblPresupuestoValor.TabIndex = 2;
             this.lblPresupuestoValor.Text = "1";
             // 
@@ -1104,9 +1155,10 @@
             // 
             this.lblPresupuestoMes.AutoSize = true;
             this.lblPresupuestoMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPresupuestoMes.Location = new System.Drawing.Point(3, 9);
+            this.lblPresupuestoMes.Location = new System.Drawing.Point(4, 11);
+            this.lblPresupuestoMes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPresupuestoMes.Name = "lblPresupuestoMes";
-            this.lblPresupuestoMes.Size = new System.Drawing.Size(182, 20);
+            this.lblPresupuestoMes.Size = new System.Drawing.Size(222, 25);
             this.lblPresupuestoMes.TabIndex = 1;
             this.lblPresupuestoMes.Text = "Presupuesto del Mes:";
             // 
@@ -1116,18 +1168,20 @@
             this.panelGastosAsignados.Controls.Add(this.lblValorGastos);
             this.panelGastosAsignados.Controls.Add(this.lblGastosAsignados);
             this.panelGastosAsignados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGastosAsignados.Location = new System.Drawing.Point(353, 3);
+            this.panelGastosAsignados.Location = new System.Drawing.Point(433, 4);
+            this.panelGastosAsignados.Margin = new System.Windows.Forms.Padding(4);
             this.panelGastosAsignados.Name = "panelGastosAsignados";
-            this.panelGastosAsignados.Size = new System.Drawing.Size(344, 38);
+            this.panelGastosAsignados.Size = new System.Drawing.Size(421, 46);
             this.panelGastosAsignados.TabIndex = 2;
             // 
             // lblValorGastos
             // 
             this.lblValorGastos.AutoSize = true;
             this.lblValorGastos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorGastos.Location = new System.Drawing.Point(175, 9);
+            this.lblValorGastos.Location = new System.Drawing.Point(233, 11);
+            this.lblValorGastos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblValorGastos.Name = "lblValorGastos";
-            this.lblValorGastos.Size = new System.Drawing.Size(19, 20);
+            this.lblValorGastos.Size = new System.Drawing.Size(24, 25);
             this.lblValorGastos.TabIndex = 3;
             this.lblValorGastos.Text = "1";
             // 
@@ -1135,9 +1189,10 @@
             // 
             this.lblGastosAsignados.AutoSize = true;
             this.lblGastosAsignados.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGastosAsignados.Location = new System.Drawing.Point(8, 9);
+            this.lblGastosAsignados.Location = new System.Drawing.Point(11, 11);
+            this.lblGastosAsignados.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGastosAsignados.Name = "lblGastosAsignados";
-            this.lblGastosAsignados.Size = new System.Drawing.Size(161, 20);
+            this.lblGastosAsignados.Size = new System.Drawing.Size(195, 25);
             this.lblGastosAsignados.TabIndex = 2;
             this.lblGastosAsignados.Text = "Gastos Asignados:";
             // 
@@ -1147,18 +1202,20 @@
             this.panelAhorroDisponible.Controls.Add(this.lblValorAhorro);
             this.panelAhorroDisponible.Controls.Add(this.lblAhorroDisponible);
             this.panelAhorroDisponible.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAhorroDisponible.Location = new System.Drawing.Point(703, 3);
+            this.panelAhorroDisponible.Location = new System.Drawing.Point(862, 4);
+            this.panelAhorroDisponible.Margin = new System.Windows.Forms.Padding(4);
             this.panelAhorroDisponible.Name = "panelAhorroDisponible";
-            this.panelAhorroDisponible.Size = new System.Drawing.Size(344, 38);
+            this.panelAhorroDisponible.Size = new System.Drawing.Size(423, 46);
             this.panelAhorroDisponible.TabIndex = 3;
             // 
             // lblValorAhorro
             // 
             this.lblValorAhorro.AutoSize = true;
             this.lblValorAhorro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorAhorro.Location = new System.Drawing.Point(172, 10);
+            this.lblValorAhorro.Location = new System.Drawing.Point(229, 12);
+            this.lblValorAhorro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblValorAhorro.Name = "lblValorAhorro";
-            this.lblValorAhorro.Size = new System.Drawing.Size(19, 20);
+            this.lblValorAhorro.Size = new System.Drawing.Size(24, 25);
             this.lblValorAhorro.TabIndex = 4;
             this.lblValorAhorro.Text = "1";
             // 
@@ -1166,9 +1223,10 @@
             // 
             this.lblAhorroDisponible.AutoSize = true;
             this.lblAhorroDisponible.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAhorroDisponible.Location = new System.Drawing.Point(9, 9);
+            this.lblAhorroDisponible.Location = new System.Drawing.Point(12, 11);
+            this.lblAhorroDisponible.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAhorroDisponible.Name = "lblAhorroDisponible";
-            this.lblAhorroDisponible.Size = new System.Drawing.Size(157, 20);
+            this.lblAhorroDisponible.Size = new System.Drawing.Size(191, 25);
             this.lblAhorroDisponible.TabIndex = 3;
             this.lblAhorroDisponible.Text = "Ahorro Disponible:";
             // 
@@ -1176,35 +1234,26 @@
             // 
             this.lblMetricas.AutoSize = true;
             this.lblMetricas.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMetricas.Location = new System.Drawing.Point(6, 10);
+            this.lblMetricas.Location = new System.Drawing.Point(8, 12);
+            this.lblMetricas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMetricas.Name = "lblMetricas";
-            this.lblMetricas.Size = new System.Drawing.Size(102, 26);
+            this.lblMetricas.Size = new System.Drawing.Size(125, 31);
             this.lblMetricas.TabIndex = 0;
             this.lblMetricas.Text = "Metricas";
             // 
-            // btCancelarMeta
-            // 
-            this.btCancelarMeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btCancelarMeta.Location = new System.Drawing.Point(118, 133);
-            this.btCancelarMeta.Name = "btCancelarMeta";
-            this.btCancelarMeta.Size = new System.Drawing.Size(75, 33);
-            this.btCancelarMeta.TabIndex = 5;
-            this.btCancelarMeta.Text = "Cancelar";
-            this.btCancelarMeta.UseVisualStyleBackColor = true;
-            // 
             // Ventana_Inicial
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.ClientSize = new System.Drawing.Size(1238, 522);
+            this.ClientSize = new System.Drawing.Size(1540, 642);
             this.Controls.Add(this.panelPlanificacion);
             this.Controls.Add(this.panelAnalitica);
             this.Controls.Add(this.panelDashboard);
             this.Controls.Add(this.panelEdicion);
             this.Controls.Add(this.panelSidebar);
             this.Controls.Add(this.panelHeader);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Ventana_Inicial";
             this.Text = "Personal Finance Manager";
             this.Load += new System.EventHandler(this.Ventana_Inicial_Load);
