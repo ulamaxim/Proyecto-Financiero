@@ -657,9 +657,13 @@ namespace Proyecto_Financiero
             tableLayoutLimitesPorCategoria.RowStyles.Clear();
             tableLayoutLimitesPorCategoria.RowCount = 0;
 
-            tableLayoutLimitesPorCategoria.ColumnCount = 1;
+            // Nuevo layout por columnas para evitar solapamientos
+            tableLayoutLimitesPorCategoria.ColumnCount = 4;
             tableLayoutLimitesPorCategoria.ColumnStyles.Clear();
-            tableLayoutLimitesPorCategoria.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutLimitesPorCategoria.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F)); // Categoria
+            tableLayoutLimitesPorCategoria.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 55F)); // Barra de progreso
+            tableLayoutLimitesPorCategoria.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12F)); // Valores
+            tableLayoutLimitesPorCategoria.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 8F));  // Botón editar
 
             // Obtener gastos por categoría
             var resumenGastos = datalinq.vw_datagrid1
@@ -675,225 +679,122 @@ namespace Proyecto_Financiero
             // Consultar los límites existentes en la BD en un diccionario para acceso rápido
             var limitesBD = datalinq.Limites.ToDictionary(l => l.Categoria, l => (double)l.Limite);
 
-            // Crear tarjetas con sus paneles de edición
+            // Crear filas: una fila por categoría (controles en columnas separadas)
             foreach (var item in resumenGastos)
             {
+                int rowIndex = tableLayoutLimitesPorCategoria.RowCount;
                 tableLayoutLimitesPorCategoria.RowCount++;
                 tableLayoutLimitesPorCategoria.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
 
-                // Extraer el límite del SQL o asignar 0 por defecto si no existe
-                double limitePresupuesto = limitesBD.ContainsKey(item.Categoria)
-                    ? limitesBD[item.Categoria]
-                    : 0;
+                double limitePresupuesto = limitesBD.ContainsKey(item.Categoria) ? limitesBD[item.Categoria] : 0;
 
-                Panel tarjeta = CrearControlTarjeta(item.Categoria, item.Gastado, limitePresupuesto);
-                tableLayoutLimitesPorCategoria.Controls.Add(tarjeta, 0, tableLayoutLimitesPorCategoria.RowCount - 1);
+                // Crear controles para la fila
+                var tuple = CrearControlesFila(item.Categoria, item.Gastado, limitePresupuesto);
+
+                // Añadir controles a columnas separadas
+                tableLayoutLimitesPorCategoria.Controls.Add(tuple.lblCategoria, 0, rowIndex);
+                tableLayoutLimitesPorCategoria.Controls.Add(tuple.pnlBarraFondo, 1, rowIndex);
+                tableLayoutLimitesPorCategoria.Controls.Add(tuple.lblValores, 2, rowIndex);
+                tableLayoutLimitesPorCategoria.Controls.Add(tuple.btnEditar, 3, rowIndex);
+
+                // Ajustes visuales
+                tuple.lblCategoria.Dock = DockStyle.Fill;
+                tuple.lblCategoria.Margin = new Padding(4, 10, 4, 10);
+
+                tuple.pnlBarraFondo.Dock = DockStyle.Fill;
+                tuple.pnlBarraFondo.Margin = new Padding(4, 18, 4, 12);
+
+                tuple.lblValores.Dock = DockStyle.Fill;
+                tuple.lblValores.Margin = new Padding(4, 12, 4, 12);
+
+                tuple.btnEditar.Dock = DockStyle.Fill;
+                tuple.btnEditar.Margin = new Padding(6, 12, 6, 12);
+
             }
+
+            // Añadir fila espaciadora invisible para que el layout tenga un área final
+            int spacerRowIndex = tableLayoutLimitesPorCategoria.RowCount;
+            tableLayoutLimitesPorCategoria.RowCount++;
+            // Esta fila en porcentaje ocupará el espacio restante disponible
+            tableLayoutLimitesPorCategoria.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            Panel pnlSpacer = new Panel { BackColor = Color.Transparent, Dock = DockStyle.Fill };
+            tableLayoutLimitesPorCategoria.Controls.Add(pnlSpacer, 0, spacerRowIndex);
+            tableLayoutLimitesPorCategoria.SetColumnSpan(pnlSpacer, tableLayoutLimitesPorCategoria.ColumnCount);
 
             tableLayoutLimitesPorCategoria.ResumeLayout();
         }
 
-        private Panel CrearControlTarjeta(string categoria, double gastado, double limite)
+        // Crea los controles que van en una fila (columna por control). Devuelve un tuple con los elementos.
+        private (Label lblCategoria, Panel pnlBarraFondo, Label lblValores, Button btnEditar) CrearControlesFila(string categoria, double gastado, double limite)
         {
-            // PANEL PRINCIPAL DE LA TARJETA
-            Panel pnlTarjeta = new Panel
-            {
-                Dock = DockStyle.Fill,
-                BackColor = Color.White,
-                Margin = new Padding(2),
-                BorderStyle = BorderStyle.FixedSingle
-            };
-
-            // TÍTULO CATEGORÍA
             Label lblCategoria = new Label
             {
                 Text = categoria,
                 Font = new Font("Segoe UI", 9F, FontStyle.Bold),
-                Location = new Point(5, 12),
-                Size = new Size(110, 20),
-                AutoEllipsis = true
+                AutoEllipsis = true,
+                TextAlign = ContentAlignment.MiddleLeft
             };
-            pnlTarjeta.Controls.Add(lblCategoria);
 
-            // BOTÓN EDITAR
-            Button btnEditar = new Button
+            // BARRA DE PROGRESO (Fondo Gris)
+            Panel pnlBarraFondo = new Panel
             {
-                Text = "✏️",
-                Size = new Size(24, 22),
-                FlatStyle = FlatStyle.Flat,
-                Tag = categoria,
-                Anchor = AnchorStyles.Top | AnchorStyles.Right
+                BackColor = Color.FromArgb(230, 230, 230)
             };
-            btnEditar.FlatAppearance.BorderSize = 0;
-            pnlTarjeta.Controls.Add(btnEditar);
 
-            // TEXTO VALORES (Sugerido ancho de 110 para evitar recortes)
+            Color colorRelleno = Color.Transparent;
+            if (limite > 0)
+            {
+                double pctTemp = (gastado / limite) * 100.0;
+                colorRelleno = pctTemp < 70 ? Color.MediumSeaGreen : pctTemp < 90 ? Color.Goldenrod : Color.IndianRed;
+            }
+
+            Panel pnlBarraRelleno = new Panel
+            {
+                BackColor = colorRelleno,
+                Width = 0,
+                Height = 12,
+                Dock = DockStyle.Left
+            };
+            pnlBarraFondo.Controls.Add(pnlBarraRelleno);
+
             Label lblValores = new Label
             {
                 Text = $"{gastado:N0}€/{limite:N0}€",
                 Font = new Font("Segoe UI", 9F, FontStyle.Regular),
                 ForeColor = Color.DimGray,
-                Size = new Size(110, 20),
-                TextAlign = ContentAlignment.MiddleRight,
-                Anchor = AnchorStyles.Top | AnchorStyles.Right
-            };
-            pnlTarjeta.Controls.Add(lblValores);
-
-            // BARRA DE PROGRESO (Fondo Gris)
-            Panel pnlBarraFondo = new Panel
-            {
-                Location = new Point(125, 14),
-                Height = 12,
-                BackColor = Color.FromArgb(230, 230, 230)
+                TextAlign = ContentAlignment.MiddleRight
             };
 
-            // Determinar color de relleno según el gasto
-            Color colorRelleno = Color.Transparent;
-            if (limite > 0)
+            Button btnEditar = new Button
             {
-                double pctTemp = (gastado / limite) * 100.0;
-                colorRelleno = pctTemp < 70 ? Color.MediumSeaGreen :
-                               pctTemp < 90 ? Color.Goldenrod : Color.IndianRed;
-            }
-
-            Panel pnlBarraRelleno = new Panel
-            {
-                Height = 12,
-                Location = new Point(0, 0),
-                Width = 0,
-                BackColor = colorRelleno
-            };
-
-            pnlBarraFondo.Controls.Add(pnlBarraRelleno);
-            pnlTarjeta.Controls.Add(pnlBarraFondo);
-
-            // 6. PANEL DE EDICIÓN
-            Panel pnlEdicion = new Panel
-            {
-                Location = new Point(120, 5),
-                Height = 36,
-                BackColor = Color.FromArgb(245, 245, 245),
-                BorderStyle = BorderStyle.FixedSingle,
-                Visible = false
-            };
-
-            Label lblEdita = new Label
-            {
-                Text = "Límite (€):",
-                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
-                Location = new Point(4, 7),
-                Size = new Size(65, 20),
-                TextAlign = ContentAlignment.MiddleLeft
-            };
-
-            TextBox txtLimite = new TextBox
-            {
-                Text = limite.ToString("F0"),
-                Font = new Font("Segoe UI", 9F),
-                Location = new Point(70, 6),
-                Size = new Size(70, 22)
-            };
-
-            Button btnAceptar = new Button
-            {
-                Text = "OK",
-                Font = new Font("Segoe UI", 8.5F, FontStyle.Bold),
-                BackColor = Color.MediumSeaGreen,
-                ForeColor = Color.White,
+                Text = "✏️",
                 FlatStyle = FlatStyle.Flat,
-                Location = new Point(145, 5),
-                Size = new Size(45, 24)
+                Tag = categoria
             };
-            btnAceptar.FlatAppearance.BorderSize = 0;
+            btnEditar.FlatAppearance.BorderSize = 0;
 
-            Button btnCancelar = new Button
-            {
-                Text = "Cancelar",
-                Font = new Font("Segoe UI", 8.5F, FontStyle.Bold),
-                BackColor = Color.Gray,
-                ForeColor = Color.White,
-                FlatStyle = FlatStyle.Flat,
-                Location = new Point(195, 5),
-                Size = new Size(65, 24)
-            };
-            btnCancelar.FlatAppearance.BorderSize = 0;
-
-            pnlEdicion.Controls.Add(lblEdita);
-            pnlEdicion.Controls.Add(txtLimite);
-            pnlEdicion.Controls.Add(btnAceptar);
-            pnlEdicion.Controls.Add(btnCancelar);
-            pnlTarjeta.Controls.Add(pnlEdicion);
-            pnlEdicion.BringToFront();
-
-            // -------------------------------------------------------------
-            // FUNCIONES DE DIBUJO Y RECALCULO DE TAMAÑOS
-            // -------------------------------------------------------------
-
-            // Actualiza únicamente la barra de color interna
-            Action actualizarRelleno = () =>
+            // Actualizar ancho del relleno cuando cambie tamaño del fondo
+            pnlBarraFondo.SizeChanged += (s, e) =>
             {
                 if (limite <= 0)
                 {
                     pnlBarraRelleno.Width = 0;
                     return;
                 }
-
                 double pctReal = (gastado / limite) * 100.0;
                 double pctVisual = Math.Min(pctReal, 100.0);
-                int anchoTotalFondo = pnlBarraFondo.Width;
-
-                if (anchoTotalFondo > 0)
-                {
-                    int anchoCalculado = (int)Math.Round(anchoTotalFondo * (pctVisual / 100.0));
-                    pnlBarraRelleno.Width = Math.Max(0, Math.Min(anchoCalculado, anchoTotalFondo));
-                }
+                int ancho = (int)Math.Round(pnlBarraFondo.Width * (pctVisual / 100.0));
+                pnlBarraRelleno.Width = Math.Max(0, Math.Min(ancho, pnlBarraFondo.Width));
             };
 
-            // Recalcula posiciones relativas sin solapar elementos
-            Action recalcularDiseno = () =>
-            {
-                btnEditar.Location = new Point(pnlTarjeta.Width - 28, 9);
-                lblValores.Location = new Point(btnEditar.Left - lblValores.Width - 2, 12);
-
-                // La barra gris termina 10px antes de lblValores
-                int nuevoAnchoBarra = lblValores.Left - pnlBarraFondo.Left - 10;
-                pnlBarraFondo.Width = Math.Max(10, nuevoAnchoBarra);
-
-                // Ajustar panel de edición
-                pnlEdicion.Width = Math.Max(10, pnlTarjeta.Width - 155);
-
-                // Recalcular el relleno interno de la barra
-                actualizarRelleno();
-            };
-
-            // Eventos de trazado
-            pnlTarjeta.Layout += (s, e) => recalcularDiseno();
-            pnlBarraFondo.SizeChanged += (s, e) => actualizarRelleno();
-
-            // -------------------------------------------------------------
-            // EVENTOS DE INTERACCIÓN
-            // -------------------------------------------------------------
-
+            // Click editar -> mostrar diálogo modal para editar límite (más estable que edición inline)
             btnEditar.Click += (s, e) =>
             {
-                pnlEdicion.Visible = !pnlEdicion.Visible;
-                if (pnlEdicion.Visible)
-                {
-                    txtLimite.Text = limite.ToString("F0");
-                    txtLimite.Focus();
-                    txtLimite.SelectAll();
-                }
-            };
-
-            btnAceptar.Click += (s, e) =>
-            {
-                if (decimal.TryParse(txtLimite.Text, out decimal nuevoLimite) && nuevoLimite > 0)
+                if (MostrarDialogoLimite(categoria, limite, out decimal nuevoLimite) && nuevoLimite > 0)
                 {
                     try
                     {
-                        var presupuestoExistente = datalinq.Limites
-                            .FirstOrDefault(p => p.Categoria == categoria);
-
+                        var presupuestoExistente = datalinq.Limites.FirstOrDefault(p => p.Categoria == categoria);
                         if (presupuestoExistente != null)
                         {
                             presupuestoExistente.Limite = nuevoLimite;
@@ -911,7 +812,6 @@ namespace Proyecto_Financiero
                         }
 
                         datalinq.SubmitChanges();
-                        pnlEdicion.Visible = false;
                         CargarTarjetasLimites();
                     }
                     catch (Exception ex)
@@ -919,18 +819,53 @@ namespace Proyecto_Financiero
                         MessageBox.Show($"Error al guardar el límite: {ex.Message}", "Error BD", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Por favor, introduce un importe válido mayor a 0.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
             };
 
-            btnCancelar.Click += (s, e) =>
+            return (lblCategoria, pnlBarraFondo, lblValores, btnEditar);
+        }
+
+        // Muestra un diálogo modal simple para editar un límite. Devuelve true si el usuario aceptó.
+        private bool MostrarDialogoLimite(string categoria, double limiteActual, out decimal nuevoLimite)
+        {
+            nuevoLimite = 0;
+            using (Form dlg = new Form())
             {
-                pnlEdicion.Visible = false;
-            };
+                dlg.Text = $"Editar límite - {categoria}";
+                dlg.FormBorderStyle = FormBorderStyle.FixedDialog;
+                dlg.StartPosition = FormStartPosition.CenterParent;
+                dlg.ClientSize = new Size(300, 110);
+                dlg.MinimizeBox = false;
+                dlg.MaximizeBox = false;
 
-            return pnlTarjeta;
+                Label lbl = new Label { Text = "Límite (€):", Location = new Point(12, 15), AutoSize = true };
+                TextBox txt = new TextBox { Location = new Point(90, 12), Width = 180, Text = limiteActual.ToString("F0") };
+                Button ok = new Button { Text = "OK", DialogResult = DialogResult.OK, Location = new Point(110, 60), Width = 70 };
+                Button cancel = new Button { Text = "Cancelar", DialogResult = DialogResult.Cancel, Location = new Point(190, 60), Width = 70 };
+
+                dlg.Controls.Add(lbl);
+                dlg.Controls.Add(txt);
+                dlg.Controls.Add(ok);
+                dlg.Controls.Add(cancel);
+
+                dlg.AcceptButton = ok;
+                dlg.CancelButton = cancel;
+
+                if (dlg.ShowDialog(this) == DialogResult.OK)
+                {
+                    if (decimal.TryParse(txt.Text, out decimal parsed) && parsed > 0)
+                    {
+                        nuevoLimite = parsed;
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Introduce un importe válido mayor que 0.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
+                }
+            }
+
+            return false;
         }
 
         /// <summary>
