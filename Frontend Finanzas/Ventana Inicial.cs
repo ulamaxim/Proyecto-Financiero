@@ -871,6 +871,11 @@ namespace Proyecto_Financiero
         /// Carga de datos al panel de metas de ahorro 
         /// al pulsar el boton de planificacion
         /// </summary>
+        private void btAnadirMeta_Click(object sender, EventArgs e)
+        {
+            panelEdicionMetas.Visible = true;
+            panelEdicionMetas.Enabled = true;
+        }
 
         private void CargarTarjetasMetas()
         {
