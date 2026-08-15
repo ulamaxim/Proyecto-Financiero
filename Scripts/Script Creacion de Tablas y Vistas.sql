@@ -38,8 +38,16 @@ CREATE TABLE MetasAhorro (
 );
 GO
 
-INSERT INTO MetasAhorro (Concepto, MontoObjetivo, Completada)
-VALUES ('Viaje a Europa', 5000.00, 0);
+DROP TABLE IF EXISTS GastosProgramados;
+CREATE TABLE GastosProgramados (
+	Id INT IDENTITY,
+	NombreGasto VARCHAR(100) NOT NULL,
+	FechaGasto DATE NOT NULL,
+	Repetible BIT DEFAULT 0 NOT NULL,
+	Completado BIT DEFAULT 0 NOT NULL,
+	FechaCreacion DATETIME DEFAULT GETDATE()
+);
+GO
 
 -- Vista que muestre todos los datos para el dataGridView1
 CREATE OR ALTER VIEW vw_datagrid1 

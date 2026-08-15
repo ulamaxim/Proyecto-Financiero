@@ -642,7 +642,7 @@ namespace Proyecto_Financiero
 
 
 
-            lblPresupuestoValor.Text = presupuestoMes.ToString("C2", euro);
+            lblPresupuestoMes.Text = "Presupuesto del mes: " + presupuestoMes.ToString("C2", euro);
         }
 
         /// <summary>
@@ -877,9 +877,210 @@ namespace Proyecto_Financiero
             panelEdicionMetas.Enabled = true;
         }
 
+        private void btCancelarMeta_Click(object sender, EventArgs e)
+        {
+            panelEdicionMetas.Visible = false;
+            panelEdicionMetas.Enabled = false;
+            txtNombreMeta.Clear();
+            txtSaldoNecesario.Clear();
+
+        }
+
+        private void btAceptarMetaNueva_Click(object sender, EventArgs e)
+        {
+            // Validar campos
+            string nombre = txtNombreMeta.Text?.Trim();
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                MessageBox.Show("Introduce un nombre para la meta.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNombreMeta.Focus();
+                return;
+            }
+
+            if (!decimal.TryParse(txtSaldoNecesario.Text, out decimal monto) || monto <= 0)
+            {
+                MessageBox.Show("Introduce un importe válido mayor que 0.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtSaldoNecesario.Focus();
+                return;
+            }
+
+            try
+            {
+                // Crear nueva entidad MetasAhorro y guardarla en la base de datos
+                MetasAhorro nueva = new MetasAhorro
+                {
+                    Concepto = nombre,
+                    MontoObjetivo = monto,
+                    Completada = false,
+                    FechaCreacion = DateTime.Now
+                };
+
+                datalinq.MetasAhorro.InsertOnSubmit(nueva);
+                datalinq.SubmitChanges();
+
+                // Actualizar UI
+                panelEdicionMetas.Visible = false;
+                panelEdicionMetas.Enabled = false;
+                txtNombreMeta.Clear();
+                txtSaldoNecesario.Clear();
+
+                CargarTarjetasMetas();
+
+                MessageBox.Show("Meta guardada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al guardar la meta: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void CargarTarjetasMetas()
         {
+            // Limpiar
+            tableLayoutMetasAhorro.SuspendLayout();
+            tableLayoutMetasAhorro.Controls.Clear();
+            tableLayoutMetasAhorro.RowStyles.Clear();
+            tableLayoutMetasAhorro.RowCount = 0;
 
+            // Configurar columnas: Nombre | Barra | Valores | Completar
+            tableLayoutMetasAhorro.ColumnCount = 4;
+            tableLayoutMetasAhorro.ColumnStyles.Clear();
+            tableLayoutMetasAhorro.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutMetasAhorro.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutMetasAhorro.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17F));
+            tableLayoutMetasAhorro.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 8F));
+
+            // Leer metas no completadas desde BD
+            var metas = datalinq.MetasAhorro
+                .Where(m => m.Completada == false)
+                .OrderBy(m => m.FechaCreacion)
+                .ToList();
+
+            // Obtener saldo disponible global (primera fila Saldo de vw_datagrid1)
+            var primerSaldoNullable = datalinq.vw_datagrid1
+                .OrderByDescending(t => t.Fecha_Operacion)
+                .Select(t => t.Saldo)
+                .FirstOrDefault();
+            decimal saldoDisponibleGlobal = primerSaldoNullable.HasValue ? primerSaldoNullable.Value : 0m;
+
+            // Calculamos el saldo restante dinámicamente: cada meta reserva su MontoObjetivo
+            decimal restante = saldoDisponibleGlobal;
+            foreach (var meta in metas)
+            {
+                int row = tableLayoutMetasAhorro.RowCount;
+                tableLayoutMetasAhorro.RowCount++;
+                tableLayoutMetasAhorro.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+
+                var controles = CrearControlesMeta(meta, restante);
+
+                tableLayoutMetasAhorro.Controls.Add(controles.lblNombre, 0, row);
+                tableLayoutMetasAhorro.Controls.Add(controles.pnlBarraFondo, 1, row);
+                tableLayoutMetasAhorro.Controls.Add(controles.lblValores, 2, row);
+                tableLayoutMetasAhorro.Controls.Add(controles.btnCompletar, 3, row);
+
+                controles.lblNombre.Dock = DockStyle.Fill;
+                controles.lblNombre.Margin = new Padding(4, 12, 4, 12);
+
+                controles.pnlBarraFondo.Dock = DockStyle.Fill;
+                controles.pnlBarraFondo.Margin = new Padding(4, 18, 4, 12);
+
+                controles.lblValores.Dock = DockStyle.Fill;
+                controles.lblValores.Margin = new Padding(4, 12, 4, 12);
+
+                controles.btnCompletar.Dock = DockStyle.Fill;
+                controles.btnCompletar.Margin = new Padding(6, 12, 6, 12);
+
+                // Reducir el saldo restante después de reservar para esta meta
+                restante -= meta.MontoObjetivo;
+                if (restante < 0) restante = 0;
+            }
+
+            // Spacer final
+            int spacerIndex = tableLayoutMetasAhorro.RowCount;
+            tableLayoutMetasAhorro.RowCount++;
+            tableLayoutMetasAhorro.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            Panel spacer = new Panel { BackColor = Color.Transparent, Dock = DockStyle.Fill };
+            tableLayoutMetasAhorro.Controls.Add(spacer, 0, spacerIndex);
+            tableLayoutMetasAhorro.SetColumnSpan(spacer, tableLayoutMetasAhorro.ColumnCount);
+
+            tableLayoutMetasAhorro.ResumeLayout();
+        }
+
+        private (Label lblNombre, Panel pnlBarraFondo, Label lblValores, Button btnCompletar) CrearControlesMeta(MetasAhorro meta, decimal saldoDisponible)
+        {
+            Label lblNombre = new Label
+            {
+                Text = meta.Concepto,
+                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                TextAlign = ContentAlignment.MiddleLeft,
+                AutoEllipsis = true
+            };
+
+            Panel pnlBarraFondo = new Panel { BackColor = Color.FromArgb(230, 230, 230) };
+
+            Color colorRelleno = Color.Transparent;
+            if (meta.MontoObjetivo > 0)
+            {
+                double pct = (double)saldoDisponible / (double)meta.MontoObjetivo * 100.0;
+                colorRelleno = pct <= 100 ? Color.Goldenrod : Color.Blue;
+            }
+
+            Panel pnlBarraRelleno = new Panel { BackColor = colorRelleno, Width = 0, Height = 12, Dock = DockStyle.Left };
+            pnlBarraFondo.Controls.Add(pnlBarraRelleno);
+
+            Label lblValores = new Label
+            {
+                Text = $"{saldoDisponible:N0}€/{meta.MontoObjetivo:N0}€",
+                Font = new Font("Segoe UI", 9F, FontStyle.Regular),
+                ForeColor = Color.DimGray,
+                TextAlign = ContentAlignment.MiddleRight
+            };
+
+            Button btnCompletar = new Button
+            {
+                Text = meta.Completada ? "✔" : "✚",
+                FlatStyle = FlatStyle.Flat,
+                Tag = meta.Id
+            };
+            btnCompletar.FlatAppearance.BorderSize = 0;
+            btnCompletar.Enabled = !meta.Completada;
+
+            // Actualizar ancho del relleno
+            pnlBarraFondo.SizeChanged += (s, e) =>
+            {
+                if (meta.MontoObjetivo <= 0)
+                {
+                    pnlBarraRelleno.Width = 0;
+                    return;
+                }
+                double pct = (double)saldoDisponible / (double)meta.MontoObjetivo;
+                pct = Math.Min(1.0, Math.Max(0.0, pct));
+                pnlBarraRelleno.Width = (int)Math.Round(pnlBarraFondo.Width * pct);
+            };
+
+            btnCompletar.Click += (s, e) =>
+            {
+                if (MessageBox.Show($"Marcar la meta '{meta.Concepto}' como completada?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    var m = datalinq.MetasAhorro.FirstOrDefault(x => x.Id == meta.Id);
+                    if (m != null)
+                    {
+                        m.Completada = true;
+                        try
+                        {
+                            datalinq.SubmitChanges();
+                            // Refrescar vistas: eliminamos la meta de la lista mostrando solo no completadas
+                            CargarTarjetasMetas();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Error al marcar meta completada: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            };
+
+            return (lblNombre, pnlBarraFondo, lblValores, btnCompletar);
         }
 
         //======================================================
