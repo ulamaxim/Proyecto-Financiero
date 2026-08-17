@@ -641,9 +641,18 @@ namespace Proyecto_Financiero
                 .Where(t => t.Categoria == "Nomina")
                 .Sum(t => t.Importe.Value);
 
+            // Obtenemos valores de gastos asignados del mes
+            decimal gastosMes = datalinq.GastosProgramados
+                .Where (g => g.FechaGasto.Month == DateTime.Now.Month && 
+                        g.FechaGasto.Year == DateTime.Now.Year)
+                .Where (g => g.Completado == false)
+                .Sum(g => (decimal?)g.CantidadGasto) ?? 0m;
 
+            decimal ahorroDisponible = presupuestoMes - gastosMes;
 
             lblPresupuestoMes.Text = "Presupuesto del mes: " + presupuestoMes.ToString("C2", euro);
+            lblGastosAsignados.Text = "Gastos asignados: " + gastosMes.ToString("C2", euro);
+            lblAhorroDisponible.Text = "Ahorro Disponible: " + ahorroDisponible.ToString("C2", euro);
         }
 
         /// <summary>
@@ -1112,6 +1121,7 @@ namespace Proyecto_Financiero
                 txtNombreGasto.Focus();
                 return;
             }
+
             if (!decimal.TryParse(txtCantidadGasto.Text, out decimal monto) || monto <= 0)
             {
                 MessageBox.Show("Introduce un importe válido mayor que 0.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -1119,81 +1129,74 @@ namespace Proyecto_Financiero
                 return;
             }
 
-            bool repetible = true;
-            string repetibleTipo = "";
-            if (chkNoRepetible.Checked)
-            {
-                repetible = false;
-                repetibleTipo = "No Repetible";
-            }
-            else if (chkSemanal.Checked)
-            {
-                repetibleTipo = "Semanal";
-            }
-            else if (chkMensual.Checked)
-            {
-                repetibleTipo = "Mensual";
-            }
-            else if (chkAnual.Checked)
-            {
-                repetibleTipo = "Anual";
-            }
+            bool repetible = !chkNoRepetible.Checked;
+            string repetibleTipo = "No Repetible";
+
+            if (chkSemanal.Checked) repetibleTipo = "Semanal";
+            else if (chkMensual.Checked) repetibleTipo = "Mensual";
+            else if (chkAnual.Checked) repetibleTipo = "Anual";
 
             int limiteRegistros = repetible ? 5 : 1;
             DateTime fechaBase = DateTime.Now;
 
-            for (int i = 0; i < limiteRegistros; i++)
-            {
-                // Calcular la fecha según el intervalo de repetición
-                DateTime fechaCalculada = fechaBase;
-
-                if (repetible)
-                {
-                    switch (repetibleTipo)
-                    {
-                        case "Semanal":
-                            fechaCalculada = fechaBase.AddDays(i * 7);
-                            break;
-                        case "Mensual":
-                            fechaCalculada = fechaBase.AddMonths(i);
-                            break;
-                        case "Anual":
-                            fechaCalculada = fechaBase.AddYears(i);
-                            break;
-                    }
-                }
-
             try
             {
-                // Creamos nueva entidad GastoProgramado y la guardamos en la base de datos
-                GastosProgramados nuevo = new GastosProgramados
+                for (int i = 0; i < limiteRegistros; i++)
                 {
-                    NombreGasto = nombre,
-                    CantidadGasto = monto,
-                    FechaGasto = fechaCalculada,
-                    Repetible = repetible,
-                    RepetibleTipo = repetibleTipo,
-                    FechaCreacion = DateTime.Now
-                };
-                datalinq.GastosProgramados.InsertOnSubmit(nuevo);
+                    DateTime fechaCalculada = fechaBase;
+
+                    if (repetible)
+                    {
+                        switch (repetibleTipo)
+                        {
+                            case "Semanal":
+                                fechaCalculada = fechaBase.AddDays(i * 7);
+                                break;
+                            case "Mensual":
+                                fechaCalculada = fechaBase.AddMonths(i);
+                                break;
+                            case "Anual":
+                                fechaCalculada = fechaBase.AddYears(i);
+                                break;
+                        }
+                    }
+
+                    GastosProgramados nuevo = new GastosProgramados
+                    {
+                        NombreGasto = nombre,
+                        CantidadGasto = monto,
+                        FechaGasto = fechaCalculada,
+                        Repetible = repetible,
+                        RepetibleTipo = repetibleTipo,
+                        Completado = false,
+                        FechaCreacion = DateTime.Now
+                    };
+
+                    datalinq.GastosProgramados.InsertOnSubmit(nuevo);
+                }
+
                 datalinq.SubmitChanges();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al agregar gasto programado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-                // Limpiar campos y cerrar panel
+
+                // Limpiar UI
                 txtNombreGasto.Clear();
                 txtCantidadGasto.Clear();
                 panelEdicionGastoProgramados.Visible = false;
                 panelEdicionGastoProgramados.Enabled = false;
+
+                // Recargar vista
+                CargaGastosProgramados();
+
+                MessageBox.Show("Gasto(s) programado(s) guardado(s) correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al agregar gasto programado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         // Carga de datos al Table Layout de gastos programados (tableLayoutGastosProgramados)
         private void CargaGastosProgramados()
         {
-            // Limpiamos el TableLayoutPanel
             tableLayoutGastosProgramados.SuspendLayout();
             tableLayoutGastosProgramados.Controls.Clear();
             tableLayoutGastosProgramados.RowStyles.Clear();
@@ -1202,17 +1205,125 @@ namespace Proyecto_Financiero
             tableLayoutGastosProgramados.ColumnCount = 4;
             tableLayoutGastosProgramados.ColumnStyles.Clear();
             tableLayoutGastosProgramados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutGastosProgramados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutGastosProgramados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17F));
+            tableLayoutGastosProgramados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutGastosProgramados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 42F));
             tableLayoutGastosProgramados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 8F));
 
-            //Cargamos los gastos programados desde la base de datos
+            DateTime hoy = DateTime.Today;
+            DateTime inicioMesActual = new DateTime(hoy.Year, hoy.Month, 1);
+            DateTime limiteExclusivo = inicioMesActual.AddMonths(2);
+
             var gastosProgramados = datalinq.GastosProgramados
-                .Where(g => g.Repetible == true && DateTime.Now.Month == g.FechaGasto.Month)
-                .OrderBy(g => g.FechaCreacion)
+                .Where(g => g.Completado == false
+                         && g.FechaGasto >= inicioMesActual
+                         && g.FechaGasto < limiteExclusivo)
+                .OrderBy(g => g.FechaGasto)
                 .ToList();
 
+            foreach (var gasto in gastosProgramados)
+            {
+                int row = tableLayoutGastosProgramados.RowCount;
+                tableLayoutGastosProgramados.RowCount++;
+                tableLayoutGastosProgramados.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
 
+                // Evaluamos si el gasto pertenece al mes actual
+                bool esMesActual = gasto.FechaGasto.Month == hoy.Month && gasto.FechaGasto.Year == hoy.Year;
+
+                var controles = CrearControlesGastoProgramado(gasto, esMesActual);
+
+                tableLayoutGastosProgramados.Controls.Add(controles.lblNombre, 0, row);
+                tableLayoutGastosProgramados.Controls.Add(controles.lblFecha, 1, row);
+                tableLayoutGastosProgramados.Controls.Add(controles.lblMonto, 2, row);
+                tableLayoutGastosProgramados.Controls.Add(controles.btnCompletar, 3, row);
+
+                controles.lblNombre.Dock = DockStyle.Fill;
+                controles.lblNombre.Margin = new Padding(4, 12, 4, 12);
+
+                controles.lblFecha.Dock = DockStyle.Fill;
+                controles.lblFecha.Margin = new Padding(4, 12, 4, 12);
+
+                controles.lblMonto.Dock = DockStyle.Fill;
+                controles.lblMonto.Margin = new Padding(4, 12, 4, 12);
+
+                controles.btnCompletar.Dock = DockStyle.Fill;
+                controles.btnCompletar.Margin = new Padding(6, 12, 6, 12);
+            }
+
+            // Spacer final
+            int spacerIndex = tableLayoutGastosProgramados.RowCount;
+            tableLayoutGastosProgramados.RowCount++;
+            tableLayoutGastosProgramados.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            Panel spacer = new Panel { BackColor = Color.Transparent, Dock = DockStyle.Fill };
+            tableLayoutGastosProgramados.Controls.Add(spacer, 0, spacerIndex);
+            tableLayoutGastosProgramados.SetColumnSpan(spacer, tableLayoutGastosProgramados.ColumnCount);
+
+            tableLayoutGastosProgramados.ResumeLayout();
+        }
+
+        private (Label lblNombre, Label lblFecha, Label lblMonto, Button btnCompletar) CrearControlesGastoProgramado(GastosProgramados gasto, bool esMesActual)
+        {
+            // Colores según el mes
+            Color colorFecha = esMesActual ? Color.DarkSlateGray : Color.SaddleBrown;
+            string textoFecha = esMesActual
+                ? gasto.FechaGasto.ToString("dd/MM/yyyy")
+                : $"{gasto.FechaGasto:dd/MM/yyyy} (Próx. mes)";
+
+            Label lblNombre = new Label
+            {
+                Text = gasto.NombreGasto,
+                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                ForeColor = esMesActual ? Color.Black : Color.DimGray,
+                TextAlign = ContentAlignment.MiddleLeft,
+                AutoEllipsis = true
+            };
+
+            Label lblFecha = new Label
+            {
+                Text = textoFecha,
+                Font = new Font("Segoe UI", 9.5F, esMesActual ? FontStyle.Regular : FontStyle.Bold),
+                ForeColor = colorFecha,
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+
+            Label lblMonto = new Label
+            {
+                Text = $"{gasto.CantidadGasto:N2} €",
+                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                ForeColor = esMesActual ? Color.DarkRed : Color.IndianRed, // Tono más suave si es del próximo mes
+                TextAlign = ContentAlignment.MiddleRight
+            };
+
+            Button btnCompletar = new Button
+            {
+                Text = gasto.Completado ? "✔" : "✚",
+                FlatStyle = FlatStyle.Flat,
+                Tag = gasto.Id,
+                Enabled = !gasto.Completado
+            };
+            btnCompletar.FlatAppearance.BorderSize = 0;
+
+            btnCompletar.Click += (s, e) =>
+            {
+                if (MessageBox.Show($"¿Marcar el gasto '{gasto.NombreGasto}' como pagado/completado?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    var registro = datalinq.GastosProgramados.FirstOrDefault(x => x.Id == gasto.Id);
+                    if (registro != null)
+                    {
+                        registro.Completado = true;
+                        try
+                        {
+                            datalinq.SubmitChanges();
+                            CargaGastosProgramados();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Error al marcar gasto como completado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            };
+
+            return (lblNombre, lblFecha, lblMonto, btnCompletar);
         }
 
         //======================================================
@@ -1319,6 +1430,7 @@ namespace Proyecto_Financiero
 
             CargarTarjetasLimites();
             CargarTarjetasMetas();
+            CargaGastosProgramados();
             CargaPanelesMetricas();
         }
 
