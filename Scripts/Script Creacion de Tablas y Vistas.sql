@@ -40,10 +40,12 @@ GO
 
 DROP TABLE IF EXISTS GastosProgramados;
 CREATE TABLE GastosProgramados (
-	Id INT IDENTITY,
+	Id INT IDENTITY(1,1) PRIMARY KEY,
 	NombreGasto VARCHAR(100) NOT NULL,
+	CantidadGasto DECIMAL(18,2) NOT NULL,
 	FechaGasto DATE NOT NULL,
 	Repetible BIT DEFAULT 0 NOT NULL,
+	RepetibleTipo VARCHAR(20) NOT NULL,
 	Completado BIT DEFAULT 0 NOT NULL,
 	FechaCreacion DATETIME DEFAULT GETDATE()
 );

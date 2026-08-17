@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -661,8 +662,8 @@ namespace Proyecto_Financiero
             tableLayoutLimitesPorCategoria.ColumnCount = 4;
             tableLayoutLimitesPorCategoria.ColumnStyles.Clear();
             tableLayoutLimitesPorCategoria.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F)); // Categoria
-            tableLayoutLimitesPorCategoria.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 55F)); // Barra de progreso
-            tableLayoutLimitesPorCategoria.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12F)); // Valores
+            tableLayoutLimitesPorCategoria.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F)); // Barra de progreso
+            tableLayoutLimitesPorCategoria.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17F)); // Valores
             tableLayoutLimitesPorCategoria.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 8F));  // Botón editar
 
             // Obtener gastos por categoría
@@ -1081,6 +1082,137 @@ namespace Proyecto_Financiero
             };
 
             return (lblNombre, pnlBarraFondo, lblValores, btnCompletar);
+        }
+
+        /// <summary>
+        /// Carga de datos al panel de gastos programados
+        /// </summary>
+
+        private void btAnadirGastoProgramado_Click(object sender, EventArgs e)
+        {
+            panelEdicionGastoProgramados.Visible = true;
+            panelEdicionGastoProgramados.Enabled = true;
+        }
+
+        private void btCancelarGastosProgramados_Click(object sender, EventArgs e)
+        {
+            txtNombreGasto.Clear();
+            txtCantidadGasto.Clear();
+            panelEdicionGastoProgramados.Visible = false;
+            panelEdicionGastoProgramados.Enabled = false;
+        }
+
+        private void btAceptarGastosProgramados_Click(object sender, EventArgs e)
+        {
+            // Validar campos
+            string nombre = txtNombreGasto.Text?.Trim();
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                MessageBox.Show("Introduce un nombre para el gasto programado.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNombreGasto.Focus();
+                return;
+            }
+            if (!decimal.TryParse(txtCantidadGasto.Text, out decimal monto) || monto <= 0)
+            {
+                MessageBox.Show("Introduce un importe válido mayor que 0.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCantidadGasto.Focus();
+                return;
+            }
+
+            bool repetible = true;
+            string repetibleTipo = "";
+            if (chkNoRepetible.Checked)
+            {
+                repetible = false;
+                repetibleTipo = "No Repetible";
+            }
+            else if (chkSemanal.Checked)
+            {
+                repetibleTipo = "Semanal";
+            }
+            else if (chkMensual.Checked)
+            {
+                repetibleTipo = "Mensual";
+            }
+            else if (chkAnual.Checked)
+            {
+                repetibleTipo = "Anual";
+            }
+
+            int limiteRegistros = repetible ? 5 : 1;
+            DateTime fechaBase = DateTime.Now;
+
+            for (int i = 0; i < limiteRegistros; i++)
+            {
+                // Calcular la fecha según el intervalo de repetición
+                DateTime fechaCalculada = fechaBase;
+
+                if (repetible)
+                {
+                    switch (repetibleTipo)
+                    {
+                        case "Semanal":
+                            fechaCalculada = fechaBase.AddDays(i * 7);
+                            break;
+                        case "Mensual":
+                            fechaCalculada = fechaBase.AddMonths(i);
+                            break;
+                        case "Anual":
+                            fechaCalculada = fechaBase.AddYears(i);
+                            break;
+                    }
+                }
+
+            try
+            {
+                // Creamos nueva entidad GastoProgramado y la guardamos en la base de datos
+                GastosProgramados nuevo = new GastosProgramados
+                {
+                    NombreGasto = nombre,
+                    CantidadGasto = monto,
+                    FechaGasto = fechaCalculada,
+                    Repetible = repetible,
+                    RepetibleTipo = repetibleTipo,
+                    FechaCreacion = DateTime.Now
+                };
+                datalinq.GastosProgramados.InsertOnSubmit(nuevo);
+                datalinq.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al agregar gasto programado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+                // Limpiar campos y cerrar panel
+                txtNombreGasto.Clear();
+                txtCantidadGasto.Clear();
+                panelEdicionGastoProgramados.Visible = false;
+                panelEdicionGastoProgramados.Enabled = false;
+            }
+        }
+
+        // Carga de datos al Table Layout de gastos programados (tableLayoutGastosProgramados)
+        private void CargaGastosProgramados()
+        {
+            // Limpiamos el TableLayoutPanel
+            tableLayoutGastosProgramados.SuspendLayout();
+            tableLayoutGastosProgramados.Controls.Clear();
+            tableLayoutGastosProgramados.RowStyles.Clear();
+            tableLayoutGastosProgramados.RowCount = 0;
+
+            tableLayoutGastosProgramados.ColumnCount = 4;
+            tableLayoutGastosProgramados.ColumnStyles.Clear();
+            tableLayoutGastosProgramados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutGastosProgramados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutGastosProgramados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17F));
+            tableLayoutGastosProgramados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 8F));
+
+            //Cargamos los gastos programados desde la base de datos
+            var gastosProgramados = datalinq.GastosProgramados
+                .Where(g => g.Repetible == true && DateTime.Now.Month == g.FechaGasto.Month)
+                .OrderBy(g => g.FechaCreacion)
+                .ToList();
+
+
         }
 
         //======================================================

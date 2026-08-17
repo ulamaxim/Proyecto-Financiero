@@ -26,5 +26,11 @@
         <elementListCompartment Id="1b15b739-0d77-457d-b89d-fe63b048745f" absoluteBounds="6.89, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="a0c4e86f-5b14-49ec-8cb4-cca3e60032bd" absoluteBounds="4.75, 2, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/DataClasses1DataContext/GastosProgramados" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bfbce2ee-2461-42b2-a77e-eddf028b7d1c" absoluteBounds="4.765, 2.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

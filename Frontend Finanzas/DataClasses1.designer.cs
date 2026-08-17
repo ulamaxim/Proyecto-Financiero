@@ -39,6 +39,9 @@ namespace Proyecto_Financiero
     partial void InsertMetasAhorro(MetasAhorro instance);
     partial void UpdateMetasAhorro(MetasAhorro instance);
     partial void DeleteMetasAhorro(MetasAhorro instance);
+    partial void InsertGastosProgramados(GastosProgramados instance);
+    partial void UpdateGastosProgramados(GastosProgramados instance);
+    partial void DeleteGastosProgramados(GastosProgramados instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -100,6 +103,14 @@ namespace Proyecto_Financiero
 			get
 			{
 				return this.GetTable<MetasAhorro>();
+			}
+		}
+		
+		public System.Data.Linq.Table<GastosProgramados> GastosProgramados
+		{
+			get
+			{
+				return this.GetTable<GastosProgramados>();
 			}
 		}
 	}
@@ -656,6 +667,236 @@ namespace Proyecto_Financiero
 					this._Completada = value;
 					this.SendPropertyChanged("Completada");
 					this.OnCompletadaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaCreacion", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FechaCreacion
+		{
+			get
+			{
+				return this._FechaCreacion;
+			}
+			set
+			{
+				if ((this._FechaCreacion != value))
+				{
+					this.OnFechaCreacionChanging(value);
+					this.SendPropertyChanging();
+					this._FechaCreacion = value;
+					this.SendPropertyChanged("FechaCreacion");
+					this.OnFechaCreacionChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.GastosProgramados")]
+	public partial class GastosProgramados : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _NombreGasto;
+		
+		private decimal _CantidadGasto;
+		
+		private System.DateTime _FechaGasto;
+		
+		private bool _Repetible;
+		
+		private string _RepetibleTipo;
+		
+		private bool _Completado;
+		
+		private System.Nullable<System.DateTime> _FechaCreacion;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNombreGastoChanging(string value);
+    partial void OnNombreGastoChanged();
+    partial void OnCantidadGastoChanging(decimal value);
+    partial void OnCantidadGastoChanged();
+    partial void OnFechaGastoChanging(System.DateTime value);
+    partial void OnFechaGastoChanged();
+    partial void OnRepetibleChanging(bool value);
+    partial void OnRepetibleChanged();
+    partial void OnRepetibleTipoChanging(string value);
+    partial void OnRepetibleTipoChanged();
+    partial void OnCompletadoChanging(bool value);
+    partial void OnCompletadoChanged();
+    partial void OnFechaCreacionChanging(System.Nullable<System.DateTime> value);
+    partial void OnFechaCreacionChanged();
+    #endregion
+		
+		public GastosProgramados()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NombreGasto", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string NombreGasto
+		{
+			get
+			{
+				return this._NombreGasto;
+			}
+			set
+			{
+				if ((this._NombreGasto != value))
+				{
+					this.OnNombreGastoChanging(value);
+					this.SendPropertyChanging();
+					this._NombreGasto = value;
+					this.SendPropertyChanged("NombreGasto");
+					this.OnNombreGastoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantidadGasto", DbType="Decimal(18,2) NOT NULL")]
+		public decimal CantidadGasto
+		{
+			get
+			{
+				return this._CantidadGasto;
+			}
+			set
+			{
+				if ((this._CantidadGasto != value))
+				{
+					this.OnCantidadGastoChanging(value);
+					this.SendPropertyChanging();
+					this._CantidadGasto = value;
+					this.SendPropertyChanged("CantidadGasto");
+					this.OnCantidadGastoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaGasto", DbType="Date NOT NULL")]
+		public System.DateTime FechaGasto
+		{
+			get
+			{
+				return this._FechaGasto;
+			}
+			set
+			{
+				if ((this._FechaGasto != value))
+				{
+					this.OnFechaGastoChanging(value);
+					this.SendPropertyChanging();
+					this._FechaGasto = value;
+					this.SendPropertyChanged("FechaGasto");
+					this.OnFechaGastoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Repetible", DbType="Bit NOT NULL")]
+		public bool Repetible
+		{
+			get
+			{
+				return this._Repetible;
+			}
+			set
+			{
+				if ((this._Repetible != value))
+				{
+					this.OnRepetibleChanging(value);
+					this.SendPropertyChanging();
+					this._Repetible = value;
+					this.SendPropertyChanged("Repetible");
+					this.OnRepetibleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RepetibleTipo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string RepetibleTipo
+		{
+			get
+			{
+				return this._RepetibleTipo;
+			}
+			set
+			{
+				if ((this._RepetibleTipo != value))
+				{
+					this.OnRepetibleTipoChanging(value);
+					this.SendPropertyChanging();
+					this._RepetibleTipo = value;
+					this.SendPropertyChanged("RepetibleTipo");
+					this.OnRepetibleTipoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Completado", DbType="Bit NOT NULL")]
+		public bool Completado
+		{
+			get
+			{
+				return this._Completado;
+			}
+			set
+			{
+				if ((this._Completado != value))
+				{
+					this.OnCompletadoChanging(value);
+					this.SendPropertyChanging();
+					this._Completado = value;
+					this.SendPropertyChanged("Completado");
+					this.OnCompletadoChanged();
 				}
 			}
 		}
