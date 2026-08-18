@@ -173,24 +173,25 @@ namespace Proyecto_Financiero
             dataGridView1.AutoResizeColumnHeadersHeight();
 
             // Formateamos Fecha_Operacion
+            dataGridView1.Columns["Fecha_Operacion"].HeaderText = "Fecha";
             dataGridView1.Columns["Fecha_Operacion"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dataGridView1.Columns["Fecha_Operacion"].FillWeight = 80;
+            dataGridView1.Columns["Fecha_Operacion"].FillWeight = 12;
             dataGridView1.Columns["Fecha_Operacion"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             // Formateamos Concepto
-            dataGridView1.Columns["Concepto"].FillWeight = 220;
+            dataGridView1.Columns["Concepto"].FillWeight = 48;
 
             // Formateamos Categoria
-            dataGridView1.Columns["Categoria"].FillWeight = 70;
+            dataGridView1.Columns["Categoria"].FillWeight = 20;
 
             // Formateamos Importe
-            dataGridView1.Columns["Importe"].FillWeight = 45;
+            dataGridView1.Columns["Importe"].FillWeight = 10;
             dataGridView1.Columns["Importe"].DefaultCellStyle.Format = "C2";
             dataGridView1.Columns["Importe"].DefaultCellStyle.FormatProvider = euro;
             dataGridView1.Columns["Importe"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             // Formateamos Saldo
-            dataGridView1.Columns["Saldo"].FillWeight = 45;
+            dataGridView1.Columns["Saldo"].FillWeight = 10;
             dataGridView1.Columns["Saldo"].DefaultCellStyle.Format = "C2";
             dataGridView1.Columns["Saldo"].DefaultCellStyle.FormatProvider = euro;
             dataGridView1.Columns["Saldo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -1137,7 +1138,7 @@ namespace Proyecto_Financiero
             else if (chkAnual.Checked) repetibleTipo = "Anual";
 
             int limiteRegistros = repetible ? 5 : 1;
-            DateTime fechaBase = DateTime.Now;
+            DateTime fechaBase = dtPickFechaPago.Value;
 
             try
             {
@@ -1185,6 +1186,7 @@ namespace Proyecto_Financiero
 
                 // Recargar vista
                 CargaGastosProgramados();
+                CargaPanelesMetricas();
 
                 MessageBox.Show("Gasto(s) programado(s) guardado(s) correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -1205,8 +1207,8 @@ namespace Proyecto_Financiero
             tableLayoutGastosProgramados.ColumnCount = 4;
             tableLayoutGastosProgramados.ColumnStyles.Clear();
             tableLayoutGastosProgramados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutGastosProgramados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutGastosProgramados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 42F));
+            tableLayoutGastosProgramados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35F));
+            tableLayoutGastosProgramados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32F));
             tableLayoutGastosProgramados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 8F));
 
             DateTime hoy = DateTime.Today;
@@ -1314,6 +1316,7 @@ namespace Proyecto_Financiero
                         {
                             datalinq.SubmitChanges();
                             CargaGastosProgramados();
+                            CargaPanelesMetricas();
                         }
                         catch (Exception ex)
                         {
@@ -1325,6 +1328,88 @@ namespace Proyecto_Financiero
 
             return (lblNombre, lblFecha, lblMonto, btnCompletar);
         }
+
+        //======================================================
+        //        CARGA DE DATOS AL PANEL EDICION
+        //======================================================
+
+        // Carga de datos al datagridView
+        private void CargaDatagridEditable()
+        {
+            // Variable para formatear los valores monetarios en Euros
+            var euro = new System.Globalization.CultureInfo("es-ES");
+
+            var datos = datalinq.vw_datagrid1
+                .OrderByDescending(t => t.Fecha_Operacion)
+                .Select(t => new
+                {
+                    t.Fecha_Operacion,
+                    t.Concepto,
+                    t.Categoria,
+                    Importe = t.Importe.Value.ToString("C2", euro),
+                    Saldo = t.Saldo.Value.ToString("C2", euro)
+                })
+                .ToList();
+            dataGridViewEdicion.DataSource = datos;
+
+            // Formateamos la tabla visualmente
+            dataGridViewEdicion.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dataGridViewEdicion.Columns["Fecha_Operacion"].HeaderText = "Fecha";
+
+            dataGridViewEdicion.Columns["Fecha_Operacion"].FillWeight = 20;
+            dataGridViewEdicion.Columns["Concepto"].FillWeight = 40;
+            dataGridViewEdicion.Columns["Categoria"].FillWeight = 20;
+            dataGridViewEdicion.Columns["Importe"].FillWeight = 10;
+            dataGridViewEdicion.Columns["Saldo"].FillWeight = 10;
+
+            // Hacemos que las filas alternen de color para facilitar la lectura
+            dataGridViewEdicion.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(200, 200, 250);
+
+
+        }
+
+        // Carga de categorias nuevas al SQL server mediante lectura de la tabla Transacciones
+        // y a los combo box de filtro y edicion
+        private void CargaCategoriasNuevas()
+        {
+            var nuevas = datalinq.Transacciones
+                .Where(t => t.Categoria != null)
+                .GroupBy(t => t.Categoria)
+                .Select(g => new
+                {
+                    Categoria = g.Key,
+                    Concepto = g.Select(x => x.Concepto).FirstOrDefault()
+                })
+                .OrderBy(x => x.Categoria)
+                .ToList();
+
+            var existentes = new HashSet<string>(datalinq.Categorias.Select(c => c.CategoriaNombre));
+
+            var porInsertar = nuevas
+                .Where(n => !existentes.Contains(n.Categoria))
+                .Select(n => new Categorias
+                {
+                    CategoriaNombre = n.Categoria,
+                    Concepto = n.Concepto
+                })
+                .ToList();
+
+            if (porInsertar.Any())
+            {
+                datalinq.Categorias.InsertAllOnSubmit(porInsertar);
+                datalinq.SubmitChanges();
+            }
+
+            // Actualizamos los combo box de filtro y edición 
+            var listaCategorias = datalinq.Categorias.Select(c => c.CategoriaNombre).ToArray();
+            cmbFiltroCategoria.Items.Clear();
+            cmbFiltroCategoria.Items.AddRange(listaCategorias);
+            cmbCategoriasDisponibles.Items.Clear();
+            cmbCategoriasDisponibles.Items.AddRange(listaCategorias);
+        }
+
+
 
         //======================================================
         //        BOTONES DE CONTROL DE PANELES PRINCIPALES
@@ -1453,6 +1538,9 @@ namespace Proyecto_Financiero
             panelEdicion.Visible = true;
             panelEdicion.Enabled = true;
             lbEdicion.Visible = true;
+
+            CargaCategoriasNuevas();
+            CargaDatagridEditable();
         }
     }
 }

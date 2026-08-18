@@ -42,6 +42,9 @@ namespace Proyecto_Financiero
     partial void InsertGastosProgramados(GastosProgramados instance);
     partial void UpdateGastosProgramados(GastosProgramados instance);
     partial void DeleteGastosProgramados(GastosProgramados instance);
+    partial void InsertCategorias(Categorias instance);
+    partial void UpdateCategorias(Categorias instance);
+    partial void DeleteCategorias(Categorias instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -111,6 +114,14 @@ namespace Proyecto_Financiero
 			get
 			{
 				return this.GetTable<GastosProgramados>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Categorias> Categorias
+		{
+			get
+			{
+				return this.GetTable<Categorias>();
 			}
 		}
 	}
@@ -897,6 +908,140 @@ namespace Proyecto_Financiero
 					this._Completado = value;
 					this.SendPropertyChanged("Completado");
 					this.OnCompletadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FechaCreacion", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FechaCreacion
+		{
+			get
+			{
+				return this._FechaCreacion;
+			}
+			set
+			{
+				if ((this._FechaCreacion != value))
+				{
+					this.OnFechaCreacionChanging(value);
+					this.SendPropertyChanging();
+					this._FechaCreacion = value;
+					this.SendPropertyChanged("FechaCreacion");
+					this.OnFechaCreacionChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Categorias")]
+	public partial class Categorias : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _CategoriaID;
+		
+		private string _CategoriaNombre;
+		
+		private string _Concepto;
+		
+		private System.Nullable<System.DateTime> _FechaCreacion;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCategoriaIDChanging(int value);
+    partial void OnCategoriaIDChanged();
+    partial void OnCategoriaNombreChanging(string value);
+    partial void OnCategoriaNombreChanged();
+    partial void OnConceptoChanging(string value);
+    partial void OnConceptoChanged();
+    partial void OnFechaCreacionChanging(System.Nullable<System.DateTime> value);
+    partial void OnFechaCreacionChanged();
+    #endregion
+		
+		public Categorias()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoriaID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CategoriaID
+		{
+			get
+			{
+				return this._CategoriaID;
+			}
+			set
+			{
+				if ((this._CategoriaID != value))
+				{
+					this.OnCategoriaIDChanging(value);
+					this.SendPropertyChanging();
+					this._CategoriaID = value;
+					this.SendPropertyChanged("CategoriaID");
+					this.OnCategoriaIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CategoriaNombre", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string CategoriaNombre
+		{
+			get
+			{
+				return this._CategoriaNombre;
+			}
+			set
+			{
+				if ((this._CategoriaNombre != value))
+				{
+					this.OnCategoriaNombreChanging(value);
+					this.SendPropertyChanging();
+					this._CategoriaNombre = value;
+					this.SendPropertyChanged("CategoriaNombre");
+					this.OnCategoriaNombreChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Concepto", DbType="VarChar(300)")]
+		public string Concepto
+		{
+			get
+			{
+				return this._Concepto;
+			}
+			set
+			{
+				if ((this._Concepto != value))
+				{
+					this.OnConceptoChanging(value);
+					this.SendPropertyChanging();
+					this._Concepto = value;
+					this.SendPropertyChanged("Concepto");
+					this.OnConceptoChanged();
 				}
 			}
 		}

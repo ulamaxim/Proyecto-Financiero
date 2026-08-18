@@ -51,6 +51,15 @@ CREATE TABLE GastosProgramados (
 );
 GO
 
+DROP TABLE IF EXISTS Categorias;
+CREATE TABLE Categorias (
+	CategoriaID INT IDENTITY(1,1) PRIMARY KEY,
+	CategoriaNombre VARCHAR(100) NOT NULL UNIQUE,
+	Concepto VARCHAR(300) UNIQUE,
+	FechaCreacion DATETIME DEFAULT GETDATE()
+);
+GO
+
 -- Vista que muestre todos los datos para el dataGridView1
 CREATE OR ALTER VIEW vw_datagrid1 
 AS
@@ -64,4 +73,3 @@ AS
 	SELECT DISTINCT(YEAR(Fecha_Operacion)) Año
 	FROM Transacciones
 GO
-
