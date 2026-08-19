@@ -153,6 +153,9 @@ namespace Proyecto_Financiero
 
             // Calcular ingresos, gastos del último mes y el saldo actual
             SaldoIngresosGastos(transactions);
+
+            // Actualizamos las categorias guardadas en la tabla Categorias
+            //ActualizacionTransacciones();
         }
 
         //================================================
@@ -329,6 +332,15 @@ namespace Proyecto_Financiero
             };
 
             pieChart1.DataTooltip = customTooltip;
+        }
+
+        private void pieChart1_DataClick(object sender, LiveCharts.ChartPoint chartPoint)
+        {
+            // chartPoint.SeriesView.Title contiene el nombre de la Categoría seleccionada
+            string categoriaSeleccionada = chartPoint.SeriesView.Title;
+
+            // Llamamos al filtro para actualizar el DataGridView
+            CargaFiltroPieChart(categoriaSeleccionada);
         }
 
         private void CargarFiltroAños()
@@ -1366,32 +1378,33 @@ namespace Proyecto_Financiero
             // Hacemos que las filas alternen de color para facilitar la lectura
             dataGridViewEdicion.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(200, 200, 250);
 
-
+            dataGridViewEdicion.CellClick += dataGridViewEdicion_CellClick;
         }
 
         // Carga de categorias nuevas al SQL server mediante lectura de la tabla Transacciones
         // y a los combo box de filtro y edicion
         private void CargaCategoriasNuevas()
         {
-            var nuevas = datalinq.Transacciones
-                .Where(t => t.Categoria != null)
-                .GroupBy(t => t.Categoria)
+            // Por cada Concepto único tomamos la categoría asociada (se asume invariante: mismo concepto => misma categoría)
+            var conceptos = datalinq.Transacciones
+                .Where(t => t.Concepto != null)
+                .GroupBy(t => t.Concepto)
                 .Select(g => new
                 {
-                    Categoria = g.Key,
-                    Concepto = g.Select(x => x.Concepto).FirstOrDefault()
+                    Concepto = g.Key,
+                    Categoria = g.Select(x => x.Categoria).FirstOrDefault()
                 })
-                .OrderBy(x => x.Categoria)
                 .ToList();
 
-            var existentes = new HashSet<string>(datalinq.Categorias.Select(c => c.CategoriaNombre));
+            // Conjunto de conceptos ya existentes (case-insensitive)
+            var existentes = new HashSet<string>(datalinq.Categorias.Select(c => c.Concepto ?? ""), StringComparer.OrdinalIgnoreCase);
 
-            var porInsertar = nuevas
-                .Where(n => !existentes.Contains(n.Categoria))
-                .Select(n => new Categorias
+            var porInsertar = conceptos
+                .Where(c => !existentes.Contains(c.Concepto))
+                .Select(c => new Categorias
                 {
-                    CategoriaNombre = n.Categoria,
-                    Concepto = n.Concepto
+                    CategoriaNombre = c.Categoria,
+                    Concepto = c.Concepto
                 })
                 .ToList();
 
@@ -1401,15 +1414,217 @@ namespace Proyecto_Financiero
                 datalinq.SubmitChanges();
             }
 
-            // Actualizamos los combo box de filtro y edición 
-            var listaCategorias = datalinq.Categorias.Select(c => c.CategoriaNombre).ToArray();
+            // Actualizamos los combo box de filtro y edición
+            var listaCategorias = datalinq.Categorias.Select(c => c.CategoriaNombre).Distinct().ToArray();
             cmbFiltroCategoria.Items.Clear();
             cmbFiltroCategoria.Items.AddRange(listaCategorias);
             cmbCategoriasDisponibles.Items.Clear();
             cmbCategoriasDisponibles.Items.AddRange(listaCategorias);
         }
 
+        private void AjustarFiltrosRangoFechas()
+        {
+            // Inicializamos los DateTimePickers para que no muestren fecha hasta que el usuario seleccione una
+            dtimeFiltroInicio.CustomFormat = " ";
+            dtimeFiltroFin.CustomFormat = " ";
 
+            // Conectamos los eventos ValueChanged
+            dtimeFiltroInicio.ValueChanged += Dtp_ValueChanged;
+            dtimeFiltroFin.ValueChanged += Dtp_ValueChanged;
+        }
+
+        private void Dtp_ValueChanged(object sender, EventArgs e)
+        {
+            DateTimePicker dtp = sender as DateTimePicker;
+            if (dtp != null)
+            {
+                dtp.CustomFormat = "dd/MM/yyyy"; 
+            }
+        }
+
+        // Evento click para el botón de filtros
+        private void btnFiltroConcepto_Click(object sender, EventArgs e)
+        {
+            // Variable para formatear los valores monetarios en Euros
+            var euro = new System.Globalization.CultureInfo("es-ES");
+
+            // Obtenemos los valores de los filtros
+            string conceptoFiltro = txtFiltroConcepto.Text?.Trim();
+            string categoriaFiltro = cmbFiltroCategoria.SelectedItem?.ToString();
+
+            // Obtenemos las fechas de los DateTimePickers, si no se selecciona fecha se usa un rango amplio
+            DateTime filtroFechaInicio = dtimeFiltroInicio.Checked ? dtimeFiltroInicio.Value.Date : DateTime.MinValue;
+            DateTime filtroFechaFin = dtimeFiltroFin.Checked ? dtimeFiltroFin.Value.Date : DateTime.MaxValue;
+
+            // Cargamos los datos filtrados al DataGridView.
+            // Si el filtro esta vacio o nulo no se usa
+            var datosfiltrados = datalinq.vw_datagrid1
+                .Where(f => string.IsNullOrWhiteSpace(conceptoFiltro)
+                            || (f.Concepto != null && f.Concepto.ToLower().Contains(conceptoFiltro.ToLower())))
+                .Where(f => string.IsNullOrEmpty(categoriaFiltro) || f.Categoria == categoriaFiltro)
+                .Where(f => f.Fecha_Operacion >= filtroFechaInicio)
+                .Where(f => f.Fecha_Operacion <= filtroFechaFin)
+                .OrderByDescending(t => t.Fecha_Operacion)
+                .Select(t => new
+                {
+                    t.Fecha_Operacion,
+                    t.Concepto,
+                    t.Categoria,
+                    Importe = t.Importe.Value.ToString("C2", euro),
+                    Saldo = t.Saldo.Value.ToString("C2", euro)
+                })
+                .ToList();
+
+            // Cargamos los datos al filtrados al dataGridViewEdicion
+            dataGridViewEdicion.DataSource = datosfiltrados;
+
+            // limpiamos los filtros de fecha para que el usuario pueda volver a seleccionar nuevas fechas
+            dtimeFiltroInicio.CustomFormat = " ";
+            dtimeFiltroFin.CustomFormat = " ";
+            dtimeFiltroInicio.Checked = false;
+            dtimeFiltroFin.Checked = false;
+        }
+
+        // Logica para el panel de añadir nueva categoria
+        private void btnAceptarCategoriaNueva_Click(object sender, EventArgs e)
+        {
+            string categoriaNueva = txtCategoriaNueva.Text;
+
+            // Validamos valores
+            if (string.IsNullOrWhiteSpace(categoriaNueva))
+            {
+                MessageBox.Show("Introduce un nombre válido para la categoría.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Cargamos la nueva categoria a la base de datos
+            try
+            {
+                Categorias nueva = new Categorias
+                {
+                    CategoriaNombre = categoriaNueva,
+                    Concepto = null
+                };
+                datalinq.Categorias.InsertOnSubmit(nueva);
+                datalinq.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al guardar la categoría: {ex.Message}", "Error BD", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            txtCategoriaNueva.Clear();
+
+            // Actualizamos los combo box de filtro y edición
+            var listaCategorias = datalinq.Categorias.Select(c => c.CategoriaNombre).Distinct().ToArray();
+            cmbFiltroCategoria.Items.Clear();
+            cmbFiltroCategoria.Items.AddRange(listaCategorias);
+            cmbCategoriasDisponibles.Items.Clear();
+            cmbCategoriasDisponibles.Items.AddRange(listaCategorias);
+        }
+
+        // Evento click para el boton de eliminar categoria seleccionada
+        private void btnEliminarCategoria_Click(object sender, EventArgs e)
+        {
+            var categoriaSeleccionada = cmbCategoriasDisponibles.SelectedItem?.ToString();
+            datalinq.Categorias.DeleteAllOnSubmit(datalinq.Categorias.Where(c => c.CategoriaNombre == categoriaSeleccionada));
+            datalinq.SubmitChanges();
+
+            //Limpiamos el combo box de categorías disponibles visualmente
+            cmbCategoriasDisponibles.ResetText();
+
+            // Actualizamos los combo box de filtro y edición
+            var listaCategorias = datalinq.Categorias.Select(c => c.CategoriaNombre).Distinct().ToArray();
+            cmbFiltroCategoria.Items.Clear();
+            cmbFiltroCategoria.Items.AddRange(listaCategorias);
+            cmbCategoriasDisponibles.Items.Clear();
+            cmbCategoriasDisponibles.Items.AddRange(listaCategorias);
+        }
+
+        // Carga del concepto del dataGridViewEdicion al textbox txtConceptoEditable
+        // para poder editarlo eligiendo la categoria disponible del combo box cmbCategoriasDisponibles
+        private void dataGridViewEdicion_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtConceptoEditable.Text = dataGridViewEdicion.Rows[e.RowIndex].Cells["Concepto"].Value?.ToString();
+        }
+
+        // Evento click para el boton de aceptar edicion de categoria del concepto seleccionado y actualizarlo en la base de datos
+        private void btnAceptarEdicionCategoria_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string conceptoBuscado = txtConceptoEditable.Text?.Trim();
+                if (string.IsNullOrWhiteSpace(conceptoBuscado))
+                {
+                    MessageBox.Show("Introduce un concepto válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Buscar la entrada que coincida con el concepto
+                var cambioCategoria = datalinq.Categorias
+                    .SingleOrDefault(c => c.Concepto == conceptoBuscado);
+
+                if (cambioCategoria == null)
+                {
+                    MessageBox.Show("No se encontró una categoría asociada al concepto especificado.", "No encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Obtener el valor nuevo de la categoría (con fallback a Text si SelectedValue es null)
+                string nuevaCategoria = cmbCategoriasDisponibles.SelectedValue?.ToString()
+                                        ?? cmbCategoriasDisponibles.SelectedItem?.ToString()
+                                        ?? cmbCategoriasDisponibles.Text?.Trim();
+
+                if (string.IsNullOrWhiteSpace(nuevaCategoria))
+                {
+                    MessageBox.Show("Selecciona una categoría válida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                cambioCategoria.CategoriaNombre = nuevaCategoria;
+                datalinq.SubmitChanges();
+
+                MessageBox.Show("Categoría actualizada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cambiar la categoría: {ex.Message}", "Error BD", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // limpiamos el textbox y el combobox de edición visualmente
+            txtConceptoEditable.Clear();
+            cmbCategoriasDisponibles.ResetText();
+
+            ActualizacionTransacciones();
+        }
+
+        // Actualizamos la tabla de Transacciones con las categorias nuevas
+        private void ActualizacionTransacciones()
+        {
+            try
+            {
+                // Actualiza en bloque la tabla Transacciones a partir de la tabla Categorias
+                // Se usa JOIN para asignar Categoria = CategoriaNombre donde coincida el Concepto (case-insensitive)
+                int filasAfectadas = datalinq.ExecuteCommand(@"
+                    UPDATE T
+                    SET T.Categoria = C.CategoriaNombre
+                    FROM Transacciones T
+                    INNER JOIN Categorias C
+                        ON LOWER(ISNULL(T.Concepto, '')) = LOWER(ISNULL(C.Concepto, ''))
+                ");
+
+                MessageBox.Show($"Actualizadas {filasAfectadas} transacciones según la tabla Categorias.", "Actualización completada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Refrescar vista para que el DataGrid muestre los cambios
+                CargarTransacciones();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al actualizar transacciones: {ex.Message}", "Error BD", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         //======================================================
         //        BOTONES DE CONTROL DE PANELES PRINCIPALES
@@ -1466,15 +1681,6 @@ namespace Proyecto_Financiero
             CargaTop10Gastos();
             EvolucionDeSueldo();
             CargarFiltroAños();
-        }
-
-        private void pieChart1_DataClick(object sender, LiveCharts.ChartPoint chartPoint)
-        {
-            // chartPoint.SeriesView.Title contiene el nombre de la Categoría seleccionada
-            string categoriaSeleccionada = chartPoint.SeriesView.Title;
-
-            // Llamamos al filtro para actualizar el DataGridView
-            CargaFiltroPieChart(categoriaSeleccionada);
         }
 
         // Actualizacion de PieChart1 al cambiar de mes
@@ -1540,6 +1746,7 @@ namespace Proyecto_Financiero
             lbEdicion.Visible = true;
 
             CargaCategoriasNuevas();
+            AjustarFiltrosRangoFechas();
             CargaDatagridEditable();
         }
     }

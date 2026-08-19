@@ -54,8 +54,8 @@ GO
 DROP TABLE IF EXISTS Categorias;
 CREATE TABLE Categorias (
 	CategoriaID INT IDENTITY(1,1) PRIMARY KEY,
-	CategoriaNombre VARCHAR(100) NOT NULL UNIQUE,
-	Concepto VARCHAR(300) UNIQUE,
+	CategoriaNombre VARCHAR(100) NOT NULL,
+	Concepto VARCHAR(300),
 	FechaCreacion DATETIME DEFAULT GETDATE()
 );
 GO
