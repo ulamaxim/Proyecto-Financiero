@@ -213,6 +213,47 @@ namespace Proyecto_Financiero
 
         #region === MÓDULO DE ANALÍTICA (GRÁFICOS Y ESTADÍSTICAS) ===
 
+        #region --- Filtros de mes y año ---
+
+        /// <summary>
+        /// Carga los años disponibles existentes en la base de datos dentro del ComboBox de filtros.
+        /// </summary>
+        private void CargarFiltroAños()
+        {
+            var añosDisponibles = datalinq.vw_datagrid1
+                .Where(t => t.Fecha_Operacion.HasValue)
+                .Select(t => t.Fecha_Operacion.Value.Year)
+                .Distinct()
+                .OrderByDescending(y => y)
+                .ToList();
+
+            combFiltroAnio.DataSource = añosDisponibles;
+        }
+
+        /// <summary>
+        /// Evento de selección del mes en el ComboBox de filtros.
+        /// </summary>
+        private void combFiltroMes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargaPieChart();
+            CargaTop10Gastos();
+            EvolucionDeSueldo();
+        }
+
+        /// <summary>
+        /// Evento de selección del año en el ComboBox de filtros.
+        /// </summary>
+        private void combFiltroAnio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargaPieChart();
+            CargaTop10Gastos();
+            EvolucionDeSueldo();
+        }
+
+        #endregion
+
+        #region --- Contenido del panel de analitica ---
+
         /// <summary>
         /// Configura y carga el gráfico circular (PieChart) de gastos desglosados por categoría según los filtros seleccionados.
         /// </summary>
@@ -292,21 +333,6 @@ namespace Proyecto_Financiero
         }
 
         /// <summary>
-        /// Carga los años disponibles existentes en la base de datos dentro del ComboBox de filtros.
-        /// </summary>
-        private void CargarFiltroAños()
-        {
-            var añosDisponibles = datalinq.vw_datagrid1
-                .Where(t => t.Fecha_Operacion.HasValue)
-                .Select(t => t.Fecha_Operacion.Value.Year)
-                .Distinct()
-                .OrderByDescending(y => y)
-                .ToList();
-
-            combFiltroAnio.DataSource = añosDisponibles;
-        }
-
-        /// <summary>
         /// Filtra y muestra el detalle de los gastos de la categoría seleccionada en el DataGridView auxiliar.
         /// </summary>
         private void CargaFiltroPieChart(string categoria)
@@ -347,22 +373,6 @@ namespace Proyecto_Financiero
             dataGridPieChartFiltro.RowHeadersVisible = false;
             dataGridPieChartFiltro.Columns["Descripcion"].FillWeight = 240;
             dataGridPieChartFiltro.Columns["Fecha"].DefaultCellStyle.Format = "dd/MM/yyyy";
-        }
-
-        // Manejador del evento de selección del mes en el ComboBox de filtros.
-        private void combFiltroMes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CargaPieChart();
-            CargaTop10Gastos();
-            EvolucionDeSueldo();
-        }
-
-        // Manejador del evento de selección del año en el ComboBox de filtros.
-        private void combFiltroAnio_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CargaPieChart();
-            CargaTop10Gastos();
-            EvolucionDeSueldo();
         }
 
         /// <summary>
@@ -588,7 +598,9 @@ namespace Proyecto_Financiero
 
         #endregion
 
-        #region === MÓDULO DE PLANIFICACIÓN (PRESUPUESTOS, METAS Y PROGRAMACIÓN) ===
+        #endregion
+
+        #region === MÓDULO DE PLANIFICACIÓN (PRESUPUESTOS, METAS Y GASTOS PROGRAMADOS) ===
 
         #region -- Métricas Globales --
 
