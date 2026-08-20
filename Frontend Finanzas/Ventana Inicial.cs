@@ -1386,6 +1386,8 @@ namespace Proyecto_Financiero
 
             dataGridViewEdicion.Columns["Fecha_Operacion"].HeaderText = "Fecha";
             dataGridViewEdicion.Columns["Fecha_Operacion"].FillWeight = 20;
+            dataGridViewEdicion.Columns["Fecha_Operacion"].DefaultCellStyle.Format = "dd/MM/yyyy";
+
             dataGridViewEdicion.Columns["Concepto"].FillWeight = 40;
             dataGridViewEdicion.Columns["Categoria"].FillWeight = 20;
             dataGridViewEdicion.Columns["Importe"].FillWeight = 10;
