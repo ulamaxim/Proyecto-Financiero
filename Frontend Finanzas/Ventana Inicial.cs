@@ -126,6 +126,9 @@ namespace Proyecto_Financiero
                     }
                 }
             }
+
+            // Añadimos las categorias actualizadas a la tabla de Transacciones segun la tabla de Categorias
+            ActualizacionTransacciones();
         }
 
         //===================================================
@@ -1537,6 +1540,7 @@ namespace Proyecto_Financiero
             cmbFiltroCategoria.Items.AddRange(listaCategorias);
             cmbCategoriasDisponibles.Items.Clear();
             cmbCategoriasDisponibles.Items.AddRange(listaCategorias);
+            CargaDatagridEditable();
         }
 
         // Carga del concepto del dataGridViewEdicion al textbox txtConceptoEditable
@@ -1595,6 +1599,7 @@ namespace Proyecto_Financiero
             cmbCategoriasDisponibles.ResetText();
 
             ActualizacionTransacciones();
+            CargaDatagridEditable();
         }
 
         // Actualizamos la tabla de Transacciones con las categorias nuevas
