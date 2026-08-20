@@ -153,9 +153,6 @@ namespace Proyecto_Financiero
 
             // Calcular ingresos, gastos del último mes y el saldo actual
             SaldoIngresosGastos(transactions);
-
-            // Actualizamos las categorias guardadas en la tabla Categorias
-            //ActualizacionTransacciones();
         }
 
         //================================================
@@ -1614,8 +1611,6 @@ namespace Proyecto_Financiero
                     INNER JOIN Categorias C
                         ON LOWER(ISNULL(T.Concepto, '')) = LOWER(ISNULL(C.Concepto, ''))
                 ");
-
-                MessageBox.Show($"Actualizadas {filasAfectadas} transacciones según la tabla Categorias.", "Actualización completada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Refrescar vista para que el DataGrid muestre los cambios
                 CargarTransacciones();
