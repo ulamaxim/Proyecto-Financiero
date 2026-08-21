@@ -76,11 +76,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
-    <Compile Include="FinanzasDBDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FinanzasDBDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Ventana Inicial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,17 +103,6 @@
     </None>
     <None Include="DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
-    </None>
-    <None Include="FinanzasDBDataSet.xsc">
-      <DependentUpon>FinanzasDBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="FinanzasDBDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>FinanzasDBDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="FinanzasDBDataSet.xss">
-      <DependentUpon>FinanzasDBDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

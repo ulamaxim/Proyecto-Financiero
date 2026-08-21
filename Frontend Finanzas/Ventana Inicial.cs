@@ -9,11 +9,13 @@ using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Proyecto_Financiero
@@ -29,6 +31,8 @@ namespace Proyecto_Financiero
 
         #region === INICIALIZACIÓN Y CARGA PRINCIPAL ===
 
+        #region --- Carga de ventana inicial ---
+
         /// <summary>
         /// Constructor principal del formulario. Inicializa los componentes de la interfaz de usuario.
         /// </summary>
@@ -42,21 +46,97 @@ namespace Proyecto_Financiero
         /// </summary>
         private void Ventana_Inicial_Load(object sender, EventArgs e)
         {
-            // Carga de la vista de años en el DataSet predeterminado
-            this.vw_Filtro_AñosTableAdapter.Fill(this.finanzasDBDataSet.vw_Filtro_Años);
+            // Ejecucion del script de SQL para crear la base de datos y tablas
+            EjecutarScriptSQL();
 
-            // 1. Ejecución del script de Python para el procesamiento y sincronización de datos
+            // Ejecución del script de Python para el procesamiento y sincronización de datos
             EjecutarScriptPython();
 
-            // 2. Carga de los registros procesados en la tabla principal
+            // Carga de los registros procesados en la tabla principal
             CargarTransacciones();
 
-            // 3. Configuración inicial de visibilidad de vistas (Dashboard activo por defecto)
+            // Configuración inicial de visibilidad de vistas (Dashboard activo por defecto)
             MostrarPanelPrincipal(panelDashboard, lbDashboard);
             OcultarPanel(panelAnalitica, lbAnalitica);
             OcultarPanel(panelPlanificacion, lbPlanificacion);
             OcultarPanel(panelEdicion, lbEdicion);
         }
+
+        #endregion
+
+        #region --- Ejecucion de script de creacion de base de datos y tablas correspondientes
+
+        /// <summary>
+        /// Crea la base de datos 'FinanzasDB' si no existe y luego ejecuta el script SQL de tablas/vistas.
+        /// </summary>
+        private void EjecutarScriptSQL()
+        {
+            string connectionStringOriginal = datalinq.Connection.ConnectionString;
+
+            // 1. Cambiamos el Initial Catalog a "master" para conectarnos sin depender de que FinanzasDB exista
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(connectionStringOriginal)
+            {
+                InitialCatalog = "master"
+            };
+
+            string connectionStringMaster = builder.ConnectionString;
+
+            string rutaScript = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                @"source\repos\Proyecto Financiero\Backend Finanzas\ScriptCreacionBD.sql"
+            );
+
+            if (!File.Exists(rutaScript))
+            {
+                MessageBox.Show($"No se encontró el archivo SQL en:\n{rutaScript}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // 2. Crear la base de datos FinanzasDB en 'master' si aún no existe
+                using (SqlConnection conexionMaster = new SqlConnection(connectionStringMaster))
+                {
+                    conexionMaster.Open();
+                    string queryCrearBD = @"
+                        IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'FinanzasDB')
+                        BEGIN
+                            CREATE DATABASE FinanzasDB;
+                        END";
+
+                    using (SqlCommand cmdBD = new SqlCommand(queryCrearBD, conexionMaster))
+                    {
+                        cmdBD.ExecuteNonQuery();
+                    }
+                }
+
+                // 3. Leer y ejecutar el script .sql usando la cadena de conexión original (apuntando a FinanzasDB)
+                string scriptContenido = File.ReadAllText(rutaScript);
+                string[] comandos = Regex.Split(scriptContenido, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+
+                using (SqlConnection conexionFinanzas = new SqlConnection(connectionStringOriginal))
+                {
+                    conexionFinanzas.Open();
+
+                    foreach (string comando in comandos)
+                    {
+                        if (!string.IsNullOrWhiteSpace(comando))
+                        {
+                            using (SqlCommand cmd = new SqlCommand(comando, conexionFinanzas))
+                            {
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al ejecutar el script de BD:\n{ex.Message}", "Error SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion
 
         #endregion
 
