@@ -81,10 +81,8 @@ namespace Proyecto_Financiero
 
             string connectionStringMaster = builder.ConnectionString;
 
-            string rutaScript = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-                @"source\repos\Proyecto Financiero\Backend Finanzas\ScriptCreacionBD.sql"
-            );
+            // Obtiene la ruta limpia del SQL dentro de la carpeta de la app
+            string rutaScript = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Database", "ScriptCreacionBD.sql");
 
             if (!File.Exists(rutaScript))
             {
@@ -147,27 +145,18 @@ namespace Proyecto_Financiero
         /// </summary>
         private void EjecutarScriptPython()
         {
-            // Rutas dinámicas basadas en el perfil de usuario activo en Windows
-            string carpetaUsuario = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            string pythonPath = Path.Combine(carpetaUsuario, @"AppData\Local\Programs\Python\Python39\python.exe");
-            string scriptPath = Path.Combine(carpetaUsuario, @"source\repos\Proyecto Financiero\Backend Finanzas\BackendFinanzas.py");
+            // Apunta directamente al ejecutable empaquetado de Python
+            string ejecutableBackend = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Backend", "BackendFinanzas.exe");
 
-            // Validación de existencia de archivos requeridos
-            if (!File.Exists(pythonPath))
+            if (!File.Exists(ejecutableBackend))
             {
-                throw new FileNotFoundException($"No se pudo encontrar el ejecutable de Python en:\n{pythonPath}");
+                MessageBox.Show($"No se encontró el ejecutable en:\n{ejecutableBackend}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            if (!File.Exists(scriptPath))
-            {
-                throw new FileNotFoundException($"No se pudo encontrar el script de Python en:\n{scriptPath}");
-            }
-
-            // Configuración del proceso silencioso (sin ventana de consola)
             ProcessStartInfo start = new ProcessStartInfo
             {
-                FileName = pythonPath,
-                Arguments = $"\"{scriptPath}\"",
+                FileName = ejecutableBackend,
                 UseShellExecute = false,
                 CreateNoWindow = true,
                 RedirectStandardOutput = true,
@@ -176,22 +165,20 @@ namespace Proyecto_Financiero
                 StandardErrorEncoding = System.Text.Encoding.UTF8
             };
 
-            // Ejecución y captura de salida de errores
             using (Process proceso = Process.Start(start))
             {
                 proceso.WaitForExit();
 
                 using (StreamReader reader = proceso.StandardError)
                 {
-                    string erroresPython = reader.ReadToEnd();
-                    if (!string.IsNullOrEmpty(erroresPython))
+                    string errores = reader.ReadToEnd();
+                    if (!string.IsNullOrEmpty(errores))
                     {
-                        MessageBox.Show($"Python ejecutó con errores:\n\n{erroresPython}", "Error en Script de Python", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"El backend ejecutó con errores:\n\n{errores}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
 
-            // Actualización de categorías asignadas en la base de datos tras la sincronización
             ActualizacionTransacciones();
         }
 
