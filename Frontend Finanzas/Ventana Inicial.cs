@@ -145,7 +145,6 @@ namespace Proyecto_Financiero
         /// </summary>
         private void EjecutarScriptPython()
         {
-            // Apunta directamente al ejecutable empaquetado de Python
             string ejecutableBackend = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Backend", "BackendFinanzas.exe");
 
             if (!File.Exists(ejecutableBackend))
