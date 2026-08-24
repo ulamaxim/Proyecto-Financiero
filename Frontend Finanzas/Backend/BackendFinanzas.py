@@ -37,14 +37,10 @@ try:
     df = pd.read_excel(archivoExcel, skiprows=7)
     print(f"Excel leído correctamente desde: {archivoExcel}")
 except Exception as e:
-    print(f"Error al abrir el archivo: {e}")
-    sys.exit(1)  # Interrumpe la ejecución para evitar NameError en las líneas siguientes
+    sys.stderr.write(f"Error al abrir el archivo Excel ({archivoExcel}): {e}\n")
+    sys.exit(1)
 
-#=============================================
-# Depuracion y cambios de datos
-#=============================================
-
-# Cambiamos los nombres de columnas
+# Renombrado de columnas
 df.columns = ['Fecha_Operacion', 'Fecha_Valor', 'Concepto', 'Importe', 'Saldo', 'Divisa']
 
 def limpiar_dinero_excel(columna):
@@ -84,7 +80,7 @@ def asignar_categoria(concepto):
             if palabra in concepto_upper:
                 return categoria
     return 'Otros'
-                
+
 df['Categoria'] = df['Concepto'].apply(asignar_categoria)
 
 conn_str = (

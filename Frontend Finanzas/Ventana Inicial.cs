@@ -164,20 +164,26 @@ namespace Proyecto_Financiero
                 StandardErrorEncoding = System.Text.Encoding.UTF8
             };
 
-            using (Process proceso = Process.Start(start))
+            using (Process proceso = new Process())
             {
+                proceso.StartInfo = start;
+                proceso.Start();
+
+                // Leemos la salida estándar y los errores asíncronamente para evitar que el proceso se bloquee (Deadlock)
+                string output = proceso.StandardOutput.ReadToEnd();
+                string errores = proceso.StandardError.ReadToEnd();
+
                 proceso.WaitForExit();
 
-                using (StreamReader reader = proceso.StandardError)
+                if (proceso.ExitCode != 0 || !string.IsNullOrEmpty(errores))
                 {
-                    string errores = reader.ReadToEnd();
-                    if (!string.IsNullOrEmpty(errores))
-                    {
-                        MessageBox.Show($"El backend ejecutó con errores:\n\n{errores}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    MessageBox.Show($"Ocurrió un error al procesar los datos:\n\n{errores}\n\nDetalles:\n{output}",
+                                    "Error en Backend Python", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
 
+            // Actualizamos las transacciones únicamente si el proceso finalizó con éxito
             ActualizacionTransacciones();
         }
 
