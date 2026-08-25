@@ -733,12 +733,16 @@ namespace Proyecto_Financiero
 
             // Consulta de gastos agrupados por categoría para el mes actual
             var resumenGastos = datalinq.vw_datagrid1
-                .Where(t => t.Importe.HasValue && t.Importe < 0 && t.Fecha_Operacion.Value.Month == DateTime.Now.Month)
+                .Where(t => t.Importe.HasValue
+                         && t.Importe < 0
+                         && t.Fecha_Operacion.HasValue
+                         && t.Fecha_Operacion.Value.Month == DateTime.Now.Month
+                         && t.Fecha_Operacion.Value.Year == DateTime.Now.Year)
                 .GroupBy(t => t.Categoria)
                 .Select(g => new
                 {
                     Categoria = g.Key,
-                    Gastado = Math.Abs((double)g.Sum(t => t.Importe.Value))
+                    Gastado = Math.Abs((double)(g.Sum(t => (decimal?)t.Importe) ?? 0))
                 })
                 .ToList();
 
