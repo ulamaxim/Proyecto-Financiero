@@ -691,7 +691,7 @@ namespace Proyecto_Financiero
                             t.Fecha_Operacion.Value.Year == DateTime.Now.Year)
                 .Where(t => t.Importe.HasValue && t.Importe > 0)
                 .Where(t => t.Categoria == "Nomina")
-                .Sum(t => t.Importe.Value);
+                .Sum(t => (decimal?)t.Importe.Value) ?? 0;
 
             // Cálculo de los gastos programados pendientes del mes actual
             decimal gastosMes = datalinq.GastosProgramados
